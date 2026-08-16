@@ -37,7 +37,7 @@ class Document(models.Model):
         related_name="documents",
     )
     title = models.CharField(max_length=255)
-    file_path = models.CharField(max_length=500)
+    file = models.FileField(upload_to="documents/")
     file_type = models.CharField(max_length=50)
     uploaded_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,

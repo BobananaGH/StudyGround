@@ -64,3 +64,6 @@ dist/
 .DS_Store
 Thumbs.db
 desktop.ini
+# Django uploaded media / test files
+backend/media/
+backend/documents/

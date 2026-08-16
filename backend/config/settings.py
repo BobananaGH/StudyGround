@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 
 from pathlib import Path
 import os
+import sys
+
 from dotenv import load_dotenv
 import dj_database_url
 
@@ -76,11 +78,16 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     "default": dj_database_url.config(
         default=os.getenv("DATABASE_URL"),
-        conn_max_age=600,
+        conn_max_age=0,
         ssl_require=True,
     )
 }
 
+if "test" in sys.argv or "test_coverage" in sys.argv:
+    DATABASES["default"] = {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "test_db.sqlite3",
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/6.1/ref/settings/#auth-password-validators
@@ -127,3 +134,6 @@ MAILERS = {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
 }
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
