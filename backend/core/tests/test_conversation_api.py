@@ -171,6 +171,7 @@ class ConversationAPITests(APITestCase):
     def test_cannot_access_another_users_conversation(self):
         other_user = User.objects.create_user(
             username="otheruser",
+            email="other@example.com",
             password="otherpassword123",
         )
 
