@@ -1,15 +1,22 @@
 # backend/core/tests/test_course_api.py
 
 from django.core.files.uploadedfile import SimpleUploadedFile
-from django.urls import reverse
 from rest_framework.test import APITestCase
 
 from core.models import Course, Document
-
+from users.models import User
 
 class CourseAPITests(APITestCase):
 
     def setUp(self):
+        self.user = User.objects.create_user(
+            username="testuser",
+            email="test@example.com",
+            password="testpassword123",
+        )
+
+        self.client.force_authenticate(user=self.user)    
+        
         self.course = Course.objects.create(
             name="Artificial Intelligence",
             code="AI101",
@@ -98,5 +105,8 @@ class CourseAPITests(APITestCase):
             "/api/courses/99999/documents/"
         )
 
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data, [])
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(
+            response.data["error"],
+            "Course not found.",
+        )

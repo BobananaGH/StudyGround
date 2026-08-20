@@ -3,6 +3,7 @@
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
 
 from .models import Course, Conversation, Document, Message
 from .services.document_ingestion import ingest_document
@@ -10,7 +11,7 @@ from .services.document_ingestion import ingest_document
 # backend/core/views.py
 
 class CourseListView(APIView):
-
+    permission_classes = [IsAuthenticated]
     def get(self, request):
         courses = Course.objects.all().order_by("name")
 
@@ -58,7 +59,7 @@ class CourseListView(APIView):
 
 
 class CourseDetailView(APIView):
-
+    permission_classes = [IsAuthenticated]
     def get_course(self, course_id):
         try:
             return Course.objects.get(id=course_id)
@@ -89,12 +90,15 @@ class CourseDetailView(APIView):
 
 
 class CourseDocumentsView(APIView):
-
+    permission_classes = [IsAuthenticated]
     def get(self, request, course_id):
         try:
             course = Course.objects.get(id=course_id)
         except Course.DoesNotExist:
-            return Response([])
+            return Response(
+                {"error": "Course not found."},
+                status=status.HTTP_404_NOT_FOUND,
+    )
 
         documents = course.documents.all().order_by("-created_at")
 
@@ -110,7 +114,7 @@ class CourseDocumentsView(APIView):
         )
         
 class DocumentUploadView(APIView):
-
+    permission_classes = [IsAuthenticated]
     def post(self, request):
         file = request.FILES.get("file")
         course_id = request.data.get("course_id")
@@ -151,11 +155,7 @@ class DocumentUploadView(APIView):
             title=title or file.name,
             file=file,
             file_type=file.content_type or "",
-            uploaded_by=(
-                request.user
-                if request.user.is_authenticated
-                else None
-            ),
+            uploaded_by=request.user
         )
 
         chunks = ingest_document(document)
@@ -172,7 +172,7 @@ class DocumentUploadView(APIView):
 
 
 class ConversationListCreateView(APIView):
-
+    permission_classes = [IsAuthenticated]
     def get(self, request):
         conversations = Conversation.objects.filter(
             user=request.user
@@ -221,7 +221,7 @@ class ConversationListCreateView(APIView):
 
 
 class ConversationDetailView(APIView):
-
+    permission_classes = [IsAuthenticated]
     def get(self, request, conversation_id):
         try:
             conversation = Conversation.objects.get(
@@ -244,7 +244,7 @@ class ConversationDetailView(APIView):
 
 
 class ConversationMessagesView(APIView):
-
+    permission_classes = [IsAuthenticated]
     def get_conversation(self, request, conversation_id):
         try:
             return Conversation.objects.get(

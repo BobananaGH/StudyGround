@@ -1,7 +1,7 @@
 # backend/core/models.py
 from django.conf import settings
 from django.db import models
-
+from pgvector.django import VectorField
 
 class Course(models.Model):
     name = models.CharField(max_length=255)
@@ -58,6 +58,13 @@ class DocumentChunk(models.Model):
         on_delete=models.CASCADE,
         related_name="chunks",
     )
+
+    embedding = VectorField(
+        dimensions=384,
+        null=True,
+        blank=True,
+    )
+
     content = models.TextField()
     page_number = models.PositiveIntegerField(null=True, blank=True)
     chunk_index = models.PositiveIntegerField()

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "core",
     "users",
+    "pgvector",
 ]
 
 MIDDLEWARE = [
@@ -80,11 +81,14 @@ DATABASES = {
     "default": dj_database_url.config(
         default=os.getenv("DATABASE_URL"),
         conn_max_age=0,
-        ssl_require=True,
+        ssl_require=False,
     )
 }
 
-if "test" in sys.argv or "test_coverage" in sys.argv:
+if (
+    ("test" in sys.argv or "test_coverage" in sys.argv)
+    and not os.getenv("TEST_AGAINST_POSTGRES")
+):
     DATABASES["default"] = {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "test_db.sqlite3",
@@ -142,6 +146,9 @@ MEDIA_ROOT = BASE_DIR / "media"
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+    "DEFAULT_PERMISSION_CLASSES": (
+        "rest_framework.permissions.IsAuthenticated",
     ),
 }
 

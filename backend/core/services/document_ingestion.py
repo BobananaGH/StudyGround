@@ -4,23 +4,19 @@ from django.db import transaction
 from core.models import DocumentChunk
 from core.utils.chunker import chunk_text
 from core.utils.document_parser import extract_pages
+from core.utils.embedder import embed_text
 
 
 @transaction.atomic
 def ingest_document(document, chunk_size=1000, overlap=200):
     """
-    Extract and chunk a Document, then save the chunks to the database.
-
-    Args:
-        document: A core.models.Document instance.
-        chunk_size: Maximum characters per chunk.
-        overlap: Number of overlapping characters between chunks.
+    Extract, chunk, embed, and save a Document.
 
     Returns:
         list[DocumentChunk]: The created document chunks.
     """
 
-    # Re-ingesting a document should replace its existing chunks.
+    # Re-ingesting a document replaces its existing chunks.
     document.chunks.all().delete()
 
     document.file.seek(0)
@@ -41,12 +37,15 @@ def ingest_document(document, chunk_size=1000, overlap=200):
         )
 
         for content in text_chunks:
+            embedding = embed_text(content)
+
             chunks.append(
                 DocumentChunk(
                     document=document,
                     content=content,
                     page_number=page_number,
                     chunk_index=chunk_index,
+                    embedding=embedding,
                 )
             )
 

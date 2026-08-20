@@ -1,11 +1,18 @@
 # backend/core/tests/test_retrieval.py
+import unittest
 
+from django.db import connection
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
 
 from core.models import Course, Document, DocumentChunk
 from core.services.retrieval import retrieve_chunks
+from core.utils.embedder import embed_text
 
+@unittest.skipUnless(
+    connection.vendor == "postgresql",
+    "Vector search requires PostgreSQL + pgvector.",
+)
 
 class RetrievalTests(TestCase):
 
@@ -42,32 +49,41 @@ class RetrievalTests(TestCase):
             file_type="application/pdf",
         )
 
+        content = (
+            "Neural networks use backpropagation "
+            "to train machine learning models."
+        )
+
         DocumentChunk.objects.create(
             document=self.ai_document,
-            content=(
-                "Neural networks use backpropagation "
-                "to train machine learning models."
-            ),
+            content=content,
+            embedding=embed_text(content),
             page_number=1,
             chunk_index=0,
         )
 
+        content = (
+            "Artificial intelligence includes "
+            "machine learning and deep learning."
+        )
+
         DocumentChunk.objects.create(
             document=self.ai_document,
-            content=(
-                "Artificial intelligence includes "
-                "machine learning and deep learning."
-            ),
+            content=content,
+            embedding=embed_text(content),
             page_number=2,
             chunk_index=1,
         )
 
+        content = (
+            "Database normalization reduces "
+            "redundant data in relational databases."
+        )
+
         DocumentChunk.objects.create(
             document=self.database_document,
-            content=(
-                "Database normalization reduces "
-                "redundant data in relational databases."
-            ),
+            content=content,
+            embedding=embed_text(content),
             page_number=1,
             chunk_index=0,
         )
@@ -78,10 +94,14 @@ class RetrievalTests(TestCase):
             "neural networks backpropagation",
         )
 
-        self.assertEqual(len(results), 1)
+        self.assertGreaterEqual(len(results), 1)
         self.assertEqual(
             results[0].document,
             self.ai_document,
+        )
+        self.assertEqual(
+            results[0].chunk_index,
+            0,
         )
 
     def test_only_searches_selected_course(self):
@@ -90,7 +110,13 @@ class RetrievalTests(TestCase):
             "database normalization",
         )
 
-        self.assertEqual(len(results), 0)
+        self.assertGreaterEqual(len(results), 1)
+
+        for chunk in results:
+            self.assertEqual(
+                chunk.document.course,
+                self.ai,
+            )
 
     def test_results_are_ranked(self):
         results = retrieve_chunks(
