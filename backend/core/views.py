@@ -5,7 +5,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 
-from .models import Course, Conversation, Document, Message
+from .models import Course, Conversation, Document, Message, Evidence
+from .services.retrieval import retrieve_chunks
+from .services.answer_generation import generate_answer
+from .services.answer_verification import verify_answer
 from .services.document_ingestion import ingest_document
 
 # backend/core/views.py
@@ -291,14 +294,7 @@ class ConversationMessagesView(APIView):
                 status=status.HTTP_404_NOT_FOUND,
             )
 
-        role = request.data.get("role")
         content = request.data.get("content")
-
-        if role not in {"user", "assistant"}:
-            return Response(
-                {"error": "Invalid role."},
-                status=status.HTTP_400_BAD_REQUEST,
-            )
 
         if not content:
             return Response(
@@ -306,17 +302,132 @@ class ConversationMessagesView(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        message = Message.objects.create(
+        Message.objects.create(
             conversation=conversation,
-            role=role,
+            role="user",
             content=content,
         )
 
+        # If the conversation has no course, there is nothing to search.
+        if conversation.course is None:
+            assistant_message = Message.objects.create(
+                conversation=conversation,
+                role="assistant",
+                content=(
+                    "I couldn't find enough information "
+                    "in the course materials."
+                ),
+            )
+
+            return Response(
+                {
+                    "id": assistant_message.id,
+                    "role": assistant_message.role,
+                    "content": assistant_message.content,
+                    "evidence": [],
+                },
+                status=status.HTTP_201_CREATED,
+            )
+
+        # Retrieve relevant chunks from the conversation's course
+        chunks = retrieve_chunks(
+            conversation.course,
+            content,
+        )
+
+        # No relevant chunks found
+        if not chunks:
+            assistant_message = Message.objects.create(
+                conversation=conversation,
+                role="assistant",
+                content=(
+                    "I couldn't find enough information "
+                    "in the course materials."
+                ),
+            )
+
+            return Response(
+                {
+                    "id": assistant_message.id,
+                    "role": assistant_message.role,
+                    "content": assistant_message.content,
+                    "evidence": [],
+                },
+                status=status.HTTP_201_CREATED,
+            )
+
+        # Generate an answer using the retrieved chunks
+        result = generate_answer(
+            content,
+            chunks,
+        )
+
+        # Verify Gemini's evidence against the actual retrieved chunks
+        verified_result = verify_answer(
+            result,
+            chunks,
+        )
+
+        if not verified_result["found"]:
+            assistant_message = Message.objects.create(
+                conversation=conversation,
+                role="assistant",
+                content=(
+                    "I couldn't find enough information "
+                    "in the course materials."
+                ),
+            )
+
+            return Response(
+                {
+                    "id": assistant_message.id,
+                    "role": assistant_message.role,
+                    "content": assistant_message.content,
+                    "evidence": [],
+                },
+                status=status.HTTP_201_CREATED,
+            )
+
+        # Save the verified assistant answer
+        assistant_message = Message.objects.create(
+            conversation=conversation,
+            role="assistant",
+            content=verified_result["answer"],
+        )
+
+        # Save verified evidence
+        evidence_data = verified_result.get("evidence", [])
+
+        for item in evidence_data:
+            chunk_id = item.get("chunk_id")
+
+            try:
+                chunk = next(
+                    chunk
+                    for chunk in chunks
+                    if str(chunk.id) == str(chunk_id)
+                )
+            except StopIteration:
+                continue
+
+            Evidence.objects.create(
+                message=assistant_message,
+                chunk=chunk,
+            )
+
         return Response(
             {
-                "id": message.id,
-                "role": message.role,
-                "content": message.content,
+                "id": assistant_message.id,
+                "role": assistant_message.role,
+                "content": assistant_message.content,
+                "evidence": [
+                    {
+                        "chunk_id": str(item["chunk_id"]),
+                        "document": item["document"],
+                        "page": item["page"],
+                    }
+                    for item in evidence_data
+                ],
             },
             status=status.HTTP_201_CREATED,
         )

@@ -1,5 +1,7 @@
 # backend/core/tests/test_conversation_api.py
 
+from unittest.mock import patch
+
 from django.contrib.auth import get_user_model
 from rest_framework.test import APITestCase
 
@@ -24,8 +26,6 @@ class ConversationAPITests(APITestCase):
             name="Artificial Intelligence",
             code="AI101",
         )
-
-        self.client.force_authenticate(user=self.user)
 
     def test_create_conversation(self):
         response = self.client.post(
@@ -104,38 +104,54 @@ class ConversationAPITests(APITestCase):
             "AI Session",
         )
 
-    def test_send_message(self):
-        conversation = Conversation.objects.create(
-            user=self.user,
-            course=self.course,
-            title="AI Session",
-        )
+        @patch("core.views.retrieve_chunks")
+        def test_send_message(self, mock_retrieve_chunks):
+            conversation = Conversation.objects.create(
+                user=self.user,
+                course=self.course,
+                title="AI Session",
+            )
 
-        response = self.client.post(
-            f"/api/conversations/{conversation.id}/messages/",
-            {
-                "role": "user",
-                "content": "What is artificial intelligence?",
-            },
-            format="json",
-        )
+            mock_retrieve_chunks.return_value = []
 
-        self.assertEqual(response.status_code, 201)
-        self.assertEqual(
-            response.data["role"],
-            "user",
-        )
-        self.assertEqual(
-            response.data["content"],
-            "What is artificial intelligence?",
-        )
+            response = self.client.post(
+                f"/api/conversations/{conversation.id}/messages/",
+                {
+                    "content": "What is artificial intelligence?",
+                },
+                format="json",
+            )
 
-        self.assertTrue(
-            Message.objects.filter(
-                conversation=conversation,
-                role="user",
-            ).exists()
-        )
+            self.assertEqual(response.status_code, 201)
+            self.assertEqual(
+                response.data["role"],
+                "assistant",
+            )
+            self.assertEqual(
+                response.data["content"],
+                "I couldn't find enough information "
+                "in the course materials.",
+            )
+
+            self.assertTrue(
+                Message.objects.filter(
+                    conversation=conversation,
+                    role="user",
+                    content="What is artificial intelligence?",
+                ).exists()
+            )
+
+            self.assertTrue(
+                Message.objects.filter(
+                    conversation=conversation,
+                    role="assistant",
+                ).exists()
+            )
+
+            mock_retrieve_chunks.assert_called_once_with(
+                self.course,
+                "What is artificial intelligence?",
+            )
 
     def test_list_messages(self):
         conversation = Conversation.objects.create(
