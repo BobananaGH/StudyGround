@@ -7,7 +7,7 @@ from django.test import TestCase
 
 from core.models import Course, Document, DocumentChunk
 from core.services.retrieval import retrieve_chunks
-from core.utils.embedder import embed_text
+from core.utils.embedder import embed_passage
 
 @unittest.skipUnless(
     connection.vendor == "postgresql",
@@ -57,7 +57,7 @@ class RetrievalTests(TestCase):
         DocumentChunk.objects.create(
             document=self.ai_document,
             content=content,
-            embedding=embed_text(content),
+            embedding=embed_passage(content),
             page_number=1,
             chunk_index=0,
         )
@@ -70,7 +70,7 @@ class RetrievalTests(TestCase):
         DocumentChunk.objects.create(
             document=self.ai_document,
             content=content,
-            embedding=embed_text(content),
+            embedding=embed_passage(content),
             page_number=2,
             chunk_index=1,
         )
@@ -83,7 +83,7 @@ class RetrievalTests(TestCase):
         DocumentChunk.objects.create(
             document=self.database_document,
             content=content,
-            embedding=embed_text(content),
+            embedding=embed_passage(content),
             page_number=1,
             chunk_index=0,
         )

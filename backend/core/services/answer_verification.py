@@ -34,7 +34,25 @@ def verify_answer(result, chunks):
         if not isinstance(item, dict):
             continue
 
-        chunk_id = str(item.get("chunk_id", ""))
+        raw_chunk_id = item.get("chunk_id")
+
+        if raw_chunk_id is None:
+            continue
+
+        chunk_id = str(raw_chunk_id).strip()
+
+        # Defensive normalization:
+        # "Chunk 1008" -> "1008"
+        # "[Chunk 1008]" -> "1008"
+        # "chunk 1008" -> "1008"
+        if chunk_id.lower().startswith("chunk "):
+            chunk_id = chunk_id[6:].strip()
+
+        if chunk_id.startswith("[") and chunk_id.endswith("]"):
+            chunk_id = chunk_id[1:-1].strip()
+
+        if chunk_id.lower().startswith("chunk "):
+            chunk_id = chunk_id[6:].strip()
 
         chunk = retrieved_chunks_by_id.get(chunk_id)
 

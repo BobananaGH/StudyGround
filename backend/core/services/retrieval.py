@@ -2,7 +2,7 @@
 from pgvector.django import CosineDistance
 
 from core.models import Course, DocumentChunk
-from core.utils.embedder import embed_text
+from core.utils.embedder import embed_query
 
 
 def retrieve_chunks(course, query, limit=5):
@@ -20,7 +20,7 @@ def retrieve_chunks(course, query, limit=5):
     if limit <= 0:
         return []
 
-    query_embedding = embed_text(query)
+    query_embedding = embed_query(query)
 
     chunks = (
         DocumentChunk.objects

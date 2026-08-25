@@ -1,0 +1,1289 @@
+{
+  "evaluation_type": "full_rag_pipeline",
+  "evaluation_description": "Evaluates retrieval -> generation -> evidence verification. PASS/FAIL is based on whether the final verified result correctly identifies whether the question is answerable from the course material. API and runtime errors are reported separately and excluded from accuracy.",
+  "course_id": 2,
+  "course_code": "TRIET101",
+  "course_name": "Triết học Mác - Lênin",
+  "summary": {
+    "total": 15,
+    "evaluated": 9,
+    "passed": 6,
+    "failed": 3,
+    "errors": 6,
+    "accuracy": 0.6666666666666666
+  },
+  "results": [
+    {
+      "id": "Q001",
+      "category": "answerable",
+      "question": "Triết học là gì?",
+      "expected_found": true,
+      "status": "pass",
+      "retrieval": {
+        "found": true,
+        "count": 5,
+        "chunks": [
+          {
+            "rank": 1,
+            "chunk_id": 922,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 12,
+            "distance": 0.10775445607251455,
+            "content": "g các định nghĩa thường bao hàm những nội\ndung chủ yếu sau:\n- Triết học là một hình thái ý thức xã hội.\n- Khách thể khám phá của triết học là thế giới (gồm cả thế giới bên trong và bên\nngoài con người) trong hệ thống chỉnh thể toàn vẹn vốn có của nó.\n- Triết học giải thích tất cả mọi sự vật, hiện tượng, quá trình và quan hệ của thế giới,\nvới mục đích tìm ra những quy luật phổ biến nhất chi phối, quy định và quyết định sự\nvận động của thế giới, của con người và của tư duy.\n- Với tư cách là loại hình nhận thức đặc thù, độc lập với khoa học và khác biệt với tôn\ngiáo, tri thức triết học mang tính hệ thống, lôgích và trừu tượng về thế giới, bao gồm\nnhững nguyên tắc cơ bản, những đặc trưng bản chất và những quan điểm nền tảng về mọi\ntồn tại.\n- Triết học là hạt nhân của thế giới quan.\nTriết học là hình thái đặc biệt của ý thức xã hội, được thể hiện thành hệ thống các\nquan điểm lý luận chung nhất về thế giới, về con người và về tư duy của con người trong\nthế giới ấy.\n______________\n1. Xem ИФ,",
+            "content_preview": "g các định nghĩa thường bao hàm những nội\ndung chủ yếu sau:\n- Triết học là một hình thái ý thức xã hội.\n- Khách thể khám phá của triết học là thế giới (gồm cả thế giới bên trong và bên\nngoài con người) trong hệ thống chỉnh thể toàn vẹn vốn có của nó.\n- Triết học giải thích tất cả mọi sự vật, hiện tượng, quá trình và quan hệ của thế giới,\nvới mục đích tìm ra những quy luật phổ biến nhất chi phối, quy định và quyết định sự\nvận động của thế giới, của con người và của tư duy.\n- Với tư cách là loại h"
+          },
+          {
+            "rank": 2,
+            "chunk_id": 921,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 12,
+            "distance": 0.10842858452456183,
+            "content": "luận. Tính đặc thù của nhận thức triết học thể hiện ở đó1.\nBách khoa thư Britannica định nghĩa: “Triết học là sự xem xét lý tính, trừu tượng và\ncó phương pháp về thực tại với tính cách là một chỉnh thể hoặc những khía cạnh nền tảng\ncủa kinh nghiệm và sự tồn tại người. Sự truy vấn triết học (Philosophical Inquiry) là\nthành phần trung tâm của lịch sử trí tuệ của nhiều nền văn minh”2.\nBách khoa thư triết học mới của Viện Triết học Nga xuất bản năm 2001 đưa ra định\nnghĩa: Triết học là hình thức đặc biệt của nhận thức và ý thức xã hội về thế giới, được thể\nhiện thành hệ thống tri thức về những nguyên tắc cơ bản và nền tảng của tồn tại người, về\nnhững đặc trưng bản chất nhất của mối quan hệ giữa con người với tự nhiên, với xã hội\nvà với đời sống tinh thần3.\nCó nhiều định nghĩa về triết học, nhưng các định nghĩa thường bao hàm những nội\ndung chủ yếu sau:\n- Triết học là một hình thái ý thức xã hội.\n- Khách thể khám phá của triết học là thế giới (gồm cả thế giới bên trong và bên\nngoài con người",
+            "content_preview": "luận. Tính đặc thù của nhận thức triết học thể hiện ở đó1.\nBách khoa thư Britannica định nghĩa: “Triết học là sự xem xét lý tính, trừu tượng và\ncó phương pháp về thực tại với tính cách là một chỉnh thể hoặc những khía cạnh nền tảng\ncủa kinh nghiệm và sự tồn tại người. Sự truy vấn triết học (Philosophical Inquiry) là\nthành phần trung tâm của lịch sử trí tuệ của nhiều nền văn minh”2.\nBách khoa thư triết học mới của Viện Triết học Nga xuất bản năm 2001 đưa ra định\nnghĩa: Triết học là hình thức đặc "
+          },
+          {
+            "rank": 3,
+            "chunk_id": 925,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 13,
+            "distance": 0.10980742515281128,
+            "content": "học và lịch sử của bản thân\ntư tưởng triết học.\nKhông phải mọi triết học đều là khoa học. Song, các học thuyết triết học đều có đóng\ngóp ít nhiều, nhất định cho sự hình thành tri thức khoa học triết học trong lịch sử; là\nnhững “vòng khâu”, những “mắt khâu” trên “đường xoáy ốc” vô tận của lịch sử tư tưởng\ntriết học nhân loại. Trình độ khoa học của một học thuyết triết học phụ thuộc vào sự phát\ntriển của đối tượng nghiên cứu, hệ thống tri thức và hệ thống phương pháp nghiên cứu.\nc) Đối tượng của triết học trong lịch sử\nCùng với quá trình phát triển của xã hội, nhận thức và bản thân triết học, trên thực tế,\nnội dung đối tượng của triết học cũng thay đổi trong các trường phái triết học khác nhau.\nĐối tượng của triết học là các quan hệ phổ biến và các quy luật chung nhất của\ntoàn bộ tự nhiên, xã hội và tư duy.\nNgay từ khi ra đời, triết học được xem là hình thái cao nhất của tri thức, bao hàm\ntrong nó tri thức của tất cả các lĩnh vực mà mãi về sau, từ thế kỷ XV đến thế kỷ XVII,\nmới dần thuộ",
+            "content_preview": "học và lịch sử của bản thân\ntư tưởng triết học.\nKhông phải mọi triết học đều là khoa học. Song, các học thuyết triết học đều có đóng\ngóp ít nhiều, nhất định cho sự hình thành tri thức khoa học triết học trong lịch sử; là\nnhững “vòng khâu”, những “mắt khâu” trên “đường xoáy ốc” vô tận của lịch sử tư tưởng\ntriết học nhân loại. Trình độ khoa học của một học thuyết triết học phụ thuộc vào sự phát\ntriển của đối tượng nghiên cứu, hệ thống tri thức và hệ thống phương pháp nghiên cứu.\nc) Đối tượng của t"
+          },
+          {
+            "rank": 4,
+            "chunk_id": 904,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 8,
+            "distance": 0.11046921548430666,
+            "content": "ủa chủ nghĩa Mác - Lênin nói chung và triết học Mác - Lênin nói riêng.\nB. NỘI DUNG\nI- TRIẾT HỌC VÀ VẤN ĐỀ CƠ BẢN CỦA TRIẾT HỌC\n1. Khái lược về triết học\na) Nguồn gốc của triết học\nLà một loại hình nhận thức đặc thù của con người, triết học ra đời ở cả phương Đông và\nphương Tây gần như cùng một thời gian (khoảng từ thế kỷ VIII đến thế kỷ VI trước Công\nnguyên) tại các trung tâm văn minh lớn của nhân loại thời cổ đại. Ý thức triết học xuất\nhiện không ngẫu nhiên, mà có nguồn gốc thực tế từ tồn tại xã hội với một trình độ nhất\nđịnh của sự phát triển văn minh, văn hóa và khoa học. Con người, với kỳ vọng được đáp\nứng nhu cầu về nhận thức và hoạt động thực tiễn của mình đã sáng tạo ra những luận\nthuyết chung nhất, có tính hệ thống, phản ánh thế giới xung quanh và thế giới của chính\ncon người. Triết học là dạng tri thức lý luận xuất hiện sớm nhất trong lịch sử các loại\nhình lý luận của nhân loại.\nVới tư cách là một hình thái ý thức xã hội, triết học có nguồn gốc nhận thức và nguồn\ngốc xã hội.\n*",
+            "content_preview": "ủa chủ nghĩa Mác - Lênin nói chung và triết học Mác - Lênin nói riêng.\nB. NỘI DUNG\nI- TRIẾT HỌC VÀ VẤN ĐỀ CƠ BẢN CỦA TRIẾT HỌC\n1. Khái lược về triết học\na) Nguồn gốc của triết học\nLà một loại hình nhận thức đặc thù của con người, triết học ra đời ở cả phương Đông và\nphương Tây gần như cùng một thời gian (khoảng từ thế kỷ VIII đến thế kỷ VI trước Công\nnguyên) tại các trung tâm văn minh lớn của nhân loại thời cổ đại. Ý thức triết học xuất\nhiện không ngẫu nhiên, mà có nguồn gốc thực tế từ tồn tại x"
+          },
+          {
+            "rank": 5,
+            "chunk_id": 924,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 13,
+            "distance": 0.1118166380037865,
+            "content": "Với sự ra đời của triết học Mác - Lênin, triết học là hệ thống quan điểm lý luận\nchung nhất về thế giới và vị trí con người trong thế giới đó, là khoa học về những quy\nluật vận động, phát triển chung nhất của tự nhiên, xã hội và tư duy.\nTriết học khác với các khoa học khác ở tính đặc thù của hệ thống tri thức khoa học\nvà phương pháp nghiên cứu. Tri thức khoa học triết học mang tính khái quát cao dựa\ntrên sự trừu tượng hóa sâu sắc về thế giới, về bản chất cuộc sống con người. Phương\npháp nghiên cứu của triết học là xem xét thế giới như một chỉnh thể trong mối quan hệ\ngiữa các yếu tố và tìm cách đưa ra một hệ thống các quan niệm về chỉnh thể đó. Triết\nhọc là sự diễn tả thế giới quan bằng lý luận. Điều đó chỉ có thể thực hiện được khi\ntriết học dựa trên cơ sở tổng kết toàn bộ lịch sử của khoa học và lịch sử của bản thân\ntư tưởng triết học.\nKhông phải mọi triết học đều là khoa học. Song, các học thuyết triết học đều có đóng\ngóp ít nhiều, nhất định cho sự hình thành tri thức khoa học triết",
+            "content_preview": "Với sự ra đời của triết học Mác - Lênin, triết học là hệ thống quan điểm lý luận\nchung nhất về thế giới và vị trí con người trong thế giới đó, là khoa học về những quy\nluật vận động, phát triển chung nhất của tự nhiên, xã hội và tư duy.\nTriết học khác với các khoa học khác ở tính đặc thù của hệ thống tri thức khoa học\nvà phương pháp nghiên cứu. Tri thức khoa học triết học mang tính khái quát cao dựa\ntrên sự trừu tượng hóa sâu sắc về thế giới, về bản chất cuộc sống con người. Phương\npháp nghiên c"
+          }
+        ]
+      },
+      "generation": {
+        "found": true,
+        "answer": "Theo nội dung giáo trình, triết học được hiểu qua một số định nghĩa và đặc trưng chủ yếu sau:\n\n1. **Định nghĩa tổng quát:** Triết học là hình thái đặc biệt của ý thức xã hội, được thể hiện thành hệ thống các quan điểm lý luận chung nhất về thế giới, về con người và về tư duy của con người trong thế giới ấy.\n2. **Theo triết học Mác - Lênin:** Triết học là hệ thống quan điểm lý luận chung nhất về thế giới và vị trí con người trong thế giới đó, là khoa học về những quy luật vận động, phát triển chung nhất của tự nhiên, xã hội và tư duy.\n3. **Các nội dung chủ yếu thường bao hàm trong khái niệm triết học:**\n- Triết học là một hình thái ý thức xã hội, là hạt nhân của thế giới quan.\n- Khách thể khám phá của triết học là thế giới (gồm cả thế giới bên trong và bên ngoài con người) trong hệ thống chỉnh thể toàn vẹn.\n- Triết học giải thích mọi sự vật, hiện tượng, quá trình và quan hệ của thế giới nhằm tìm ra những quy luật phổ biến nhất chi phối sự vận động của thế giới, con người và tư duy.\n- Tri thức triết học mang tính hệ thống, lôgích và trừu tượng về thế giới.",
+        "evidence": [
+          {
+            "chunk_id": "922",
+            "document": "Giáo trình Triết học",
+            "page": 12
+          },
+          {
+            "chunk_id": "924",
+            "document": "Giáo trình Triết học",
+            "page": 13
+          },
+          {
+            "chunk_id": "921",
+            "document": "Giáo trình Triết học",
+            "page": 12
+          }
+        ]
+      },
+      "verification": {
+        "found": true,
+        "answer": "Theo nội dung giáo trình, triết học được hiểu qua một số định nghĩa và đặc trưng chủ yếu sau:\n\n1. **Định nghĩa tổng quát:** Triết học là hình thái đặc biệt của ý thức xã hội, được thể hiện thành hệ thống các quan điểm lý luận chung nhất về thế giới, về con người và về tư duy của con người trong thế giới ấy.\n2. **Theo triết học Mác - Lênin:** Triết học là hệ thống quan điểm lý luận chung nhất về thế giới và vị trí con người trong thế giới đó, là khoa học về những quy luật vận động, phát triển chung nhất của tự nhiên, xã hội và tư duy.\n3. **Các nội dung chủ yếu thường bao hàm trong khái niệm triết học:**\n- Triết học là một hình thái ý thức xã hội, là hạt nhân của thế giới quan.\n- Khách thể khám phá của triết học là thế giới (gồm cả thế giới bên trong và bên ngoài con người) trong hệ thống chỉnh thể toàn vẹn.\n- Triết học giải thích mọi sự vật, hiện tượng, quá trình và quan hệ của thế giới nhằm tìm ra những quy luật phổ biến nhất chi phối sự vận động của thế giới, con người và tư duy.\n- Tri thức triết học mang tính hệ thống, lôgích và trừu tượng về thế giới.",
+        "evidence": [
+          {
+            "chunk_id": "922",
+            "document": "Giáo trình Triết học",
+            "page": 12
+          },
+          {
+            "chunk_id": "924",
+            "document": "Giáo trình Triết học",
+            "page": 13
+          },
+          {
+            "chunk_id": "921",
+            "document": "Giáo trình Triết học",
+            "page": 12
+          }
+        ]
+      },
+      "passed": true,
+      "expected_page": 197,
+      "expected_chunk_keywords": "hình thức đặc biệt và cao nhất của tri thức"
+    },
+    {
+      "id": "Q002",
+      "category": "answerable",
+      "question": "Phép biện chứng đã trải qua những hình thức lịch sử nào?",
+      "expected_found": true,
+      "status": "pass",
+      "retrieval": {
+        "found": true,
+        "count": 5,
+        "chunks": [
+          {
+            "rank": 1,
+            "chunk_id": 967,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 23,
+            "distance": 0.0878625459752933,
+            "content": "nó lại vừa không phải là nó; thừa nhận cái\nkhẳng định và cái phủ định vừa loại trừ nhau lại vừa gắn bó với nhau.\nPhương pháp biện chứng phản ánh hiện thực đúng như nó tồn tại. Nhờ vậy,\nphương pháp tư duy biện chứng trở thành công cụ hữu hiệu giúp con người nhận thức\nvà cải tạo thế giới, là phương pháp luận tối ưu của mọi khoa học.\nb) Các hình thức của phép biện chứng trong lịch sử\nCùng với sự phát triển của tư duy con người, phương pháp biện chứng đã trải qua ba\ngiai đoạn phát triển, được thể hiện trong triết học với ba hình thức lịch sử: phép biện\nchứng tự phát, phép biện chứng duy tâm và phép biện chứng duy vật.\n- Hình thức thứ nhất là phép biện chứng tự phát thời cổ đại. Các nhà biện chứng cả\nphương Đông và phương Tây thời cổ đại đã thấy được các sự vật, hiện tượng của vũ trụ\nvận động trong sự sinh thành, biến hóa vô cùng vô tận. Tuy nhiên, những gì mà các nhà\nbiện chứng thời đó thấy được chỉ là trực kiến, chưa có các kết quả của nghiên cứu và thực\nnghiệm khoa học minh chứng.\n- Hình",
+            "content_preview": "nó lại vừa không phải là nó; thừa nhận cái\nkhẳng định và cái phủ định vừa loại trừ nhau lại vừa gắn bó với nhau.\nPhương pháp biện chứng phản ánh hiện thực đúng như nó tồn tại. Nhờ vậy,\nphương pháp tư duy biện chứng trở thành công cụ hữu hiệu giúp con người nhận thức\nvà cải tạo thế giới, là phương pháp luận tối ưu của mọi khoa học.\nb) Các hình thức của phép biện chứng trong lịch sử\nCùng với sự phát triển của tư duy con người, phương pháp biện chứng đã trải qua ba\ngiai đoạn phát triển, được thể hi"
+          },
+          {
+            "rank": 2,
+            "chunk_id": 969,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 24,
+            "distance": 0.11660992404163184,
+            "content": "học Đức đã trình bày một cách có hệ thống những nội dung quan trọng nhất của phương\npháp biện chứng. Theo các nhà triết học Đức, biện chứng bắt đầu từ tinh thần và kết thúc\ncũng ở tinh thần. Thế giới hiện thực chỉ là sự phản ánh biện chứng của ý niệm nên phép\nbiện chứng của các nhà triết học cổ điển Đức là biện chứng duy tâm.\n- Hình thức thứ ba là phép biện chứng duy vật. Phép biện chứng duy vật được thể\nhiện trong triết học do C. Mác và Ph. Ăngghen xây dựng, sau đó được V.I. Lênin và các\nnhà triết học hậu thế phát triển. C. Mác và Ph. Ăngghen đã gạt bỏ tính thần bí, tư biện của\ntriết học cổ điển Đức, kế thừa những hạt nhân hợp lý trong phép biện chứng duy tâm để\nxây dựng phép biện chứng duy vật với tư cách là học thuyết về mối liên hệ phổ biến và\nvề sự phát triển dưới hình thức hoàn bị nhất. Công lao của\nC. Mác và Ph. Ăngghen còn ở chỗ tạo được sự thống nhất giữa chủ nghĩa duy vật với\nphép biện chứng trong lịch sử phát triển triết học nhân loại, làm cho phép biện chứng trở\nthành phép",
+            "content_preview": "học Đức đã trình bày một cách có hệ thống những nội dung quan trọng nhất của phương\npháp biện chứng. Theo các nhà triết học Đức, biện chứng bắt đầu từ tinh thần và kết thúc\ncũng ở tinh thần. Thế giới hiện thực chỉ là sự phản ánh biện chứng của ý niệm nên phép\nbiện chứng của các nhà triết học cổ điển Đức là biện chứng duy tâm.\n- Hình thức thứ ba là phép biện chứng duy vật. Phép biện chứng duy vật được thể\nhiện trong triết học do C. Mác và Ph. Ăngghen xây dựng, sau đó được V.I. Lênin và các\nnhà tr"
+          },
+          {
+            "rank": 3,
+            "chunk_id": 1209,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 84,
+            "distance": 0.1269842050378227,
+            "content": "iêu vong của\nchúng”1, tức là thành phép biện chứng. Nó cho phép tư duy không chỉ nhìn thấy sự vật cá\nbiệt mà còn thấy cả mối liên hệ qua lại giữa chúng, vừa thấy bộ phận vừa thấy toàn thể,\nkhông chỉ thấy cây mà còn thấy rừng2.\nTheo hai nghĩa nêu trên, về thực chất biện chứng đã được chia thành biện chứng\nkhách quan và biện chứng chủ quan (phép biện chứng). Biện chứng khách quan là khái\nniệm dùng để chỉ biện chứng của bản thân thế giới tồn tại khách quan, độc lập với ý\nthức con người. Biện chứng chủ quan chính là sự phản ánh biện chứng khách quan vào\nđầu óc của con người, là biện chứng của chính quá trình nhận thức, là biện chứng của tư\nduy phản ánh hiện thực khách quan vào bộ óc con người. Do có sự thống nhất giữa\nphép biện chứng, lý luận nhận thức và lôgích (biện chứng) trên cơ sở thống nhất tư duy\nvà tồn tại, nên biện chứng chủ quan một mặt phản ánh thế giới khách quan, mặt khác\nphản ánh những quy luật của tư duy biện chứng.\nGiữa biện chứng khách quan và biện chứng chủ quan có mối qu",
+            "content_preview": "iêu vong của\nchúng”1, tức là thành phép biện chứng. Nó cho phép tư duy không chỉ nhìn thấy sự vật cá\nbiệt mà còn thấy cả mối liên hệ qua lại giữa chúng, vừa thấy bộ phận vừa thấy toàn thể,\nkhông chỉ thấy cây mà còn thấy rừng2.\nTheo hai nghĩa nêu trên, về thực chất biện chứng đã được chia thành biện chứng\nkhách quan và biện chứng chủ quan (phép biện chứng). Biện chứng khách quan là khái\nniệm dùng để chỉ biện chứng của bản thân thế giới tồn tại khách quan, độc lập với ý\nthức con người. Biện chứng "
+          },
+          {
+            "rank": 4,
+            "chunk_id": 1208,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 84,
+            "distance": 0.12828663677812002,
+            "content": "biện chứng duy vật để đề ra các nguyên tắc tương ứng, định hướng hoạt động lý luận và\nthực tiễn của mình.\n1. Hai loại hình biện chứng và phép biện chứng duy vật\na) Hai loại hình biện chứng\nBiện chứng thường được hiểu theo hai nghĩa: Thứ nhất, là phạm trù dùng để chỉ những\nmối liên hệ qua lại lẫn nhau, sự vận động và phát triển của bản thân các sự vật, hiện tượng,\nquá trình tồn tại độc lập bên ngoài ý thức con người; thứ hai, là phạm trù dùng để chỉ những\nmối liên hệ và sự vận động, biến đổi của chính quá trình phản ánh hiện thực khách quan vào\nđầu óc con người. Ở nghĩa thứ hai này biện chứng trở thành quan điểm, phương pháp “...\nxem xét những sự vật và những phản ánh của chúng trong tư tưởng trong mối liên hệ qua lại\nlẫn nhau của chúng, trong sự ràng buộc, sự vận động, sự phát sinh và sự tiêu vong của\nchúng”1, tức là thành phép biện chứng. Nó cho phép tư duy không chỉ nhìn thấy sự vật cá\nbiệt mà còn thấy cả mối liên hệ qua lại giữa chúng, vừa thấy bộ phận vừa thấy toàn thể,\nkhông chỉ t",
+            "content_preview": "biện chứng duy vật để đề ra các nguyên tắc tương ứng, định hướng hoạt động lý luận và\nthực tiễn của mình.\n1. Hai loại hình biện chứng và phép biện chứng duy vật\na) Hai loại hình biện chứng\nBiện chứng thường được hiểu theo hai nghĩa: Thứ nhất, là phạm trù dùng để chỉ những\nmối liên hệ qua lại lẫn nhau, sự vận động và phát triển của bản thân các sự vật, hiện tượng,\nquá trình tồn tại độc lập bên ngoài ý thức con người; thứ hai, là phạm trù dùng để chỉ những\nmối liên hệ và sự vận động, biến đổi của "
+          },
+          {
+            "rank": 5,
+            "chunk_id": 961,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 22,
+            "distance": 0.12975726964983114,
+            "content": "mà nhận thức của con người không thể vượt qua được. Ph. Ăngghen khẳng định: “Nếu\nchúng có thể chứng minh được tính chính xác của quan điểm của chúng ta về một hiện\ntượng tự nhiên nào đó, bằng cách tự chúng ta làm ra hiện tượng ấy, bằng cách tạo ra nó\ntừ những điều kiện của nó, và hơn nữa, còn bắt nó phải phục vụ mục đích của chúng ta,\nthì sẽ không còn có cái “vật tự nó” không thể nắm được của Cantơ nữa”1.\nNhững người theo khả tri luận tin rằng, nhận thức là một quá trình không ngừng đi\nsâu khám phá bản chất sự vật. Với quá trình đó, vật tự nó sẽ buộc phải biến thành “Vật\ncho ta”.\n3. Biện chứng và siêu hình\na) Khái niệm biện chứng và siêu hình trong lịch sử\nCác khái niệm “biện chứng” và “siêu hình” trong lịch sử triết học được dùng theo\nmột số nghĩa khác nhau. Nghĩa xuất phát của từ “biện chứng” là nghệ thuật tranh luận để\ntìm chân lý bằng cách phát hiện mâu thuẫn trong cách lập luận (Socrates dùng). Nghĩa\nban đầu của từ “siêu hình” là dùng để chỉ triết học, với tư cách là khoa học siêu",
+            "content_preview": "mà nhận thức của con người không thể vượt qua được. Ph. Ăngghen khẳng định: “Nếu\nchúng có thể chứng minh được tính chính xác của quan điểm của chúng ta về một hiện\ntượng tự nhiên nào đó, bằng cách tự chúng ta làm ra hiện tượng ấy, bằng cách tạo ra nó\ntừ những điều kiện của nó, và hơn nữa, còn bắt nó phải phục vụ mục đích của chúng ta,\nthì sẽ không còn có cái “vật tự nó” không thể nắm được của Cantơ nữa”1.\nNhững người theo khả tri luận tin rằng, nhận thức là một quá trình không ngừng đi\nsâu khám "
+          }
+        ]
+      },
+      "generation": {
+        "found": true,
+        "answer": "Theo lịch sử triết học, phương pháp biện chứng đã trải qua ba hình thức lịch sử gồm:\n1. Phép biện chứng tự phát (thời cổ đại).\n2. Phép biện chứng duy tâm.\n3. Phép biện chứng duy vật.",
+        "evidence": [
+          {
+            "chunk_id": "967",
+            "document": "Giáo trình Triết học",
+            "page": 23
+          }
+        ]
+      },
+      "verification": {
+        "found": true,
+        "answer": "Theo lịch sử triết học, phương pháp biện chứng đã trải qua ba hình thức lịch sử gồm:\n1. Phép biện chứng tự phát (thời cổ đại).\n2. Phép biện chứng duy tâm.\n3. Phép biện chứng duy vật.",
+        "evidence": [
+          {
+            "chunk_id": "967",
+            "document": "Giáo trình Triết học",
+            "page": 23
+          }
+        ]
+      },
+      "passed": true,
+      "expected_page": 23,
+      "expected_chunk_keywords": "phép biện chứng tự phát, phép biện chứng duy tâm và phép biện chứng duy vật"
+    },
+    {
+      "id": "Q003",
+      "category": "answerable",
+      "question": "Lý luận nhận thức có nguồn gốc từ đâu?",
+      "expected_found": true,
+      "status": "pass",
+      "retrieval": {
+        "found": true,
+        "count": 5,
+        "chunks": [
+          {
+            "rank": 1,
+            "chunk_id": 1342,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 116,
+            "distance": 0.09756219387054443,
+            "content": "hát\ntriển của sự vật, hiện tượng mới.\nIII- LÝ LUẬN NHẬN THỨC\n1. Quan niệm về nhận thức trong lịch sử triết học\n* Khái niệm lý luận nhận thức\nLý luận nhận thức có nguồn gốc từ tiếng Hy Lạp cổ, được ghép từ hai từ “Gnosis” (tri\nthức) và “Logos” (lời nói, học thuyết). Lý luận nhận thức là một bộ phận của triết học,\nnghiên cứu bản chất của nhận thức, những hình thức, các giai đoạn của nhận thức; con\nđường để đạt chân lý, tiêu chuẩn của chân lý, v.v.. Lý luận nhận thức là khía cạnh thứ\nhai của vấn đề cơ bản của triết học; tức là, lý luận nhận thức phải giải quyết mối quan\nhệ của tri thức, của tư duy con người đối với hiện thực xung quanh, trả lời câu hỏi con\n116",
+            "content_preview": "hát\ntriển của sự vật, hiện tượng mới.\nIII- LÝ LUẬN NHẬN THỨC\n1. Quan niệm về nhận thức trong lịch sử triết học\n* Khái niệm lý luận nhận thức\nLý luận nhận thức có nguồn gốc từ tiếng Hy Lạp cổ, được ghép từ hai từ “Gnosis” (tri\nthức) và “Logos” (lời nói, học thuyết). Lý luận nhận thức là một bộ phận của triết học,\nnghiên cứu bản chất của nhận thức, những hình thức, các giai đoạn của nhận thức; con\nđường để đạt chân lý, tiêu chuẩn của chân lý, v.v.. Lý luận nhận thức là khía cạnh thứ\nhai của vấn đề"
+          },
+          {
+            "rank": 2,
+            "chunk_id": 1355,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 120,
+            "distance": 0.11656634610099803,
+            "content": "quả của nhận thức kinh nghiệm là những tri thức kinh nghiệm thông thường hoặc tri thức\nthực nghiệm khoa học. Nhận thức lý luận là nhận thức sự vật, hiện tượng một cách gián\ntiếp dựa trên các hình thức tư duy trừu tượng như khái niệm, phán đoán, suy luận để khái\nquát tính bản chất, quy luật, tính tất yếu của các sự vật, hiện tượng. Nhận thức thông\nthường là nhận thức được hình thành một cách tự phát, trực tiếp trong hoạt động hằng\nngày của con người. Nhận thức khoa học là nhận thức được hình thành chủ động, tự giác\ncủa chủ thể nhằm phản ánh những mối liên hệ bản chất, tất nhiên, mang tính quy luật của\nđối tượng nghiên cứu.\nNhận thức là quá trình tác động biện chứng giữa chủ thể và khách thể thông qua hoạt\nđộng thực tiễn của con người. Chủ thể nhận thức chính là con người. Nhưng đó là con\nngười hiện thực, đang sống, đang hoạt động thực tiễn và đang nhận thức trong những\nđiều kiện lịch sử - xã hội cụ thể nhất định, tức là con người đó phải thuộc về một giai cấp,\nmột dân tộc nhất định, có",
+            "content_preview": "quả của nhận thức kinh nghiệm là những tri thức kinh nghiệm thông thường hoặc tri thức\nthực nghiệm khoa học. Nhận thức lý luận là nhận thức sự vật, hiện tượng một cách gián\ntiếp dựa trên các hình thức tư duy trừu tượng như khái niệm, phán đoán, suy luận để khái\nquát tính bản chất, quy luật, tính tất yếu của các sự vật, hiện tượng. Nhận thức thông\nthường là nhận thức được hình thành một cách tự phát, trực tiếp trong hoạt động hằng\nngày của con người. Nhận thức khoa học là nhận thức được hình thàn"
+          },
+          {
+            "rank": 3,
+            "chunk_id": 905,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 8,
+            "distance": 0.12637060127433375,
+            "content": "t học là dạng tri thức lý luận xuất hiện sớm nhất trong lịch sử các loại\nhình lý luận của nhân loại.\nVới tư cách là một hình thái ý thức xã hội, triết học có nguồn gốc nhận thức và nguồn\ngốc xã hội.\n* Nguồn gốc nhận thức\nNhận thức thế giới là một nhu cầu tự nhiên, khách quan của con người. Về mặt lịch\nsử, tư duy huyền thoại và tín ngưỡng nguyên thủy là loại hình triết lý đầu tiên mà con\nngười dùng để giải thích thế giới bí ẩn xung quanh. Người nguyên thủy kết nối những\nhiểu biết rời rạc, mơ hồ, phi lôgích... của mình trong các quan niệm đầy xúc cảm và\nhoang tưởng thành những huyền thoại để giải thích mọi hiện tượng. Đỉnh cao của tư\nduy huyền thoại và tín ngưỡng nguyên thủy là kho tàng những câu chuyện thần thoại và\n8",
+            "content_preview": "t học là dạng tri thức lý luận xuất hiện sớm nhất trong lịch sử các loại\nhình lý luận của nhân loại.\nVới tư cách là một hình thái ý thức xã hội, triết học có nguồn gốc nhận thức và nguồn\ngốc xã hội.\n* Nguồn gốc nhận thức\nNhận thức thế giới là một nhu cầu tự nhiên, khách quan của con người. Về mặt lịch\nsử, tư duy huyền thoại và tín ngưỡng nguyên thủy là loại hình triết lý đầu tiên mà con\nngười dùng để giải thích thế giới bí ẩn xung quanh. Người nguyên thủy kết nối những\nhiểu biết rời rạc, mơ hồ, "
+          },
+          {
+            "rank": 4,
+            "chunk_id": 1351,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 119,
+            "distance": 0.12748073011865824,
+            "content": "gồm cả thực tiễn của những sự quan sát, những sự phát hiện về thiên văn học...”1. Do\nvậy, “Quan điểm về đời sống, về thực tiễn, phải là quan điểm thứ nhất và cơ bản của lý\nluận về nhận thức”2.\n2. Lý luận nhận thức duy vật biện chứng\na) Nguồn gốc, bản chất của nhận thức\nTriết học Mác - Lênin thừa nhận sự tồn tại khách quan của thế giới và cho rằng thế\ngiới khách quan là đối tượng của nhận thức. Không phải ý thức của con người sản sinh ra\nthế giới mà thế giới vật chất tồn tại độc lập với con người, đó là nguồn gốc “duy nhất và\ncuối cùng” của nhận thức. Triết học Mác - Lênin khẳng định khả năng nhận thức thế giới\ncủa con người. V.I. Lênin đã chỉ rõ chỉ có những cái mà con người chưa biết chứ không\ncó cái gì không thể biết: “Dứt khoát là không có và không thể có bất kỳ sự khác nhau nào\nvề nguyên tắc giữa hiện tượng và vật tự nó. Chỉ có sự khác nhau giữa cái đã được nhận\nthức và cái chưa được nhận thức”3.\nTriết học Mác - Lênin cho rằng nhận thức là sự phản ánh hiện thực khách quan vào bộ\nóc",
+            "content_preview": "gồm cả thực tiễn của những sự quan sát, những sự phát hiện về thiên văn học...”1. Do\nvậy, “Quan điểm về đời sống, về thực tiễn, phải là quan điểm thứ nhất và cơ bản của lý\nluận về nhận thức”2.\n2. Lý luận nhận thức duy vật biện chứng\na) Nguồn gốc, bản chất của nhận thức\nTriết học Mác - Lênin thừa nhận sự tồn tại khách quan của thế giới và cho rằng thế\ngiới khách quan là đối tượng của nhận thức. Không phải ý thức của con người sản sinh ra\nthế giới mà thế giới vật chất tồn tại độc lập với con người"
+          },
+          {
+            "rank": 5,
+            "chunk_id": 1341,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 116,
+            "distance": 0.1298281473023788,
+            "content": "a vấp, không có\nnhững bước thụt lùi. Trái lại là không biện chứng, không khoa học, không đúng về mặt lý\nluận (V.I. Lênin).\nThứ ba, quy luật này giúp nhận thức đầy đủ hơn về sự vật, hiện tượng mới ra đời phù\nhợp với quy luật phát triển, biểu hiện giai đoạn cao về chất trong sự phát triển. Trong tự\nnhiên, sự xuất hiện của sự vật, hiện tượng mới diễn ra tự phát; nhưng trong xã hội, sự xuất\nhiện mới gắn với nhận thức và hành động có ý thức của con người.\nThứ tư, tuy sự vật, hiện tượng mới thắng sự vật, hiện tượng cũ, nhưng trong thời gian\nnào đó, sự vật, hiện tượng cũ còn mạnh hơn; vì vậy, cần ủng hộ sự vật, hiện tượng mới,\ntạo điều kiện cho nó phát triển hợp quy luật; biết kế thừa có chọn lọc những yếu tố tích\ncực và hợp lý của sự vật, hiện tượng cũ làm cho nó phù hợp với xu thế vận động và phát\ntriển của sự vật, hiện tượng mới.\nIII- LÝ LUẬN NHẬN THỨC\n1. Quan niệm về nhận thức trong lịch sử triết học\n* Khái niệm lý luận nhận thức\nLý luận nhận thức có nguồn gốc từ tiếng Hy Lạp cổ, được ghé",
+            "content_preview": "a vấp, không có\nnhững bước thụt lùi. Trái lại là không biện chứng, không khoa học, không đúng về mặt lý\nluận (V.I. Lênin).\nThứ ba, quy luật này giúp nhận thức đầy đủ hơn về sự vật, hiện tượng mới ra đời phù\nhợp với quy luật phát triển, biểu hiện giai đoạn cao về chất trong sự phát triển. Trong tự\nnhiên, sự xuất hiện của sự vật, hiện tượng mới diễn ra tự phát; nhưng trong xã hội, sự xuất\nhiện mới gắn với nhận thức và hành động có ý thức của con người.\nThứ tư, tuy sự vật, hiện tượng mới thắng sự v"
+          }
+        ]
+      },
+      "generation": {
+        "found": true,
+        "answer": "Lý luận nhận thức có nguồn gốc từ tiếng Hy Lạp cổ, được ghép từ hai từ “Gnosis” (tri thức) và “Logos” (lời nói, học thuyết).",
+        "evidence": [
+          {
+            "chunk_id": "1342",
+            "document": "Giáo trình Triết học",
+            "page": 116
+          }
+        ]
+      },
+      "verification": {
+        "found": true,
+        "answer": "Lý luận nhận thức có nguồn gốc từ tiếng Hy Lạp cổ, được ghép từ hai từ “Gnosis” (tri thức) và “Logos” (lời nói, học thuyết).",
+        "evidence": [
+          {
+            "chunk_id": "1342",
+            "document": "Giáo trình Triết học",
+            "page": 116
+          }
+        ]
+      },
+      "passed": true,
+      "expected_page": 116,
+      "expected_chunk_keywords": "Gnosis"
+    },
+    {
+      "id": "Q004",
+      "category": "answerable",
+      "question": "Chủ nghĩa duy tâm là cơ sở lý luận của gì?",
+      "expected_found": true,
+      "status": "pass",
+      "retrieval": {
+        "found": true,
+        "count": 5,
+        "chunks": [
+          {
+            "rank": 1,
+            "chunk_id": 1192,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 80,
+            "distance": 0.08843934535980225,
+            "content": "là tồn tại duy nhất, tuyệt đối, là tính thứ nhất từ đó sinh ra tất cả; còn thế giới vật chất chỉ\nlà bản sao, biểu hiện khác của ý thức tinh thần, là tính thứ hai, do ý thức tinh thần sinh ra.\nTrên thực tế, chủ nghĩa duy tâm là cơ sở lý luận của tôn giáo, chủ nghĩa ngu dân. Mọi\ncon đường mà chủ nghĩa duy tâm mở ra đều dẫn con người đến với thần học, với “đường\nsáng thế”. Trong thực tiễn, người duy tâm phủ nhận tính khách quan, cường điệu vai trò\ncủa nhân tố chủ quan, duy ý chí, hành động bất chấp điều kiện, quy luật khách quan.\nChủ nghĩa duy vật siêu hình tuyệt đối hóa yếu tố vật chất, chỉ nhấn mạnh một chiều\nvai trò của vật chất sinh ra ý thức, quyết định ý thức, phủ nhận tính độc lập tương đối của\ný thức, không thấy được tính năng động, sáng tạo, vai trò to lớn của ý thức trong hoạt\nđộng thực tiễn cải tạo hiện thực khách quan. Do vậy, họ đã phạm nhiều sai lầm có tính\nnguyên tắc bởi thái độ “khách quan chủ nghĩa”, thụ động, ỷ lại, trông chờ, không đem lại\nhiệu quả trong hoạt động thực",
+            "content_preview": "là tồn tại duy nhất, tuyệt đối, là tính thứ nhất từ đó sinh ra tất cả; còn thế giới vật chất chỉ\nlà bản sao, biểu hiện khác của ý thức tinh thần, là tính thứ hai, do ý thức tinh thần sinh ra.\nTrên thực tế, chủ nghĩa duy tâm là cơ sở lý luận của tôn giáo, chủ nghĩa ngu dân. Mọi\ncon đường mà chủ nghĩa duy tâm mở ra đều dẫn con người đến với thần học, với “đường\nsáng thế”. Trong thực tiễn, người duy tâm phủ nhận tính khách quan, cường điệu vai trò\ncủa nhân tố chủ quan, duy ý chí, hành động bất chấp"
+          },
+          {
+            "rank": 2,
+            "chunk_id": 953,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 20,
+            "distance": 0.09013819694519043,
+            "content": "Trong thế giới quan tôn giáo, lòng tin là cơ sở chủ yếu và đóng vai trò chủ đạo đối với\nvận động. Còn chủ nghĩa duy tâm triết học lại là sản phẩm của tư duy lý tính dựa trên cơ\nsở tri thức và năng lực mạnh mẽ của tư duy.\nVề phương diện nhận thức luận, sai lầm cố ý của chủ nghĩa duy tâm bắt nguồn từ cách\nxem xét phiến diện, tuyệt đối hóa, thần thánh hóa một mặt, một đặc tính nào đó của quá\ntrình nhận thức mang tính biện chứng của con người.\nBên cạnh nguồn gốc nhận thức, chủ nghĩa duy tâm ra đời còn có nguồn gốc xã hội.\nSự tách rời lao động trí óc với lao động chân tay và địa vị thống trị của lao động trí óc đối\nvới lao động chân tay trong các xã hội trước đây đã tạo ra quan niệm về vai trò quyết\nđịnh của nhân tố tinh thần. Trong lịch sử, giai cấp thống trị và nhiều lực lượng xã hội đã\ntừng ủng hộ, sử dụng chủ nghĩa duy tâm làm nền tảng lý luận cho những quan điểm\nchính trị - xã hội của mình.\nHọc thuyết triết học nào chỉ thừa nhận một trong hai thực thể (vật chất hoặc tinh thần) là\nbản n",
+            "content_preview": "Trong thế giới quan tôn giáo, lòng tin là cơ sở chủ yếu và đóng vai trò chủ đạo đối với\nvận động. Còn chủ nghĩa duy tâm triết học lại là sản phẩm của tư duy lý tính dựa trên cơ\nsở tri thức và năng lực mạnh mẽ của tư duy.\nVề phương diện nhận thức luận, sai lầm cố ý của chủ nghĩa duy tâm bắt nguồn từ cách\nxem xét phiến diện, tuyệt đối hóa, thần thánh hóa một mặt, một đặc tính nào đó của quá\ntrình nhận thức mang tính biện chứng của con người.\nBên cạnh nguồn gốc nhận thức, chủ nghĩa duy tâm ra đời c"
+          },
+          {
+            "rank": 3,
+            "chunk_id": 1149,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 69,
+            "distance": 0.1059730052947998,
+            "content": "à có những quan niệm rất khác nhau,\nlà cơ sở để hình thành các trường phái triết học khác nhau, hai đường lối cơ bản đối lập\nnhau là chủ nghĩa duy vật và chủ nghĩa duy tâm. Đứng vững trên lập trường của chủ nghĩa\nduy vật biện chứng, khái quát những thành tựu mới nhất của khoa học tự nhiên và bám sát\nthực tiễn xã hội, triết học Mác - Lênin đã góp phần làm sáng tỏ vấn đề ý thức, mối quan hệ\ngiữa vật chất và ý thức.\na) Nguồn gốc của ý thức\n* Quan điểm của chủ nghĩa duy tâm\nKhi lý giải nguồn gốc ra đời của ý thức, các nhà triết học duy tâm cho rằng, ý thức là\nnguyên thể đầu tiên, tồn tại vĩnh viễn, là nguyên nhân sinh thành, chi phối sự tồn tại, biến\nđổi của toàn bộ thế giới vật chất. Chủ nghĩa duy tâm khách quan với những đại biểu tiêu\nbiểu như Plato, Hegel đã tuyệt đối hóa vai trò của lý tính, khẳng định thế giới “ý niệm”,\nhay “ý niệm tuyệt đối” là bản thể, sinh ra toàn bộ thế giới hiện thực. Ý thức của con\nngười chỉ là sự “hồi tưởng” về “ý niệm”, hay “tự ý thức” lại “ý niệm tuyệt đối”.",
+            "content_preview": "à có những quan niệm rất khác nhau,\nlà cơ sở để hình thành các trường phái triết học khác nhau, hai đường lối cơ bản đối lập\nnhau là chủ nghĩa duy vật và chủ nghĩa duy tâm. Đứng vững trên lập trường của chủ nghĩa\nduy vật biện chứng, khái quát những thành tựu mới nhất của khoa học tự nhiên và bám sát\nthực tiễn xã hội, triết học Mác - Lênin đã góp phần làm sáng tỏ vấn đề ý thức, mối quan hệ\ngiữa vật chất và ý thức.\na) Nguồn gốc của ý thức\n* Quan điểm của chủ nghĩa duy tâm\nKhi lý giải nguồn gốc ra "
+          },
+          {
+            "rank": 4,
+            "chunk_id": 1094,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 55,
+            "distance": 0.11034929752349854,
+            "content": "vào chủ quan, tức là một hình thức tồn tại khác của ý thức. Do đó về mặt nhận thức luận,\nchủ nghĩa duy tâm cho rằng con người hoặc là không thể, hoặc là chỉ nhận thức được cái\nbóng, cái bề ngoài của sự vật, hiện tượng. Thậm chí theo họ, quá trình nhận thức của con\nngười chẳng qua chỉ là quá trình ý thức đi “tìm lại” chính bản thân mình dưới hình thức\nkhác. Như vậy, về thực chất, các nhà triết học duy tâm đã phủ nhận đặc tính tồn tại khách\nquan của vật chất. Thế giới quan duy tâm rất gần với thế giới quan tôn giáo và tất yếu dẫn\nhọ đến với thần học.\nQuan điểm nhất quán từ xưa đến nay của các nhà triết học duy vật là thừa nhận sự tồn\ntại khách quan của thế giới vật chất, lấy bản thân giới tự nhiên để giải thích tự nhiên. Lập\ntrường đó là đúng đắn, song chưa đủ để các nhà duy vật trước C. Mác đi đến một quan\nniệm hoàn chỉnh về phạm trù nền tảng này. Tuy vậy, cùng với những tiến bộ của lịch sử,\n55",
+            "content_preview": "vào chủ quan, tức là một hình thức tồn tại khác của ý thức. Do đó về mặt nhận thức luận,\nchủ nghĩa duy tâm cho rằng con người hoặc là không thể, hoặc là chỉ nhận thức được cái\nbóng, cái bề ngoài của sự vật, hiện tượng. Thậm chí theo họ, quá trình nhận thức của con\nngười chẳng qua chỉ là quá trình ý thức đi “tìm lại” chính bản thân mình dưới hình thức\nkhác. Như vậy, về thực chất, các nhà triết học duy tâm đã phủ nhận đặc tính tồn tại khách\nquan của vật chất. Thế giới quan duy tâm rất gần với thế "
+          },
+          {
+            "rank": 5,
+            "chunk_id": 954,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 20,
+            "distance": 0.11197555065155029,
+            "content": "ủng hộ, sử dụng chủ nghĩa duy tâm làm nền tảng lý luận cho những quan điểm\nchính trị - xã hội của mình.\nHọc thuyết triết học nào chỉ thừa nhận một trong hai thực thể (vật chất hoặc tinh thần) là\nbản nguyên (nguồn gốc) của thế giới, quyết định sự vận động của thế giới được gọi là nhất\nnguyên luận (nhất nguyên luận duy vật hoặc nhất nguyên luận duy tâm).\nTrường phái nhị nguyên luận: Trong lịch sử triết học cũng có những nhà triết học giải\nthích thế giới bằng cả hai bản nguyên vật chất và tinh thần, xem vật chất và tinh thần là\nhai bản nguyên có thể cùng quyết định nguồn gốc và sự vận động của thế giới. Học\nthuyết triết học như vậy được gọi là nhị nguyên luận, điển hình là Descartes (Đêcáctơ).\nNhững người theo thuyết nhị nguyên luận thường là những người trong trường hợp giải\nquyết một vấn đề nào đó, ở vào một thời điểm nhất định là người duy vật, nhưng vào một\nthời điểm khác, và khi giải quyết một vấn đề khác lại là người duy tâm. Song, xét đến\ncùng nhị nguyên luận thuộc về chủ nghĩa duy",
+            "content_preview": "ủng hộ, sử dụng chủ nghĩa duy tâm làm nền tảng lý luận cho những quan điểm\nchính trị - xã hội của mình.\nHọc thuyết triết học nào chỉ thừa nhận một trong hai thực thể (vật chất hoặc tinh thần) là\nbản nguyên (nguồn gốc) của thế giới, quyết định sự vận động của thế giới được gọi là nhất\nnguyên luận (nhất nguyên luận duy vật hoặc nhất nguyên luận duy tâm).\nTrường phái nhị nguyên luận: Trong lịch sử triết học cũng có những nhà triết học giải\nthích thế giới bằng cả hai bản nguyên vật chất và tinh thần"
+          }
+        ]
+      },
+      "generation": {
+        "found": true,
+        "answer": "Trên thực tế, chủ nghĩa duy tâm là cơ sở lý luận của tôn giáo và chủ nghĩa ngu dân. Ngoài ra, trong lịch sử, giai cấp thống trị và nhiều lực lượng xã hội đã từng sử dụng chủ nghĩa duy tâm làm nền tảng lý luận cho các quan điểm chính trị - xã hội của mình.",
+        "evidence": [
+          {
+            "chunk_id": "1192",
+            "document": "Giáo trình Triết học",
+            "page": 80
+          },
+          {
+            "chunk_id": "953",
+            "document": "Giáo trình Triết học",
+            "page": 20
+          }
+        ]
+      },
+      "verification": {
+        "found": true,
+        "answer": "Trên thực tế, chủ nghĩa duy tâm là cơ sở lý luận của tôn giáo và chủ nghĩa ngu dân. Ngoài ra, trong lịch sử, giai cấp thống trị và nhiều lực lượng xã hội đã từng sử dụng chủ nghĩa duy tâm làm nền tảng lý luận cho các quan điểm chính trị - xã hội của mình.",
+        "evidence": [
+          {
+            "chunk_id": "1192",
+            "document": "Giáo trình Triết học",
+            "page": 80
+          },
+          {
+            "chunk_id": "953",
+            "document": "Giáo trình Triết học",
+            "page": 20
+          }
+        ]
+      },
+      "passed": true,
+      "expected_page": 80,
+      "expected_chunk_keywords": "cơ sở lý luận của tôn giáo"
+    },
+    {
+      "id": "Q005",
+      "category": "answerable",
+      "question": "Bộ óc người có khoảng bao nhiêu tế bào thần kinh?",
+      "expected_found": true,
+      "status": "pass",
+      "retrieval": {
+        "found": true,
+        "count": 5,
+        "chunks": [
+          {
+            "rank": 1,
+            "chunk_id": 1154,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 70,
+            "distance": 0.12458126994482899,
+            "content": "h của vật chất; nhưng không phải của mọi dạng vật chất,\nmà là thuộc tính của một dạng vật chất sống có tổ chức cao nhất là bộ óc người. Óc người\nlà khí quan vật chất của ý thức. Ý thức là chức năng của bộ óc người. Mối quan hệ giữa\nbộ óc người hoạt động bình thường và ý thức không thể tách rời bộ óc. Tất cả những\nquan niệm tách rời hoặc đồng nhất ý thức với óc người đều dẫn đến quan điểm duy tâm,\nthần bí hoặc duy vật tầm thường. Ý thức là chức năng của bộ óc người hoạt động bình\nthường. Sinh lý và ý thức là hai mặt của một quá trình - quá trình sinh lý thần kinh trong\nbộ óc người mang nội dung ý thức, cũng giống như tín hiệu vật chất mang nội dung\nthông tin.\nTrái đất hình thành trải qua quá trình tiến hóa lâu dài dẫn đến sự xuất hiện con người.\nĐó cũng là lịch sử phát triển năng lực phản ánh của thế giới vật chất từ thấp đến cao và\ncao nhất là trình độ phản ánh - ý thức. Phản ánh là thuộc tính phổ biến của mọi dạng vật\nchất, được biểu hiện trong sự liên hệ, tác động qua lại giữa các đố",
+            "content_preview": "h của vật chất; nhưng không phải của mọi dạng vật chất,\nmà là thuộc tính của một dạng vật chất sống có tổ chức cao nhất là bộ óc người. Óc người\nlà khí quan vật chất của ý thức. Ý thức là chức năng của bộ óc người. Mối quan hệ giữa\nbộ óc người hoạt động bình thường và ý thức không thể tách rời bộ óc. Tất cả những\nquan niệm tách rời hoặc đồng nhất ý thức với óc người đều dẫn đến quan điểm duy tâm,\nthần bí hoặc duy vật tầm thường. Ý thức là chức năng của bộ óc người hoạt động bình\nthường. Sinh lý "
+          },
+          {
+            "rank": 2,
+            "chunk_id": 1157,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 71,
+            "distance": 0.12888332817305792,
+            "content": "yên trách làm chức năng phản ánh: ở thực vật, là sự kích thích; ở động vật có hệ\nthần kinh, là sự phản xạ; ở động vật cấp cao có bộ óc, là tâm lý.\nTâm lý động vật là trình độ phản ánh cao nhất của các loài động vật, bao gồm cả\nphản xạ không có điều kiện và có điều kiện. Tuy nhiên, tâm lý động vật chưa phải là ý\nthức, mà đó vẫn là trình độ phản ánh mang tính bản năng của các loài động vật bậc cao,\nxuất phát từ nhu cầu sinh lý tự nhiên, trực tiếp của cơ thể động vật chi phối. Mặc dù ở\nmột số loài động vật bậc cao, bước đầu đã có trí khôn, trí nhớ, biết “suy nghĩ” theo cách\nriêng của chúng, nhưng theo Ph. Ăngghen, đó chỉ là “cái tiền sử” duy nhất gợi ý cho\nchúng ta tìm hiểu “bộ óc có tư duy của con người” đã ra đời như thế nào.\nBộ óc người có cấu trúc đặc biệt phát triển, rất tinh vi và phức tạp, bao gồm khoảng\n14 - 15 tỷ tế bào thần kinh. Sự phân khu của não bộ và hệ thống dây thần kinh liên hệ với\ncác giác quan để thu nhận và xử lý thông tin từ thế giới khách quan vào não bộ, hình\nthành",
+            "content_preview": "yên trách làm chức năng phản ánh: ở thực vật, là sự kích thích; ở động vật có hệ\nthần kinh, là sự phản xạ; ở động vật cấp cao có bộ óc, là tâm lý.\nTâm lý động vật là trình độ phản ánh cao nhất của các loài động vật, bao gồm cả\nphản xạ không có điều kiện và có điều kiện. Tuy nhiên, tâm lý động vật chưa phải là ý\nthức, mà đó vẫn là trình độ phản ánh mang tính bản năng của các loài động vật bậc cao,\nxuất phát từ nhu cầu sinh lý tự nhiên, trực tiếp của cơ thể động vật chi phối. Mặc dù ở\nmột số loài "
+          },
+          {
+            "rank": 3,
+            "chunk_id": 1195,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 80,
+            "distance": 0.1305170577456305,
+            "content": "khách quan, độc lập với ý thức và là nguồn gốc sinh ra ý thức. Bộ óc người là một dạng\nvật chất có tổ chức cao nhất, là cơ quan phản ánh để hình thành ý thức. Ý thức tồn tại\nphụ thuộc vào hoạt động thần kinh của bộ não trong quá trình phản ánh hiện thực khách\nquan. Sự vận động của thế giới vật chất là yếu tố quyết định sự ra đời của cái vật chất\ncó tư duy là bộ óc người.\nThứ hai, vật chất quyết định nội dung của ý thức.\nSuy cho cùng, dưới bất kỳ hình thức nào, ý thức đều là phản ánh hiện thực khách\nquan. Ý thức mà trong nội dung của nó chẳng qua là kết quả của sự phản ánh hiện thực\nkhách quan vào trong đầu óc con người. Hay nói cách khác, có thế giới hiện thực vận\nđộng, phát triển theo những quy luật khách quan của nó, được phản ánh vào ý thức mới\n80",
+            "content_preview": "khách quan, độc lập với ý thức và là nguồn gốc sinh ra ý thức. Bộ óc người là một dạng\nvật chất có tổ chức cao nhất, là cơ quan phản ánh để hình thành ý thức. Ý thức tồn tại\nphụ thuộc vào hoạt động thần kinh của bộ não trong quá trình phản ánh hiện thực khách\nquan. Sự vận động của thế giới vật chất là yếu tố quyết định sự ra đời của cái vật chất\ncó tư duy là bộ óc người.\nThứ hai, vật chất quyết định nội dung của ý thức.\nSuy cho cùng, dưới bất kỳ hình thức nào, ý thức đều là phản ánh hiện thực kh"
+          },
+          {
+            "rank": 4,
+            "chunk_id": 1158,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 71,
+            "distance": 0.13813333880106426,
+            "content": "tạp, bao gồm khoảng\n14 - 15 tỷ tế bào thần kinh. Sự phân khu của não bộ và hệ thống dây thần kinh liên hệ với\ncác giác quan để thu nhận và xử lý thông tin từ thế giới khách quan vào não bộ, hình\nthành những phản xạ có điều kiện và không có điều kiện, điều khiển các hoạt động của cơ\nthể trong quan hệ với thế giới bên ngoài. Ý thức là hình thức phản ánh đặc trưng chỉ có ở\ncon người và là hình thức phản ánh cao nhất của thế giới vật chất. Ý thức là sự phản ánh\nthế giới hiện thực bởi bộ óc con người. Như vậy, sự xuất hiện con người và hình thành bộ\nóc của con người có năng lực phản ánh hiện thực khách quan là nguồn gốc tự nhiên của\ný thức.\nTuy vậy, sự ra đời của ý thức không phải chỉ có nguồn gốc tự nhiên mà còn do\nnguồn gốc xã hội. Sự phát triển của giới tự nhiên mới tạo ra tiền đề vật chất có năng lực\nphản ánh, chỉ là nguồn gốc sâu xa của ý thức. Hoạt động thực tiễn của loài người mới là\nnguồn gốc trực tiếp quyết định sự ra đời của ý thức. C. Mác và Ph. Ăngghen khẳng\nđịnh: “con người cũn",
+            "content_preview": "tạp, bao gồm khoảng\n14 - 15 tỷ tế bào thần kinh. Sự phân khu của não bộ và hệ thống dây thần kinh liên hệ với\ncác giác quan để thu nhận và xử lý thông tin từ thế giới khách quan vào não bộ, hình\nthành những phản xạ có điều kiện và không có điều kiện, điều khiển các hoạt động của cơ\nthể trong quan hệ với thế giới bên ngoài. Ý thức là hình thức phản ánh đặc trưng chỉ có ở\ncon người và là hình thức phản ánh cao nhất của thế giới vật chất. Ý thức là sự phản ánh\nthế giới hiện thực bởi bộ óc con người"
+          },
+          {
+            "rank": 5,
+            "chunk_id": 1174,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 75,
+            "distance": 0.15278892798489607,
+            "content": "Cấu trúc\nhoàn thiện của bộ óc người là nền tảng vật chất để ý thức hoạt động; cùng với hoạt\nđộng thực tiễn và đời sống xã hội phong phú tạo động lực mạnh mẽ thúc đẩy ý thức\nhình thành và không ngừng phát triển. Không có bộ óc của con người, không có hoạt\nđộng thực tiễn xã hội thì không thể có ý thức. Sáng tạo là thuộc tính đặc trưng bản chất\nnhất của ý thức. Sức sáng tạo của ý thức trong tinh thần và sức sáng tạo của con người\ntrong thực tiễn khác nhau về bản chất nhưng chỉ là những biểu hiện khác nhau của năng\nlực sáng tạo, khẳng định sức mạnh của con người trong nhận thức và cải tạo thế giới.\nc) Kết cấu của ý thức\nĐể nhận thức được sâu sắc về ý thức, cần xem xét nắm vững tổ chức kết cấu của nó;\ntiếp cận từ các góc độ khác nhau sẽ đem lại những tri thức nhiều mặt về cấu trúc, hoặc\ncấp độ của ý thức.\n* Các lớp cấu trúc của ý thức\nMuốn cải tạo được sự vật, trước hết con người phải có sự hiểu biết sâu sắc về sự vật\nđó. Do đó, nội dung và phương thức tồn tại cơ bản của ý thức phải là tri",
+            "content_preview": "Cấu trúc\nhoàn thiện của bộ óc người là nền tảng vật chất để ý thức hoạt động; cùng với hoạt\nđộng thực tiễn và đời sống xã hội phong phú tạo động lực mạnh mẽ thúc đẩy ý thức\nhình thành và không ngừng phát triển. Không có bộ óc của con người, không có hoạt\nđộng thực tiễn xã hội thì không thể có ý thức. Sáng tạo là thuộc tính đặc trưng bản chất\nnhất của ý thức. Sức sáng tạo của ý thức trong tinh thần và sức sáng tạo của con người\ntrong thực tiễn khác nhau về bản chất nhưng chỉ là những biểu hiện kh"
+          }
+        ]
+      },
+      "generation": {
+        "found": true,
+        "answer": "Bộ óc người có khoảng 14 - 15 tỷ tế bào thần kinh.",
+        "evidence": [
+          {
+            "chunk_id": "1157",
+            "document": "Giáo trình Triết học",
+            "page": 71
+          }
+        ]
+      },
+      "verification": {
+        "found": true,
+        "answer": "Bộ óc người có khoảng 14 - 15 tỷ tế bào thần kinh.",
+        "evidence": [
+          {
+            "chunk_id": "1157",
+            "document": "Giáo trình Triết học",
+            "page": 71
+          }
+        ]
+      },
+      "passed": true,
+      "expected_page": 71,
+      "expected_chunk_keywords": "14 - 15 tỷ tế bào thần kinh"
+    },
+    {
+      "id": "Q006",
+      "category": "answerable",
+      "question": "\"Chất\" trong triết học được định nghĩa như thế nào?",
+      "expected_found": true,
+      "status": "fail",
+      "retrieval": {
+        "found": true,
+        "count": 5,
+        "chunks": [
+          {
+            "rank": 1,
+            "chunk_id": 1247,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 93,
+            "distance": 0.1388785582446619,
+            "content": "t cả các\nđối tượng hiện thực. Phạm trù triết học giúp con người suy ngẫm những chất liệu cụ thể\nđã thu nhận được trong quá trình nhận thức và cải biến hiện thực, chỉ ra những đặc trưng\ncơ bản nhất của khách thể. Chẳng hạn, khảo sát đối tượng bằng cặp phạm trù cái chung\nvà cái riêng, con người làm rõ sự đồng nhất và khác biệt của nó với các khách thể khác;\nthông qua cặp phạm trù “nhân quả” và “tất yếu”, con người nắm bắt được chuỗi quy định\nnhân quả, những thuộc tính và liên hệ tất nhiên, ngẫu nhiên; phân tích đối tượng đó thông\nqua phạm trù chất và lượng, nắm rõ được các đặc trưng tương ứng và có thể cả mối liên\nhệ lẫn nhau giữa chúng...\nTất cả các đối tượng đều nằm trong sự phụ thuộc và liên hệ phổ biến lẫn nhau. Do\nvậy, những khái niệm của con người phản ánh chúng cũng liên hệ, phụ thuộc lẫn nhau,\nlinh động, và khi có điều kiện phù hợp đều chuyển hóa vào nhau thành mặt đối lập của\nmình. Chỉ có như thế chúng mới phản ánh được tính vận động của đối tượng. V.I. Lênin\nviết: “... những kh",
+            "content_preview": "t cả các\nđối tượng hiện thực. Phạm trù triết học giúp con người suy ngẫm những chất liệu cụ thể\nđã thu nhận được trong quá trình nhận thức và cải biến hiện thực, chỉ ra những đặc trưng\ncơ bản nhất của khách thể. Chẳng hạn, khảo sát đối tượng bằng cặp phạm trù cái chung\nvà cái riêng, con người làm rõ sự đồng nhất và khác biệt của nó với các khách thể khác;\nthông qua cặp phạm trù “nhân quả” và “tất yếu”, con người nắm bắt được chuỗi quy định\nnhân quả, những thuộc tính và liên hệ tất nhiên, ngẫu nh"
+          },
+          {
+            "rank": 2,
+            "chunk_id": 1111,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 60,
+            "distance": 0.1454924090353369,
+            "content": "một định nghĩa hoàn chỉnh về vật chất mà cho đến nay các nhà khoa học hiện đại coi là\nmột định nghĩa kinh điển.\nĐịnh nghĩa vật chất của V.I. Lênin bao hàm các nội dung cơ bản sau đây:\nThứ nhất, vật chất là thực tại khách quan - cái tồn tại hiện thực bên ngoài ý thức và\nkhông lệ thuộc vào ý thức.\nKhi nói vật chất là một phạm trù triết học là muốn nói phạm trù này là sản phẩm của\nsự trừu tượng hóa, không có sự tồn tại cảm tính. Nhưng khác về nguyên tắc với mọi sự\ntrừu tượng hóa mang tính chất duy tâm chủ nghĩa về phạm trù này, V.I. Lênin nhấn mạnh\nrằng, phạm trù triết học này dùng để chỉ cái ““đặc tính” duy nhất của vật chất - mà chủ\nnghĩa duy vật triết học là gắn liền với việc thừa nhận đặc tính này - là cái đặc tính tồn tại\nvới tư cách là thực tại khách quan, tồn tại ở ngoài ý thức của chúng ta”1. Nói cách khác,\ntính trừu tượng của phạm trù vật chất bắt nguồn từ cơ sở hiện thực, do đó, không tách rời\ntính hiện thực cụ thể của nó. Nói đến vật chất là nói đến tất cả những gì đã và đang h",
+            "content_preview": "một định nghĩa hoàn chỉnh về vật chất mà cho đến nay các nhà khoa học hiện đại coi là\nmột định nghĩa kinh điển.\nĐịnh nghĩa vật chất của V.I. Lênin bao hàm các nội dung cơ bản sau đây:\nThứ nhất, vật chất là thực tại khách quan - cái tồn tại hiện thực bên ngoài ý thức và\nkhông lệ thuộc vào ý thức.\nKhi nói vật chất là một phạm trù triết học là muốn nói phạm trù này là sản phẩm của\nsự trừu tượng hóa, không có sự tồn tại cảm tính. Nhưng khác về nguyên tắc với mọi sự\ntrừu tượng hóa mang tính chất duy "
+          },
+          {
+            "rank": 3,
+            "chunk_id": 922,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 12,
+            "distance": 0.14576652211646324,
+            "content": "g các định nghĩa thường bao hàm những nội\ndung chủ yếu sau:\n- Triết học là một hình thái ý thức xã hội.\n- Khách thể khám phá của triết học là thế giới (gồm cả thế giới bên trong và bên\nngoài con người) trong hệ thống chỉnh thể toàn vẹn vốn có của nó.\n- Triết học giải thích tất cả mọi sự vật, hiện tượng, quá trình và quan hệ của thế giới,\nvới mục đích tìm ra những quy luật phổ biến nhất chi phối, quy định và quyết định sự\nvận động của thế giới, của con người và của tư duy.\n- Với tư cách là loại hình nhận thức đặc thù, độc lập với khoa học và khác biệt với tôn\ngiáo, tri thức triết học mang tính hệ thống, lôgích và trừu tượng về thế giới, bao gồm\nnhững nguyên tắc cơ bản, những đặc trưng bản chất và những quan điểm nền tảng về mọi\ntồn tại.\n- Triết học là hạt nhân của thế giới quan.\nTriết học là hình thái đặc biệt của ý thức xã hội, được thể hiện thành hệ thống các\nquan điểm lý luận chung nhất về thế giới, về con người và về tư duy của con người trong\nthế giới ấy.\n______________\n1. Xem ИФ,",
+            "content_preview": "g các định nghĩa thường bao hàm những nội\ndung chủ yếu sau:\n- Triết học là một hình thái ý thức xã hội.\n- Khách thể khám phá của triết học là thế giới (gồm cả thế giới bên trong và bên\nngoài con người) trong hệ thống chỉnh thể toàn vẹn vốn có của nó.\n- Triết học giải thích tất cả mọi sự vật, hiện tượng, quá trình và quan hệ của thế giới,\nvới mục đích tìm ra những quy luật phổ biến nhất chi phối, quy định và quyết định sự\nvận động của thế giới, của con người và của tư duy.\n- Với tư cách là loại h"
+          },
+          {
+            "rank": 4,
+            "chunk_id": 925,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 13,
+            "distance": 0.1481173380648293,
+            "content": "học và lịch sử của bản thân\ntư tưởng triết học.\nKhông phải mọi triết học đều là khoa học. Song, các học thuyết triết học đều có đóng\ngóp ít nhiều, nhất định cho sự hình thành tri thức khoa học triết học trong lịch sử; là\nnhững “vòng khâu”, những “mắt khâu” trên “đường xoáy ốc” vô tận của lịch sử tư tưởng\ntriết học nhân loại. Trình độ khoa học của một học thuyết triết học phụ thuộc vào sự phát\ntriển của đối tượng nghiên cứu, hệ thống tri thức và hệ thống phương pháp nghiên cứu.\nc) Đối tượng của triết học trong lịch sử\nCùng với quá trình phát triển của xã hội, nhận thức và bản thân triết học, trên thực tế,\nnội dung đối tượng của triết học cũng thay đổi trong các trường phái triết học khác nhau.\nĐối tượng của triết học là các quan hệ phổ biến và các quy luật chung nhất của\ntoàn bộ tự nhiên, xã hội và tư duy.\nNgay từ khi ra đời, triết học được xem là hình thái cao nhất của tri thức, bao hàm\ntrong nó tri thức của tất cả các lĩnh vực mà mãi về sau, từ thế kỷ XV đến thế kỷ XVII,\nmới dần thuộ",
+            "content_preview": "học và lịch sử của bản thân\ntư tưởng triết học.\nKhông phải mọi triết học đều là khoa học. Song, các học thuyết triết học đều có đóng\ngóp ít nhiều, nhất định cho sự hình thành tri thức khoa học triết học trong lịch sử; là\nnhững “vòng khâu”, những “mắt khâu” trên “đường xoáy ốc” vô tận của lịch sử tư tưởng\ntriết học nhân loại. Trình độ khoa học của một học thuyết triết học phụ thuộc vào sự phát\ntriển của đối tượng nghiên cứu, hệ thống tri thức và hệ thống phương pháp nghiên cứu.\nc) Đối tượng của t"
+          },
+          {
+            "rank": 5,
+            "chunk_id": 1308,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 108,
+            "distance": 0.148624922376125,
+            "content": "tượng; nghĩa là khi nó\nchưa chuyển hóa thành sự vật, hiện tượng khác thì chất của nó vẫn chưa thay đổi. Mỗi sự\nvật, hiện tượng đều có quá trình tồn tại và phát triển qua nhiều giai đoạn, trong mỗi giai\nđoạn ấy nó lại có chất riêng. Như vậy, mỗi sự vật, hiện tượng không phải chỉ có một chất\nmà có thể có nhiều chất.\nChất và sự vật có mối quan hệ chặt chẽ, không tách rời nhau. Trong hiện thực khách\nquan không thể tồn tại sự vật không có chất và không thể có chất nằm ngoài sự vật. Chất\ncủa sự vật được biểu hiện qua những thuộc tính của nó, nhưng không phải bất kỳ thuộc tính\nnào cũng biểu hiện chất của sự vật. Thuộc tính của sự vật có thuộc tính cơ bản và thuộc\ntính không cơ bản. Những thuộc tính cơ bản được tổng hợp lại tạo thành chất của sự vật;\nquy định sự tồn tại, vận động và phát triển của sự vật, chỉ khi nào chúng thay đổi hay mất\nđi thì sự vật mới thay đổi hay mất đi. Nhưng thuộc tính của sự vật chỉ bộc lộ qua các mối\nliên hệ cụ thể với các sự vật khác. Bởi vậy, sự phân chia thuộc t",
+            "content_preview": "tượng; nghĩa là khi nó\nchưa chuyển hóa thành sự vật, hiện tượng khác thì chất của nó vẫn chưa thay đổi. Mỗi sự\nvật, hiện tượng đều có quá trình tồn tại và phát triển qua nhiều giai đoạn, trong mỗi giai\nđoạn ấy nó lại có chất riêng. Như vậy, mỗi sự vật, hiện tượng không phải chỉ có một chất\nmà có thể có nhiều chất.\nChất và sự vật có mối quan hệ chặt chẽ, không tách rời nhau. Trong hiện thực khách\nquan không thể tồn tại sự vật không có chất và không thể có chất nằm ngoài sự vật. Chất\ncủa sự vật đư"
+          }
+        ]
+      },
+      "generation": {
+        "found": false,
+        "answer": null,
+        "evidence": []
+      },
+      "verification": {
+        "found": false,
+        "answer": null,
+        "evidence": []
+      },
+      "passed": false,
+      "expected_page": 108,
+      "expected_chunk_keywords": "tính quy định khách quan vốn có"
+    },
+    {
+      "id": "Q007",
+      "category": "answerable",
+      "question": "Năm 1848, C. Mác và Ph. Ăngghen viết tác phẩm gì?",
+      "expected_found": true,
+      "status": "fail",
+      "retrieval": {
+        "found": true,
+        "count": 5,
+        "chunks": [
+          {
+            "rank": 1,
+            "chunk_id": 1010,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 34,
+            "distance": 0.11135977506637573,
+            "content": "tưởng, vừa là lãnh tụ thiên tài. Bằng hoạt động lý luận của mình, C. Mác và\nPh. Ăngghen đã đưa phong trào công nhân từ tự phát thành phong trào tự giác và phát\ntriển ngày càng mạnh mẽ. Chính trong quá trình đó, học thuyết của các ông không ngừng\nđược phát triển một cách hoàn bị.\nTrong thời kỳ này, C. Mác viết hàng loạt tác phẩm quan trọng. Hai tác phẩm: Đấu tranh\ngiai cấp ở Pháp 1848 - 1850 và Ngày 18 tháng Sương mù của Lui Bônapáctơ đã tổng kết\ncuộc cách mạng Pháp 1848 - 1849. Các năm sau, cùng với những hoạt động tích cực để\nthành lập Quốc tế I, C. Mác đã tập trung viết tác phẩm khoa học chủ yếu của mình là bộ\nTư bản (tập 1 xuất bản tháng 9/1867), rồi viết Góp phần phê phán khoa kinh tế chính trị\n(1859).\nBộ Tư bản không chỉ là công trình đồ sộ của C. Mác về kinh tế chính trị học mà còn\nlà sự bổ sung, phát triển của triết học Mác nói riêng, của học thuyết Mác nói chung. V.I.\nLênin khẳng định, trong Tư bản “Marx không để lại cho chúng ta “Lôgích học” (với chữ\nL. viết hoa), nhưng đã để",
+            "content_preview": "tưởng, vừa là lãnh tụ thiên tài. Bằng hoạt động lý luận của mình, C. Mác và\nPh. Ăngghen đã đưa phong trào công nhân từ tự phát thành phong trào tự giác và phát\ntriển ngày càng mạnh mẽ. Chính trong quá trình đó, học thuyết của các ông không ngừng\nđược phát triển một cách hoàn bị.\nTrong thời kỳ này, C. Mác viết hàng loạt tác phẩm quan trọng. Hai tác phẩm: Đấu tranh\ngiai cấp ở Pháp 1848 - 1850 và Ngày 18 tháng Sương mù của Lui Bônapáctơ đã tổng kết\ncuộc cách mạng Pháp 1848 - 1849. Các năm sau, cùng"
+          },
+          {
+            "rank": 2,
+            "chunk_id": 1011,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 34,
+            "distance": 0.11191570091749858,
+            "content": "là sự bổ sung, phát triển của triết học Mác nói riêng, của học thuyết Mác nói chung. V.I.\nLênin khẳng định, trong Tư bản “Marx không để lại cho chúng ta “Lôgích học” (với chữ\nL. viết hoa), nhưng đã để lại cho chúng ta lôgích của “Tư bản””2.\nNăm 1871, C. Mác viết tác phẩm Nội chiến ở Pháp, phân tích sâu sắc kinh nghiệm\ncủa Công xã Pari. Năm 1875, C. Mác cho ra đời một tác phẩm quan trọng về con đường\nvà mô hình của xã hội tương lai, xã hội cộng sản chủ nghĩa - tác phẩm Phê phán Cương\nlĩnh Gôta.\nTrong khi đó, Ph. Ăngghen đã phát triển triết học Mác thông qua cuộc đấu tranh\nchống lại những kẻ thù đủ loại của chủ nghĩa Mác và bằng việc khái quát những thành\ntựu của khoa học. Tác phẩm Biện chứng của tự nhiên và Chống Đuyrinh lần lượt ra đời\ntrong thời kỳ này. Sau đó Ph. Ăngghen viết tiếp các tác phẩm Nguồn gốc của gia đình,\ncủa chế độ tư hữu và của nhà nước (1884) và Lútvích Phoiơbắc và sự cáo chung của triết\nhọc cổ điển Đức (1886)... Với những tác phẩm trên, Ph. Ăngghen đã trình bày học th",
+            "content_preview": "là sự bổ sung, phát triển của triết học Mác nói riêng, của học thuyết Mác nói chung. V.I.\nLênin khẳng định, trong Tư bản “Marx không để lại cho chúng ta “Lôgích học” (với chữ\nL. viết hoa), nhưng đã để lại cho chúng ta lôgích của “Tư bản””2.\nNăm 1871, C. Mác viết tác phẩm Nội chiến ở Pháp, phân tích sâu sắc kinh nghiệm\ncủa Công xã Pari. Năm 1875, C. Mác cho ra đời một tác phẩm quan trọng về con đường\nvà mô hình của xã hội tương lai, xã hội cộng sản chủ nghĩa - tác phẩm Phê phán Cương\nlĩnh Gôta.\nT"
+          },
+          {
+            "rank": 3,
+            "chunk_id": 1008,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 33,
+            "distance": 0.113339834610232,
+            "content": "“Tư bản” sau hai\nmươi năm trời lao động”3. Năm 1848, C. Mác cùng với Ph. Ăngghen viết tác phẩm Tuyên\nngôn của Đảng Cộng sản - đây là văn kiện có tính chất cương lĩnh đầu tiên của chủ nghĩa\nMác, trong đó cơ sở triết học của chủ nghĩa Mác được trình bày một cách thiên tài, thống\nnhất hữu cơ với các quan điểm kinh tế và các quan điểm chính trị - xã hội. V.I. Lênin\nnhận định: “Tác phẩm này trình bày một cách hết sức sáng sủa và rõ ràng thế giới quan\nmới, chủ nghĩa duy vật triệt để - chủ nghĩa duy vật này bao quát cả lĩnh vực sinh hoạt xã\nhội, - phép biện chứng với tư cách là học thuyết toàn diện nhất và sâu sắc nhất về sự phát\n______________\n1, 3. C. Mác và Ph. Ăngghen: Toàn tập, Sđd, t.3, tr.11, 29.\n2, 2. C. Mác và Ph. Ăngghen: Toàn tập, Sđd, t.3, tr.30, 51.\n3. C. Mác và Ph. Ăngghen: Toàn tập, Sđd, t.19, tr.334.\n33",
+            "content_preview": "“Tư bản” sau hai\nmươi năm trời lao động”3. Năm 1848, C. Mác cùng với Ph. Ăngghen viết tác phẩm Tuyên\nngôn của Đảng Cộng sản - đây là văn kiện có tính chất cương lĩnh đầu tiên của chủ nghĩa\nMác, trong đó cơ sở triết học của chủ nghĩa Mác được trình bày một cách thiên tài, thống\nnhất hữu cơ với các quan điểm kinh tế và các quan điểm chính trị - xã hội. V.I. Lênin\nnhận định: “Tác phẩm này trình bày một cách hết sức sáng sủa và rõ ràng thế giới quan\nmới, chủ nghĩa duy vật triệt để - chủ nghĩa duy vậ"
+          },
+          {
+            "rank": 4,
+            "chunk_id": 1012,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 34,
+            "distance": 0.12265348434448242,
+            "content": "c phẩm Nguồn gốc của gia đình,\ncủa chế độ tư hữu và của nhà nước (1884) và Lútvích Phoiơbắc và sự cáo chung của triết\nhọc cổ điển Đức (1886)... Với những tác phẩm trên, Ph. Ăngghen đã trình bày học thuyết\nMác nói chung, triết học Mác nói riêng dưới dạng một hệ thống lý luận tương đối độc lập\nvà hoàn chỉnh. Sau khi C. Mác qua đời (14/3/1883), Ph. Ăngghen đã hoàn chỉnh và xuất\nbản hai quyển còn lại trong bộ Tư bản của C. Mác (trọn bộ ba quyển). Những ý kiến bổ\nsung, giải thích của Ph. Ăngghen đối với một số luận điểm của các ông trước đây cũng có\ný nghĩa rất quan trọng trong việc bảo vệ và phát triển triết học Mác.\n______________\n1. V.I. Lênin: Toàn tập, Sđd, t.26, tr.57.\n2. V.I. Lênin: Toàn tập, Sđd, t.29, tr.359.\n34",
+            "content_preview": "c phẩm Nguồn gốc của gia đình,\ncủa chế độ tư hữu và của nhà nước (1884) và Lútvích Phoiơbắc và sự cáo chung của triết\nhọc cổ điển Đức (1886)... Với những tác phẩm trên, Ph. Ăngghen đã trình bày học thuyết\nMác nói chung, triết học Mác nói riêng dưới dạng một hệ thống lý luận tương đối độc lập\nvà hoàn chỉnh. Sau khi C. Mác qua đời (14/3/1883), Ph. Ăngghen đã hoàn chỉnh và xuất\nbản hai quyển còn lại trong bộ Tư bản của C. Mác (trọn bộ ba quyển). Những ý kiến bổ\nsung, giải thích của Ph. Ăngghen đối "
+          },
+          {
+            "rank": 5,
+            "chunk_id": 1007,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 33,
+            "distance": 0.13357685404099162,
+            "content": "ếp cận khoa học để nhận thức chủ\nnghĩa cộng sản. Theo đó, chủ nghĩa cộng sản là một lý tưởng cao đẹp của nhân loại,\nnhưng được thực hiện từng bước với những mục tiêu cụ thể nào, bằng con đường nào,\nthì điều đó còn tùy thuộc vào điểm xuất phát và chỉ có qua phong trào thực tiễn mới tìm\nra được những hình thức và bước đi thích hợp. “Đối với chúng ta, chủ nghĩa cộng sản\nkhông phải là một trạng thái cần phải sáng tạo ra, không phải là một lý tưởng mà hiện\nthực phải khuôn theo. Chúng ta gọi chủ nghĩa cộng sản là một phong trào hiện thực, nó\nxóa bỏ trạng thái hiện nay”2.\nNăm 1847, C. Mác viết tác phẩm Sự khốn cùng của triết học, tiếp tục đề xuất các\nnguyên lý triết học, chủ nghĩa cộng sản khoa học, như chính C. Mác sau này đã nói:\n“chứa đựng những mầm mống của học thuyết được trình bày trong bộ “Tư bản” sau hai\nmươi năm trời lao động”3. Năm 1848, C. Mác cùng với Ph. Ăngghen viết tác phẩm Tuyên\nngôn của Đảng Cộng sản - đây là văn kiện có tính chất cương lĩnh đầu tiên của chủ nghĩa\nMác, trong",
+            "content_preview": "ếp cận khoa học để nhận thức chủ\nnghĩa cộng sản. Theo đó, chủ nghĩa cộng sản là một lý tưởng cao đẹp của nhân loại,\nnhưng được thực hiện từng bước với những mục tiêu cụ thể nào, bằng con đường nào,\nthì điều đó còn tùy thuộc vào điểm xuất phát và chỉ có qua phong trào thực tiễn mới tìm\nra được những hình thức và bước đi thích hợp. “Đối với chúng ta, chủ nghĩa cộng sản\nkhông phải là một trạng thái cần phải sáng tạo ra, không phải là một lý tưởng mà hiện\nthực phải khuôn theo. Chúng ta gọi chủ nghĩa"
+          }
+        ]
+      },
+      "generation": {
+        "found": true,
+        "answer": "Năm 1848, C. Mác cùng với Ph. Ăngghen viết tác phẩm \"Tuyên ngôn của Đảng Cộng sản\".",
+        "evidence": [
+          {
+            "chunk_id": "Chunk 1008",
+            "document": "Giáo trình Triết học",
+            "page": 33
+          }
+        ]
+      },
+      "verification": {
+        "found": false,
+        "answer": null,
+        "evidence": []
+      },
+      "passed": false,
+      "expected_page": 33,
+      "expected_chunk_keywords": "Tuyên ngôn của Đảng Cộng sản"
+    },
+    {
+      "id": "Q008",
+      "category": "answerable",
+      "question": "Toàn cầu hóa là gì theo tài liệu?",
+      "expected_found": true,
+      "status": "pass",
+      "retrieval": {
+        "found": true,
+        "count": 5,
+        "chunks": [
+          {
+            "rank": 1,
+            "chunk_id": 1082,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 52,
+            "distance": 0.1360068917274475,
+            "content": "trò rất\nquan trọng, là cơ sở lý luận, phương pháp luận cho các phát minh khoa học, cho sự tích\nhợp và truyền bá tri thức khoa học hiện đại. Dù tự giác hay tự phát, khoa học hiện đại phát\ntriển phải dựa trên cơ sở thế giới quan và phương pháp luận duy vật biện chứng. Đồng thời,\nnhững vấn đề mới của hệ thống tri thức khoa học hiện đại cũng đang đặt ra đòi hỏi triết học\nMác - Lênin phải có bước phát triển mới.\nNgày nay, xu thế toàn cầu hóa đang tăng lên không ngừng. Thực chất của toàn cầu\nhóa là quá trình tăng lên mạnh mẽ các mối liên hệ, sự ảnh hưởng, tác động, phụ thuộc lẫn\nnhau giữa các khu vực, các quốc gia, dân tộc trên thế giới. Cùng với quá trình toàn cầu\nhóa, xu thế bổ sung và phản ứng lại là xu thế khu vực hóa. Toàn cầu hóa đem lại sự ra đời\ncủa hàng loạt tổ chức quốc tế và khu vực; là một quá trình xã hội phức tạp, đầy mâu\nthuẫn, chứa đựng cả tích cực và tiêu cực, cả thời cơ và thách thức đối với các quốc gia,\ndân tộc, đặc biệt là các nước kém phát triển. Chủ nghĩa đế quốc và c",
+            "content_preview": "trò rất\nquan trọng, là cơ sở lý luận, phương pháp luận cho các phát minh khoa học, cho sự tích\nhợp và truyền bá tri thức khoa học hiện đại. Dù tự giác hay tự phát, khoa học hiện đại phát\ntriển phải dựa trên cơ sở thế giới quan và phương pháp luận duy vật biện chứng. Đồng thời,\nnhững vấn đề mới của hệ thống tri thức khoa học hiện đại cũng đang đặt ra đòi hỏi triết học\nMác - Lênin phải có bước phát triển mới.\nNgày nay, xu thế toàn cầu hóa đang tăng lên không ngừng. Thực chất của toàn cầu\nhóa là qu"
+          },
+          {
+            "rank": 2,
+            "chunk_id": 1083,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 52,
+            "distance": 0.15339338779449463,
+            "content": "là một quá trình xã hội phức tạp, đầy mâu\nthuẫn, chứa đựng cả tích cực và tiêu cực, cả thời cơ và thách thức đối với các quốc gia,\ndân tộc, đặc biệt là các nước kém phát triển. Chủ nghĩa đế quốc và các thế lực tư bản chủ\nnghĩa đang lợi dụng toàn cầu hóa để âm mưu thực hiện toàn cầu hóa tư bản chủ nghĩa.\nChính vì vậy, toàn cầu hóa là một cuộc đấu tranh quyết liệt giữa chủ nghĩa tư bản và chủ\nnghĩa đế quốc với các nước đang phát triển, các dân tộc chậm phát triển. Trong bối cảnh\nđó, triết học Mác - Lênin là cơ sở thế giới quan và phương pháp luận khoa học, cách\nmạng để phân tích xu hướng vận động, phát triển của xã hội hiện đại.\nChủ nghĩa Mác - Lênin nói chung và triết học Mác - Lênin nói riêng là lý luận khoa\nhọc và cách mạng soi đường cho giai cấp công nhân và nhân dân lao động trong cuộc đấu\ntranh giai cấp và đấu tranh dân tộc đang diễn ra trong điều kiện mới, dưới hình thức mới.\nHiện nay, chủ nghĩa xã hội đang lâm vào khủng hoảng và thoái trào, tương quan so\nsánh lực lượng bất lợi c",
+            "content_preview": "là một quá trình xã hội phức tạp, đầy mâu\nthuẫn, chứa đựng cả tích cực và tiêu cực, cả thời cơ và thách thức đối với các quốc gia,\ndân tộc, đặc biệt là các nước kém phát triển. Chủ nghĩa đế quốc và các thế lực tư bản chủ\nnghĩa đang lợi dụng toàn cầu hóa để âm mưu thực hiện toàn cầu hóa tư bản chủ nghĩa.\nChính vì vậy, toàn cầu hóa là một cuộc đấu tranh quyết liệt giữa chủ nghĩa tư bản và chủ\nnghĩa đế quốc với các nước đang phát triển, các dân tộc chậm phát triển. Trong bối cảnh\nđó, triết học Mác "
+          },
+          {
+            "rank": 3,
+            "chunk_id": 1144,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 68,
+            "distance": 0.16181020964323078,
+            "content": "ngừng và chuyển hóa lẫn nhau, là nguồn gốc, nguyên nhân và kết quả của nhau, về thực\nchất, đều là những quá trình vật chất.\nQuan niệm trên đây của chủ nghĩa duy vật biện chứng đã được cuộc sống hiện thực\ncủa con người và toàn bộ sự phát triển của khoa học xác định. Con người không thể\nbằng ý thức của mình sản sinh ra được các đối tượng vật chất, mà chỉ có thể cải biến thế\ngiới vật chất trên cơ sở nắm vững những thuộc tính khách quan vốn có của các dạng vật\nchất và những quy luật vận động của thế giới vật chất.\nVới sự phát triển của thiên văn học, quang phổ học, vũ trụ học, người ta khẳng định\nrằng: Không hề có một thế giới siêu nhiên nào ngoài trái đất. Hóa học hiện đại đã chứng\nminh rằng, giới hữu cơ không có bản chất thần bí, tách biệt với giới vô cơ mà được cấu\ntạo từ những thành phần vô cơ, phát triển từ giới vô cơ; sự khác nhau giữa chúng chỉ ở\nkết cấu và trình độ tổ chức, giữa chúng có thể và tất yếu chuyển hóa sang nhau trong\nnhững điều kiện nhất định theo quy luật khách quan củ",
+            "content_preview": "ngừng và chuyển hóa lẫn nhau, là nguồn gốc, nguyên nhân và kết quả của nhau, về thực\nchất, đều là những quá trình vật chất.\nQuan niệm trên đây của chủ nghĩa duy vật biện chứng đã được cuộc sống hiện thực\ncủa con người và toàn bộ sự phát triển của khoa học xác định. Con người không thể\nbằng ý thức của mình sản sinh ra được các đối tượng vật chất, mà chỉ có thể cải biến thế\ngiới vật chất trên cơ sở nắm vững những thuộc tính khách quan vốn có của các dạng vật\nchất và những quy luật vận động của thế"
+          },
+          {
+            "rank": 4,
+            "chunk_id": 1776,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 220,
+            "distance": 0.1623191237449646,
+            "content": "TÀI LIỆU THAM KHẢO\n1. C. Mác và Ph. Ăngghen: Toàn tập (trọn bộ 50 tập), Nxb. Chính trị quốc gia, Hà Nội,\n1995.\n2. V.I. Lênin: Toàn tập, 55 tập, Nxb. Chính trị quốc gia, Hà Nội, 2005.\n3. Hồ Chí Minh: Toàn tập (trọn bộ 15 tập), Nxb. Chính trị quốc gia, Hà Nội, 2011.\n4. Đảng Cộng sản Việt Nam: Văn kiện Đảng toàn tập,\n69 tập, Nxb. Chính trị quốc gia, Hà Nội, 2006.\n5. Đảng Cộng sản Việt Nam: Văn kiện Hội nghị lần thứ chín Ban Chấp hành Trung\nương khóa XI, Văn phòng Trung ương Đảng, Hà Nội, 2014.\n6. Đảng Cộng sản Việt Nam: Văn kiện Đại hội đại biểu toàn quốc lần thứ XII, Nxb.\nChính trị quốc gia, Hà Nội, 2016.\n7. Đảng Cộng sản Việt Nam: Văn kiện Hội nghị lần thứ tư Ban Chấp hành Trung ương\nkhóa XII, Văn phòng Trung ương Đảng, Hà Nội, 2016.\n8. Bách khoa toàn thư triết học, Nxb. Từ điển Xôviết, in lần thứ 2, Mátxcơva, 1989\n(tiếng Nga).\n9. Bộ Giáo dục và Đào tạo: Triết học 3 quyển, Nxb. Chính trị quốc gia, Hà Nội, 2003.\n10. Bộ Giáo dục và Đào tạo: Giáo trình triết học (Dùng trong đào tạo trình đ",
+            "content_preview": "TÀI LIỆU THAM KHẢO\n1. C. Mác và Ph. Ăngghen: Toàn tập (trọn bộ 50 tập), Nxb. Chính trị quốc gia, Hà Nội,\n1995.\n2. V.I. Lênin: Toàn tập, 55 tập, Nxb. Chính trị quốc gia, Hà Nội, 2005.\n3. Hồ Chí Minh: Toàn tập (trọn bộ 15 tập), Nxb. Chính trị quốc gia, Hà Nội, 2011.\n4. Đảng Cộng sản Việt Nam: Văn kiện Đảng toàn tập,\n69 tập, Nxb. Chính trị quốc gia, Hà Nội, 2006.\n5. Đảng Cộng sản Việt Nam: Văn kiện Hội nghị lần thứ chín Ban Chấp hành Trung\nương khóa XI, Văn phòng Trung ương Đảng, Hà Nội, 2014.\n6. Đ"
+          },
+          {
+            "rank": 5,
+            "chunk_id": 1145,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 68,
+            "distance": 0.1631772518157959,
+            "content": "ô cơ, phát triển từ giới vô cơ; sự khác nhau giữa chúng chỉ ở\nkết cấu và trình độ tổ chức, giữa chúng có thể và tất yếu chuyển hóa sang nhau trong\nnhững điều kiện nhất định theo quy luật khách quan của thế giới vật chất.\nSự phát triển của sinh vật học, từ những phát hiện về tế bào, tiến hóa luận của Darwin\ncho đến lý thuyết về gen, về các phân tử ADN và ARN đã cho chúng ta biết chắc chắn\nrằng thực vật, động vật, cơ thể con người đều có thành phần vô cơ, có cấu trúc và phân\nhóa tế bào như nhau, có cùng cơ cấu di truyền sự sống, là các bậc thang trong quá trình\ntiến hóa của thế giới vật chất. Điều đó chứng tỏ sự phong phú của thế giới không đồng\nnghĩa với tổng số các biến cố ngẫu nhiên, không phải là sự bày ra lộn xộn của các sự vật,\nhiện tượng, không phải là sự sáng tạo ra một cách tùy tiện của một lực lượng siêu nhiên\nnào mà là một chỉnh thể thống nhất, trong đó các sự vật, hiện tượng luôn có mối liên hệ\ntất yếu với nhau, là điều kiện tồn tại cho nhau, luôn được sinh ra, phát triển và",
+            "content_preview": "ô cơ, phát triển từ giới vô cơ; sự khác nhau giữa chúng chỉ ở\nkết cấu và trình độ tổ chức, giữa chúng có thể và tất yếu chuyển hóa sang nhau trong\nnhững điều kiện nhất định theo quy luật khách quan của thế giới vật chất.\nSự phát triển của sinh vật học, từ những phát hiện về tế bào, tiến hóa luận của Darwin\ncho đến lý thuyết về gen, về các phân tử ADN và ARN đã cho chúng ta biết chắc chắn\nrằng thực vật, động vật, cơ thể con người đều có thành phần vô cơ, có cấu trúc và phân\nhóa tế bào như nhau, c"
+          }
+        ]
+      },
+      "generation": {
+        "found": true,
+        "answer": "Theo tài liệu, thực chất của toàn cầu hóa là quá trình tăng lên mạnh mẽ các mối liên hệ, sự ảnh hưởng, tác động, phụ thuộc lẫn nhau giữa các khu vực, các quốc gia, dân tộc trên thế giới. Đây là một quá trình xã hội phức tạp, đầy mâu thuẫn, chứa đựng cả tích cực và tiêu cực, cả thời cơ và thách thức đối với các quốc gia, dân tộc, đặc biệt là các nước kém phát triển.",
+        "evidence": [
+          {
+            "chunk_id": "1082",
+            "document": "Giáo trình Triết học",
+            "page": 52
+          }
+        ]
+      },
+      "verification": {
+        "found": true,
+        "answer": "Theo tài liệu, thực chất của toàn cầu hóa là quá trình tăng lên mạnh mẽ các mối liên hệ, sự ảnh hưởng, tác động, phụ thuộc lẫn nhau giữa các khu vực, các quốc gia, dân tộc trên thế giới. Đây là một quá trình xã hội phức tạp, đầy mâu thuẫn, chứa đựng cả tích cực và tiêu cực, cả thời cơ và thách thức đối với các quốc gia, dân tộc, đặc biệt là các nước kém phát triển.",
+        "evidence": [
+          {
+            "chunk_id": "1082",
+            "document": "Giáo trình Triết học",
+            "page": 52
+          }
+        ]
+      },
+      "passed": true,
+      "expected_page": 52,
+      "expected_chunk_keywords": "tăng lên mạnh mẽ các mối liên hệ"
+    },
+    {
+      "id": "Q009",
+      "category": "answerable",
+      "question": "V.I. Lênin đã phân tích nguyên nhân thắng lợi của sự kiện lịch sử nào trong tác phẩm \"Những nhiệm vụ trước mắt của chính quyền Xôviết\"?",
+      "expected_found": true,
+      "status": "error",
+      "error_stage": "generation",
+      "error": "ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 36.685362385s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.6-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '36s'}]}}",
+      "retrieval": {
+        "found": true,
+        "count": 5,
+        "chunks": [
+          {
+            "rank": 1,
+            "chunk_id": 1042,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 42,
+            "distance": 0.10595410430704766,
+            "content": "t triển\nphép biện chứng mácxít... Trong tác phẩm Những nhiệm vụ trước mắt của chính quyền\nXôviết, V.I. Lênin đã vạch ra đường lối chung xây dựng chủ nghĩa xã hội ở Nga, phân tích\nnguyên nhân thắng lợi của Cách mạng Tháng Mười năm 1917, đặt ra nhiệm vụ phải tiến\nhành cuộc cải tạo xã hội chủ nghĩa đối với nền kinh tế nước Nga, trong đó nhiệm vụ cơ\nbản, hàng đầu là nâng cao năng suất lao động.\nV.I. Lênin làm rõ sự khác biệt căn bản về nhiệm vụ chủ yếu của quần chúng lao động\ntrong cách mạng tư sản và cách mạng vô sản. Người phát triển tư tưởng về chuyên chính\nvô sản và chỉ rõ: Chính quyền Xôviết không phải là cái gì khác mà chỉ là hình thức của\nchuyên chính vô sản1. Trong thời kỳ quá độ từ chủ nghĩa tư bản lên chủ nghĩa xã hội, nhà\nnước chuyên chính vô sản thực hiện chuyên chính đối với bọn bóc lột là một tất yếu.\nNgười cũng làm rõ những đặc trưng chủ yếu của chế độ dân chủ đã được thi hành ở Nga.\nTrong tác phẩm Cách mạng vô sản và tên phản bội Cauxky, V.I. Lênin vạch trần sự\nphản bội của",
+            "content_preview": "t triển\nphép biện chứng mácxít... Trong tác phẩm Những nhiệm vụ trước mắt của chính quyền\nXôviết, V.I. Lênin đã vạch ra đường lối chung xây dựng chủ nghĩa xã hội ở Nga, phân tích\nnguyên nhân thắng lợi của Cách mạng Tháng Mười năm 1917, đặt ra nhiệm vụ phải tiến\nhành cuộc cải tạo xã hội chủ nghĩa đối với nền kinh tế nước Nga, trong đó nhiệm vụ cơ\nbản, hàng đầu là nâng cao năng suất lao động.\nV.I. Lênin làm rõ sự khác biệt căn bản về nhiệm vụ chủ yếu của quần chúng lao động\ntrong cách mạng tư sản "
+          },
+          {
+            "rank": 2,
+            "chunk_id": 1041,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 42,
+            "distance": 0.1121716894796434,
+            "content": "nghĩa xã hội và chiến tranh, Hải cảng Lữ thuận thất thủ, Chiến tranh và cách mạng...\nThời kỳ 1917 - 1924 là thời kỳ V.I. Lênin tổng kết kinh nghiệm thực tiễn cách mạng,\nbổ sung, hoàn thiện triết học Mác, gắn liền với việc nghiên cứu các vấn đề xây dựng chủ\nnghĩa xã hội.\nSau Cách mạng Tháng Mười năm 1917, nước Nga Xôviết bước vào thời kỳ quá độ từ\nchủ nghĩa tư bản lên chủ nghĩa xã hội trong hoàn cảnh chống lại sự can thiệp của 14 nước\nđế quốc, bọn phản động trong nội chiến bảo vệ thành quả cách mạng và xây dựng đất\nnước. V.I. Lênin kiên quyết đấu tranh chống mọi loại kẻ thù của chủ nghĩa Mác nói\nchung và triết học Mác nói riêng.\nV.I. Lênin đặc biệt chú ý tổng kết kinh nghiệm thực tiễn cách mạng, dựa vào những\nthành tựu mới nhất của khoa học, bổ sung, hoàn thiện triết học Mác, nhất là sự phát triển\nphép biện chứng mácxít... Trong tác phẩm Những nhiệm vụ trước mắt của chính quyền\nXôviết, V.I. Lênin đã vạch ra đường lối chung xây dựng chủ nghĩa xã hội ở Nga, phân tích\nnguyên nhân thắng lợi",
+            "content_preview": "nghĩa xã hội và chiến tranh, Hải cảng Lữ thuận thất thủ, Chiến tranh và cách mạng...\nThời kỳ 1917 - 1924 là thời kỳ V.I. Lênin tổng kết kinh nghiệm thực tiễn cách mạng,\nbổ sung, hoàn thiện triết học Mác, gắn liền với việc nghiên cứu các vấn đề xây dựng chủ\nnghĩa xã hội.\nSau Cách mạng Tháng Mười năm 1917, nước Nga Xôviết bước vào thời kỳ quá độ từ\nchủ nghĩa tư bản lên chủ nghĩa xã hội trong hoàn cảnh chống lại sự can thiệp của 14 nước\nđế quốc, bọn phản động trong nội chiến bảo vệ thành quả cách m"
+          },
+          {
+            "rank": 3,
+            "chunk_id": 1033,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 40,
+            "distance": 0.11701869267113696,
+            "content": "đã đấu tranh chống chủ nghĩa duy tâm, phương pháp siêu hình của phái Dân túy, bảo vệ\nvà phát triển phép biện chứng duy vật, quan tâm nghiên cứu các hiện tượng, quy luật phát\ntriển của xã hội, phát triển nhiều quan điểm về chủ nghĩa duy vật lịch sử, đặc biệt là làm\nphong phú thêm về lý luận hình thái kinh tế - xã hội. V.I. Lênin đã phát triển tư tưởng của\nchủ nghĩa Mác về các hình thức đấu tranh giai cấp trước khi có chính quyền, đấu tranh\nkinh tế, đấu tranh chính trị và đấu tranh tư tưởng, đặc biệt nhấn mạnh vai trò quyết định\ncủa đấu tranh chính trị. Trong tác phẩm Hai sách lược của Đảng dân chủ - xã hội trong\ncách mạng dân chủ, V.I. Lênin đã phát triển học thuyết của C. Mác về cách mạng xã hội\nchủ nghĩa, đã nêu ra được những đặc điểm, động lực và triển vọng của cách mạng dân\nchủ tư sản trong thời đại đế quốc chủ nghĩa.\nThời kỳ 1907 - 1917 là thời kỳ V.I. Lênin phát triển toàn diện triết học Mác và lãnh\nđạo phong trào công nhân Nga, chuẩn bị cho cách mạng xã hội chủ nghĩa.\nSau thất bạ",
+            "content_preview": "đã đấu tranh chống chủ nghĩa duy tâm, phương pháp siêu hình của phái Dân túy, bảo vệ\nvà phát triển phép biện chứng duy vật, quan tâm nghiên cứu các hiện tượng, quy luật phát\ntriển của xã hội, phát triển nhiều quan điểm về chủ nghĩa duy vật lịch sử, đặc biệt là làm\nphong phú thêm về lý luận hình thái kinh tế - xã hội. V.I. Lênin đã phát triển tư tưởng của\nchủ nghĩa Mác về các hình thức đấu tranh giai cấp trước khi có chính quyền, đấu tranh\nkinh tế, đấu tranh chính trị và đấu tranh tư tưởng, đặc b"
+          },
+          {
+            "rank": 4,
+            "chunk_id": 1040,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 41,
+            "distance": 0.11722718271885124,
+            "content": "ế bằng nhà nước chuyên chính vô sản, về nhà nước trong thời kỳ quá\nđộ - đó là nhà nước chuyên chính vô sản và lực lượng lãnh đạo nhà nước là đội tiên\nphong của giai cấp công nhân tức là chính đảng mácxít. V.I. Lênin phân tích và nhấn\nmạnh tư tưởng chủ yếu của C. Mác về đấu tranh giai cấp, chuyên chính vô sản, và phân\ntích chủ nghĩa xã hội, chủ nghĩa cộng sản là hai giai đoạn trong sự phát triển của xã hội\ncộng sản chủ nghĩa, về vai trò của đảng cộng sản trong xây dựng xã hội mới, xã hội xã\nhội chủ nghĩa.\nCông lao to lớn của V.I. Lênin được thể hiện ở chỗ đã giải quyết một cách khoa học\nnhững vấn đề về chiến tranh và hòa bình; tiếp tục phát triển học thuyết Mác về chiến\ntranh và quân đội. V.I. Lênin là người đầu tiên soạn thảo học thuyết về bảo vệ tổ quốc xã\nhội chủ nghĩa... Những tư tưởng trên được V.I. Lênin trình bày trong các tác phẩm: Chủ\n41",
+            "content_preview": "ế bằng nhà nước chuyên chính vô sản, về nhà nước trong thời kỳ quá\nđộ - đó là nhà nước chuyên chính vô sản và lực lượng lãnh đạo nhà nước là đội tiên\nphong của giai cấp công nhân tức là chính đảng mácxít. V.I. Lênin phân tích và nhấn\nmạnh tư tưởng chủ yếu của C. Mác về đấu tranh giai cấp, chuyên chính vô sản, và phân\ntích chủ nghĩa xã hội, chủ nghĩa cộng sản là hai giai đoạn trong sự phát triển của xã hội\ncộng sản chủ nghĩa, về vai trò của đảng cộng sản trong xây dựng xã hội mới, xã hội xã\nhội c"
+          },
+          {
+            "rank": 5,
+            "chunk_id": 1045,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 43,
+            "distance": 0.1182691384393475,
+            "content": "Trong tác phẩm Bàn về công đoàn, V.I. Lênin cũng đã đề cập đến những vấn đề cơ\nbản của lôgích biện chứng, khái quát những nguyên tắc cơ bản của phép biện chứng duy\nvật như: nguyên tắc toàn diện, nguyên tắc lịch sử - cụ thể, nguyên tắc phát triển, v.v..\nTrên bước đường xây dựng kinh tế và chế độ xã hội mới trong hòa bình, đất nước\nXôviết đứng trước nguy cơ khủng hoảng nghiêm trọng. Điều đó đòi hỏi những người\ncộng sản phải nhận thức sâu sắc, đầy đủ hơn những vấn đề lý luận và thực tiễn của thời\nkỳ quá độ tiến lên chủ nghĩa xã hội. Trong thời kỳ này, V.I. Lênin viết tác phẩm Chính\nsách kinh tế mới, trong đó đã làm phong phú và phát triển những tư tưởng của C. Mác,\nPh. Ăngghen về thời kỳ quá độ, đặc biệt là chủ trương phát triển kinh tế nhiều thành\nphần, phát triển kinh tế hàng hóa trong nông nghiệp, vấn đề liên minh công - nông. Kết\nquả là thông qua thực hiện chính sách kinh tế mới mà khối liên minh công - nông và\nchính quyền Xôviết được củng cố thêm một bước.\nTác phẩm Về tác dụng của ch",
+            "content_preview": "Trong tác phẩm Bàn về công đoàn, V.I. Lênin cũng đã đề cập đến những vấn đề cơ\nbản của lôgích biện chứng, khái quát những nguyên tắc cơ bản của phép biện chứng duy\nvật như: nguyên tắc toàn diện, nguyên tắc lịch sử - cụ thể, nguyên tắc phát triển, v.v..\nTrên bước đường xây dựng kinh tế và chế độ xã hội mới trong hòa bình, đất nước\nXôviết đứng trước nguy cơ khủng hoảng nghiêm trọng. Điều đó đòi hỏi những người\ncộng sản phải nhận thức sâu sắc, đầy đủ hơn những vấn đề lý luận và thực tiễn của thời\nk"
+          }
+        ]
+      },
+      "generation": {
+        "found": false,
+        "answer": null,
+        "evidence": []
+      },
+      "verification": {
+        "found": false,
+        "answer": null,
+        "evidence": []
+      },
+      "passed": null,
+      "expected_page": 42,
+      "expected_chunk_keywords": "Cách mạng Tháng Mười năm 1917"
+    },
+    {
+      "id": "Q010",
+      "category": "answerable",
+      "question": "Sự tha hóa lao động trong xã hội hiện đại thể hiện qua điều gì?",
+      "expected_found": true,
+      "status": "error",
+      "error_stage": "generation",
+      "error": "ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 36.030765615s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.6-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '36s'}]}}",
+      "retrieval": {
+        "found": true,
+        "count": 5,
+        "chunks": [
+          {
+            "rank": 1,
+            "chunk_id": 1716,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 206,
+            "distance": 0.10952316409073304,
+            "content": "mình và được chủ sở hữu dùng để trói buộc họ, bắt họ lệ thuộc nhiều hơn vào chủ\nsở hữu và vào các vật phẩm lao động. Lao động bị tha hóa đã làm đảo lộn quan hệ xã\nhội của người lao động. Các đồ vật đã trở thành xa lạ, trở thành công cụ thống trị, trói\nbuộc con người. Quan hệ giữa người lao động với chủ sở hữu tư liệu sản xuất cũng bị\nđảo lộn. Đúng ra đó phải là quan hệ giữa người với người, nhưng trong thực tế nó lại\nđược thực hiện thông qua số vật phẩm do người lao động tạo ra và số tiền công mà\nngười lao động được trả. Quan hệ giữa người và người đã bị thay thế bằng quan hệ giữa\nngười và vật. Đó là biểu hiện thứ hai của tha hóa.\nKhi lao động bị tha hóa, con người trở nên què quặt, phiến diện, khuyết thiếu trên\nnhiều phương diện khác nhau. Sự tha hóa nói trên tất yếu làm cho con người phát triển\nkhông thể toàn diện, không thể đầy đủ, và không thể phát huy được sức mạnh bản chất\nngười. Người lao động ngày càng bị bần cùng hóa, sự phân cực xã hội ngày càng lớn.\nSản xuất, công nghiệp, kh",
+            "content_preview": "mình và được chủ sở hữu dùng để trói buộc họ, bắt họ lệ thuộc nhiều hơn vào chủ\nsở hữu và vào các vật phẩm lao động. Lao động bị tha hóa đã làm đảo lộn quan hệ xã\nhội của người lao động. Các đồ vật đã trở thành xa lạ, trở thành công cụ thống trị, trói\nbuộc con người. Quan hệ giữa người lao động với chủ sở hữu tư liệu sản xuất cũng bị\nđảo lộn. Đúng ra đó phải là quan hệ giữa người với người, nhưng trong thực tế nó lại\nđược thực hiện thông qua số vật phẩm do người lao động tạo ra và số tiền công m"
+          },
+          {
+            "rank": 2,
+            "chunk_id": 1717,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 206,
+            "distance": 0.11140086914894021,
+            "content": "t triển\nkhông thể toàn diện, không thể đầy đủ, và không thể phát huy được sức mạnh bản chất\nngười. Người lao động ngày càng bị bần cùng hóa, sự phân cực xã hội ngày càng lớn.\nSản xuất, công nghiệp, khoa học và công nghệ càng phát triển, lợi nhuận của các chủ sở\nhữu tư liệu sản xuất càng lớn, người lao động ngày càng bị máy móc thay thế. Quá trình\nlao động ngày càng trở thành quá trình thực hiện các thao tác giản đơn do dây chuyền\ncông nghệ, kỹ thuật quy định, người lao động càng bị đẩy ra khỏi quá trình sản xuất trực\ntiếp thì lao động càng bị tha hóa, người công nhân trở thành một bộ phận của máy móc\nvà ngày càng phụ thuộc vào nó, lao động càng trở nên “dã man”1. Trong bối cảnh của\ncuộc cách mạng khoa học và công nghệ, và toàn cầu hóa hiện nay, khía cạnh này của sự\ntha hóa lao động ngày càng thể hiện tập trung và rõ nét khiến cho sự phân cực giàu -\nnghèo trong xã hội hiện đại ngày càng doãng rộng theo chiều tỷ lệ thuận với sự phát\n______________\n1. C. Mác và Ph. Ăngghen: Toàn tập, Sđd,",
+            "content_preview": "t triển\nkhông thể toàn diện, không thể đầy đủ, và không thể phát huy được sức mạnh bản chất\nngười. Người lao động ngày càng bị bần cùng hóa, sự phân cực xã hội ngày càng lớn.\nSản xuất, công nghiệp, khoa học và công nghệ càng phát triển, lợi nhuận của các chủ sở\nhữu tư liệu sản xuất càng lớn, người lao động ngày càng bị máy móc thay thế. Quá trình\nlao động ngày càng trở thành quá trình thực hiện các thao tác giản đơn do dây chuyền\ncông nghệ, kỹ thuật quy định, người lao động càng bị đẩy ra khỏi q"
+          },
+          {
+            "rank": 3,
+            "chunk_id": 1714,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 206,
+            "distance": 0.11146061948176345,
+            "content": "đó đã tạo ra sự phân hóa xã hội về việc chiếm hữu tư nhân tư liệu sản xuất khiến đại đa\nsố người lao động trở thành vô sản, một số ít trở thành tư sản, chiếm hữu toàn bộ các tư\nliệu sản xuất của xã hội. Vì vậy, những người vô sản buộc phải làm thuê cho các nhà tư\nsản, phải để các nhà tư sản bóc lột mình và sự tha hóa lao động bắt đầu từ đó. Lao động\nbị tha hóa là nội dung chính yếu, là nguyên nhân, là thực chất của sự tha hóa của con\nngười.\nCon người bị tha hóa là con người bị đánh mất mình trong lao động, tức là trong\nhoạt động đặc trưng, bản chất của con người. Lao động là hoạt động sáng tạo của\ncon người, là đặc trưng chỉ có ở con người chứ không có ở con vật, là hoạt động\nngười, nhưng khi hoạt động lại trở thành hoạt động của con vật. Lao động bị cưỡng\nbức, bị ép buộc bởi điều kiện xã hội. Con người lao động không phải để sáng tạo,\nkhông phải để phát triển các phẩm chất người mà chỉ là để đảm bảo sự tồn tại của\nthể xác họ. Điều đó có nghĩa rằng họ đang thực hiện chức năng của con v",
+            "content_preview": "đó đã tạo ra sự phân hóa xã hội về việc chiếm hữu tư nhân tư liệu sản xuất khiến đại đa\nsố người lao động trở thành vô sản, một số ít trở thành tư sản, chiếm hữu toàn bộ các tư\nliệu sản xuất của xã hội. Vì vậy, những người vô sản buộc phải làm thuê cho các nhà tư\nsản, phải để các nhà tư sản bóc lột mình và sự tha hóa lao động bắt đầu từ đó. Lao động\nbị tha hóa là nội dung chính yếu, là nguyên nhân, là thực chất của sự tha hóa của con\nngười.\nCon người bị tha hóa là con người bị đánh mất mình tron"
+          },
+          {
+            "rank": 4,
+            "chunk_id": 1712,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 205,
+            "distance": 0.11804931652251827,
+            "content": ". Các quan hệ xã hội khi đã hình thành thì có vai trò chi phối và quyết định các\nphương diện khác của đời sống con người khiến cho con người không còn thuần túy là\nmột động vật mà là một động vật xã hội. Con người “bẩm sinh đã là sinh vật có tính xã\nhội”2. Khía cạnh thực thể sinh vật là tiền đề trên đó thực thể xã hội tồn tại, phát triển và\nchi phối.\n2. Hiện tượng tha hóa con người và vấn đề giải phóng con người\na) Thực chất của hiện tượng tha hóa con người là lao động của con người bị\ntha hóa\nTheo C. Mác, thực chất của lao động bị tha hóa là quá trình lao động và sản phẩm của\nlao động từ chỗ để phục vụ con người, để phát triển con người đã bị biến thành lực lượng\nđối lập, nô dịch và thống trị con người3. Người lao động chỉ hành động với tư cách là con\nngười khi thực hiện các chức năng sinh học như ăn, ngủ, sinh con,...; còn khi lao động,\ntức là khi thực hiện chức năng cao quý của con người thì họ lại chỉ như là con vật.\nTheo quan điểm của các nhà sáng lập chủ nghĩa Mác, hiện tượng tha",
+            "content_preview": ". Các quan hệ xã hội khi đã hình thành thì có vai trò chi phối và quyết định các\nphương diện khác của đời sống con người khiến cho con người không còn thuần túy là\nmột động vật mà là một động vật xã hội. Con người “bẩm sinh đã là sinh vật có tính xã\nhội”2. Khía cạnh thực thể sinh vật là tiền đề trên đó thực thể xã hội tồn tại, phát triển và\nchi phối.\n2. Hiện tượng tha hóa con người và vấn đề giải phóng con người\na) Thực chất của hiện tượng tha hóa con người là lao động của con người bị\ntha hóa\nT"
+          },
+          {
+            "rank": 5,
+            "chunk_id": 1719,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 207,
+            "distance": 0.12137930861834678,
+            "content": "triển của cách mạng khoa học và công nghệ và toàn cầu hóa.\nTha hóa con người là thuộc tính vốn có của các nền sản xuất dựa trên chế độ tư\nhữu tư liệu sản xuất, nhưng nó được đẩy lên ở mức cao nhất trong nền sản xuất tư bản\nchủ nghĩa. Trong nền sản xuất đó, sự tha hóa của lao động còn được tạo nên bởi sự tha\nhóa trên các phương diện khác của đời sống xã hội: Sự tha hóa của nền chính trị vì\nthiểu số ích kỷ, sự tha hóa các tư tưởng của tầng lớp thống trị, sự tha hóa của các thiết\nchế xã hội khác. Chính vì vậy, việc khắc phục sự tha hóa không chỉ gắn liền với việc\nxóa bỏ chế độ tư hữu tư bản chủ nghĩa mà còn gắn liền với việc khắc phục sự tha hóa\ntrên các phương diện khác của đời sống xã hội. Đó là một quá trình lâu dài, phức tạp\nđể giải phóng con người, giải phóng lao động.\nb) “Vĩnh viễn giải phóng toàn thể xã hội khỏi ách bóc lột, ách áp bức”1\nĐây là một trong những tư tưởng căn bản, cốt lõi của các nhà kinh điển của chủ\nnghĩa Mác - Lênin về con người. Giải phóng con người được các nhà k",
+            "content_preview": "triển của cách mạng khoa học và công nghệ và toàn cầu hóa.\nTha hóa con người là thuộc tính vốn có của các nền sản xuất dựa trên chế độ tư\nhữu tư liệu sản xuất, nhưng nó được đẩy lên ở mức cao nhất trong nền sản xuất tư bản\nchủ nghĩa. Trong nền sản xuất đó, sự tha hóa của lao động còn được tạo nên bởi sự tha\nhóa trên các phương diện khác của đời sống xã hội: Sự tha hóa của nền chính trị vì\nthiểu số ích kỷ, sự tha hóa các tư tưởng của tầng lớp thống trị, sự tha hóa của các thiết\nchế xã hội khác. C"
+          }
+        ]
+      },
+      "generation": {
+        "found": false,
+        "answer": null,
+        "evidence": []
+      },
+      "verification": {
+        "found": false,
+        "answer": null,
+        "evidence": []
+      },
+      "passed": null,
+      "expected_page": 206,
+      "expected_chunk_keywords": "người công nhân trở thành một bộ phận của máy móc"
+    },
+    {
+      "id": "Q011",
+      "category": "not_answerable",
+      "question": "Who won the FIFA World Cup in 2022?",
+      "expected_found": false,
+      "status": "error",
+      "error_stage": "generation",
+      "error": "ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 35.353916109s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.6-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '35s'}]}}",
+      "retrieval": {
+        "found": true,
+        "count": 5,
+        "chunks": [
+          {
+            "rank": 1,
+            "chunk_id": 1469,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 147,
+            "distance": 0.2761460378082955,
+            "content": "996). Các quan điểm chủ\nyếu của Huntington về sự xung đột các nền văn minh như sau: Một là, nguyên nhân căn\nbản của xung đột quốc tế trong thế giới tương lai không phải là kinh tế hay ý thức hệ, mà là\nvăn hóa. Xung đột chủ yếu của chính trị toàn cầu là xung đột giữa các nước, các tập đoàn\nthuộc các nền văn minh khác nhau, biên giới của các nền văn minh cũng chính là giới\n______________\n1. Francis Fukuyama: “The End of History?”, The National Interest, 1989, No. 16, Summer, pp.3-18.\n2. Francis Fukuyama: The End of History and the Last Man, The Free Press, New York, 1992.\n3. “What we may be witnessing is not just the end of the Cold War, or the passing of a particular period of\npostwar history, but the end of history as such: that is, the end point of mankind's ideological evolution and the\nuniversalization of Western liberal democracy as the final form of human government”, Francis Fukuyama: “Sự kết\nthúc của lịch sử”, Sđd, Bản dịch của Nguyễn Phú Lợi đăng trên nghiencuuquocte.net ngày 2",
+            "content_preview": "996). Các quan điểm chủ\nyếu của Huntington về sự xung đột các nền văn minh như sau: Một là, nguyên nhân căn\nbản của xung đột quốc tế trong thế giới tương lai không phải là kinh tế hay ý thức hệ, mà là\nvăn hóa. Xung đột chủ yếu của chính trị toàn cầu là xung đột giữa các nước, các tập đoàn\nthuộc các nền văn minh khác nhau, biên giới của các nền văn minh cũng chính là giới\n______________\n1. Francis Fukuyama: “The End of History?”, The National Interest, 1989, No. 16, Summer, pp.3-18.\n2. Francis Fu"
+          },
+          {
+            "rank": 2,
+            "chunk_id": 1470,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 147,
+            "distance": 0.27758495345205214,
+            "content": "universalization of Western liberal democracy as the final form of human government”, Francis Fukuyama: “Sự kết\nthúc của lịch sử”, Sđd, Bản dịch của Nguyễn Phú Lợi đăng trên nghiencuuquocte.net ngày 29/7/2013, tr.2.\n4. Xem Samuel P. Huntington: “The Clash of Civilizations?”, Foreign Affairs, 1993, Vol. 72, No. 3, Summer,\npp.22-49.\n5. Samuel P. Huntington: The Clash of Civilizations and the Remaking of World Order, 2005, bản tiếng Việt: Sự\nva chạm của các nền văn minh và sự tái lập trật tự thế giới, Nguyễn Phương Sửu, Nguyễn Văn Hạnh, Nguyễn\nPhương Nam, Lưu Ánh Tuyết dịch, Nxb. Lao động, Hà Nội, 2005.\n147",
+            "content_preview": "universalization of Western liberal democracy as the final form of human government”, Francis Fukuyama: “Sự kết\nthúc của lịch sử”, Sđd, Bản dịch của Nguyễn Phú Lợi đăng trên nghiencuuquocte.net ngày 29/7/2013, tr.2.\n4. Xem Samuel P. Huntington: “The Clash of Civilizations?”, Foreign Affairs, 1993, Vol. 72, No. 3, Summer,\npp.22-49.\n5. Samuel P. Huntington: The Clash of Civilizations and the Remaking of World Order, 2005, bản tiếng Việt: Sự\nva chạm của các nền văn minh và sự tái lập trật tự thế gi"
+          },
+          {
+            "rank": 3,
+            "chunk_id": 1641,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 188,
+            "distance": 0.2866954886861749,
+            "content": "nước theo các xu hướng chính trị khác nhau hiện nay.\nVì lợi ích chung của toàn thế giới, các nước có chế độ xã hội và chính trị khác nhau\nvẫn có thể thông qua các tổ chức quốc tế để đối thoại, hòa giải những tranh chấp về kinh\ntế, lãnh thổ, lãnh hải, tài nguyên thiên nhiên... và những bất đồng khác. Xu hướng đối\nthoại, hòa giải đang là xu hướng chủ đạo hiện nay. Các cuộc chiến tranh dưới màu sắc\ndân tộc, tôn giáo, hay dưới chiêu bài “nhân đạo” chống vũ khí hóa học, vũ khí sinh học,...\nđang bị các thế lực tiến bộ lên án, phản đối.\nXu hướng giữ vững độc lập, tự chủ của quốc gia, dân tộc, không phụ thuộc và\nkhông can thiệp vào công việc nội bộ của nhau, đấu tranh cho dân chủ, hòa bình và tiến\nbộ xã hội đang diễn ra mạnh mẽ, ngày càng tỏ ra chiếm ưu thế.\nCác quốc gia, dân tộc sẽ đi tới một xã hội dân chủ, tự do, công bằng, văn minh theo\ncách đi của mình thông qua các chính sách phát triển kinh tế - xã hội, văn hóa, giáo dục,\ny tế, khoa học - công nghệ,... Và do đó, dù không có các cuộc các",
+            "content_preview": "nước theo các xu hướng chính trị khác nhau hiện nay.\nVì lợi ích chung của toàn thế giới, các nước có chế độ xã hội và chính trị khác nhau\nvẫn có thể thông qua các tổ chức quốc tế để đối thoại, hòa giải những tranh chấp về kinh\ntế, lãnh thổ, lãnh hải, tài nguyên thiên nhiên... và những bất đồng khác. Xu hướng đối\nthoại, hòa giải đang là xu hướng chủ đạo hiện nay. Các cuộc chiến tranh dưới màu sắc\ndân tộc, tôn giáo, hay dưới chiêu bài “nhân đạo” chống vũ khí hóa học, vũ khí sinh học,...\nđang bị cá"
+          },
+          {
+            "rank": 4,
+            "chunk_id": 1466,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 147,
+            "distance": 0.28861475790475044,
+            "content": "trên tạp chí Lợi ích quốc gia1 (1989) và phát triển quan điểm này, ông đã viết và xuất bản\ncuốn sách Sự kết thúc của lịch sử và con người cuối cùng2 (1992). F. Fukuyama cho rằng\nLiên Xô thất bại, Đông Âu thay đổi, Chiến tranh lạnh kết thúc, những điều đó chứng tỏ\nsự cáo chung của chủ nghĩa cộng sản và lịch sử phát triển của loài người chỉ còn một con\nđường duy nhất, đó là kinh tế thị trường và chính trị dân chủ của phương Tây. F.\nFukuyama nói: “Những gì chúng ta đang chứng kiến không chỉ là sự cáo chung của\nChiến tranh lạnh, hay sự trôi qua của một giai đoạn đặc biệt trong lịch sử sau Chiến tranh\nthế giới lần thứ hai, mà còn là sự cáo chung của lịch sử theo nghĩa rằng đó là điểm kết\nthúc trong cuộc tiến hóa tư tưởng của loài người và sự phổ quát hóa của dân chủ tự do\nphương Tây với tư cách là thể thức cuối cùng của sự cai trị con người”3. Quan điểm sự\nkết thúc của lịch sử có nguồn gốc từ cách hiểu của Fukuyama về Hegel: nếu Hegel cho\nrằng con người bị thúc đẩy bởi động lực dục vọng, kh",
+            "content_preview": "trên tạp chí Lợi ích quốc gia1 (1989) và phát triển quan điểm này, ông đã viết và xuất bản\ncuốn sách Sự kết thúc của lịch sử và con người cuối cùng2 (1992). F. Fukuyama cho rằng\nLiên Xô thất bại, Đông Âu thay đổi, Chiến tranh lạnh kết thúc, những điều đó chứng tỏ\nsự cáo chung của chủ nghĩa cộng sản và lịch sử phát triển của loài người chỉ còn một con\nđường duy nhất, đó là kinh tế thị trường và chính trị dân chủ của phương Tây. F.\nFukuyama nói: “Những gì chúng ta đang chứng kiến không chỉ là sự c"
+          },
+          {
+            "rank": 5,
+            "chunk_id": 1777,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 220,
+            "distance": 0.2912178114859191,
+            "content": "lần thứ 2, Mátxcơva, 1989\n(tiếng Nga).\n9. Bộ Giáo dục và Đào tạo: Triết học 3 quyển, Nxb. Chính trị quốc gia, Hà Nội, 2003.\n10. Bộ Giáo dục và Đào tạo: Giáo trình triết học (Dùng trong đào tạo trình độ thạc sĩ,\ntiến sĩ các ngành khoa học xã hội và nhân văn không chuyên ngành Triết học), Nxb.\nĐại học Sư phạm, Hà Nội, 2014.\n11. Davidovich V.E.: Dưới lăng kính triết học, Nxb. Chính trị quốc gia, Hà Nội, 2002.\n12. Eagleton, Terry: Tại sao Marx đúng, Nxb. Chính trị - Hành chính, Hà Nội, 2012.\n13. Đại tướng Võ Nguyên Giáp: Tổng tập hồi ký, Nxb. Quân đội nhân dân, Hà Nội, 2006.\n14. Hawking S.: Lược sử thời gian, Nxb. Văn hoá thông tin, Hà Nội, 2000.\n15. Học viện Chính trị quốc gia Hồ Chí Minh: Giáo trình cao cấp lý luận chính trị - Triết\nhọc Mác - Lênin,\nNxb. Lý luận chính trị, Hà Nội, 2018.\n16. Hội đồng Trung ương chỉ đạo biên soạn giáo trình quốc gia: Giáo trình Triết học\nMác - Lênin (Tái bản có sửa chữa, bổ sung), Nxb. Chính trị quốc gia, Hà Nội, 2010.\n17. Huxley, Sir Julian; Dr. J. Bronow",
+            "content_preview": "lần thứ 2, Mátxcơva, 1989\n(tiếng Nga).\n9. Bộ Giáo dục và Đào tạo: Triết học 3 quyển, Nxb. Chính trị quốc gia, Hà Nội, 2003.\n10. Bộ Giáo dục và Đào tạo: Giáo trình triết học (Dùng trong đào tạo trình độ thạc sĩ,\ntiến sĩ các ngành khoa học xã hội và nhân văn không chuyên ngành Triết học), Nxb.\nĐại học Sư phạm, Hà Nội, 2014.\n11. Davidovich V.E.: Dưới lăng kính triết học, Nxb. Chính trị quốc gia, Hà Nội, 2002.\n12. Eagleton, Terry: Tại sao Marx đúng, Nxb. Chính trị - Hành chính, Hà Nội, 2012.\n13. Đại"
+          }
+        ]
+      },
+      "generation": {
+        "found": false,
+        "answer": null,
+        "evidence": []
+      },
+      "verification": {
+        "found": false,
+        "answer": null,
+        "evidence": []
+      },
+      "passed": null,
+      "expected_page": null,
+      "expected_chunk_keywords": null
+    },
+    {
+      "id": "Q012",
+      "category": "not_answerable",
+      "question": "Định lý Pythagoras được phát biểu như thế nào?",
+      "expected_found": false,
+      "status": "error",
+      "error_stage": "generation",
+      "error": "ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 34.707437898s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.6-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '34s'}]}}",
+      "retrieval": {
+        "found": true,
+        "count": 5,
+        "chunks": [
+          {
+            "rank": 1,
+            "chunk_id": 1379,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 126,
+            "distance": 0.17175607849619978,
+            "content": "đoán đã liên kết với nhau theo quy tắc: phán đoán cuối cùng (kết luận) được suy ra từ\nnhững phán đoán đã biết làm tiền đề. Có hai loại suy lý chính: quy nạp và diễn dịch.\nQuy nạp là loại hình suy luận trong đó từ tiền đề là những tri thức về riêng từng đối\ntượng người ta khái quát thành tri thức chung cho cả lớp đối tượng, tức là tư duy vận\nđộng từ cái đơn nhất đến cái chung, cái phổ biến. Diễn dịch là loại hình suy luận trong\nđó từ tiền đề là tri thức chung về cả lớp đối tượng người ta rút ra kết luận là tri thức về\nriêng từng đối tượng hay bộ phận đối tượng, tức là tư duy vận động từ cái chung đến cái\nít chung hơn, đến cái đơn nhất (cái riêng). Trong quá trình nhận thức của con người, hai\nloại suy luận này có liên hệ chặt chẽ với nhau, bổ sung cho nhau. Suy lý là phương thức\nquan trọng để tư duy của con người đi từ cái đã biết đến cái chưa biết một cách gián\ntiếp, rút ngắn thời gian trong việc phát hiện tri thức mới. Tính chân thực của tri thức thu\nnhận được nhờ suy lý, phụ thuộc vào",
+            "content_preview": "đoán đã liên kết với nhau theo quy tắc: phán đoán cuối cùng (kết luận) được suy ra từ\nnhững phán đoán đã biết làm tiền đề. Có hai loại suy lý chính: quy nạp và diễn dịch.\nQuy nạp là loại hình suy luận trong đó từ tiền đề là những tri thức về riêng từng đối\ntượng người ta khái quát thành tri thức chung cho cả lớp đối tượng, tức là tư duy vận\nđộng từ cái đơn nhất đến cái chung, cái phổ biến. Diễn dịch là loại hình suy luận trong\nđó từ tiền đề là tri thức chung về cả lớp đối tượng người ta rút ra k"
+          },
+          {
+            "rank": 2,
+            "chunk_id": 919,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 11,
+            "distance": 0.1729567050933779,
+            "content": "à con đường suy ngẫm để dẫn dắt con người đến với lẽ phải.\nỞ phương Tây, thuật ngữ “triết học” như đang được sử dụng phổ biến hiện nay, cũng\nnhư trong tất cả các hệ thống nhà trường, chính là φιλοσοφία (tiếng Hy Lạp; được sử dụng\nnghĩa gốc sang các ngôn ngữ khác: philosophy, philosophie, философия). Triết học,\nphilosophia, xuất hiện ở Hy Lạp cổ đại, với nghĩa là yêu mến sự thông thái. Người Hy Lạp\ncổ đại quan niệm, philosophia vừa mang nghĩa là giải thích vũ trụ, định hướng nhận thức\nvà hành vi, vừa nhấn mạnh đến khát vọng tìm kiếm chân lý của con người.\nNhư vậy, cả ở phương Đông và phương Tây, ngay từ đầu, triết học đã là hoạt động\n______________\n1. Xem David Wolfsdorf: Introduction to Ancient Western Philosophy (Khái luận về triết học phương Tây cổ\nđại), https://pdfs. semanticscholar.org/ad17/a4ae607f0ea4c46a5e49a3808d7ac26450c5.pdf.\n11",
+            "content_preview": "à con đường suy ngẫm để dẫn dắt con người đến với lẽ phải.\nỞ phương Tây, thuật ngữ “triết học” như đang được sử dụng phổ biến hiện nay, cũng\nnhư trong tất cả các hệ thống nhà trường, chính là φιλοσοφία (tiếng Hy Lạp; được sử dụng\nnghĩa gốc sang các ngôn ngữ khác: philosophy, philosophie, философия). Triết học,\nphilosophia, xuất hiện ở Hy Lạp cổ đại, với nghĩa là yêu mến sự thông thái. Người Hy Lạp\ncổ đại quan niệm, philosophia vừa mang nghĩa là giải thích vũ trụ, định hướng nhận thức\nvà hành vi,"
+          },
+          {
+            "rank": 3,
+            "chunk_id": 1097,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 56,
+            "distance": 0.17489738314732062,
+            "content": "ước đó về vật chất.\nBước tiến quan trọng nhất của sự phát triển phạm trù vật chất là định nghĩa vật chất\ncủa hai nhà triết học Hy Lạp cổ đại là Leucippus (Lơxíp) (khoảng 500 - 440 trước Công\nnguyên) và Democritos (Đêmôcrít) (khoảng 460 - 370 trước Công nguyên). Cả hai ông\nđều cho rằng, vật chất là nguyên tử. Nguyên tử theo họ là những hạt nhỏ nhất, không thể\nphân chia, không khác nhau về chất, tồn tại vĩnh viễn và sự phong phú của chúng về hình\ndạng, tư thế, trật tự sắp xếp quy định tính muôn vẻ của vạn vật. Theo thuyết nguyên tử thì\nvật chất theo nghĩa bao quát nhất, chung nhất không đồng nghĩa với những vật thể mà\ncon người có thể cảm nhận được một cách trực tiếp, mà là một lớp các phần tử hữu hình\nrộng rãi nằm sâu trong mỗi sự vật, hiện tượng. Quan niệm này không những thể hiện một\nbước tiến khá xa của các nhà triết học duy vật trong quá trình tìm kiếm một định nghĩa\nđúng đắn về vật chất mà còn có ý nghĩa như một dự báo khoa học tài tình của con người\nvề cấu trúc của thế giới vật ch",
+            "content_preview": "ước đó về vật chất.\nBước tiến quan trọng nhất của sự phát triển phạm trù vật chất là định nghĩa vật chất\ncủa hai nhà triết học Hy Lạp cổ đại là Leucippus (Lơxíp) (khoảng 500 - 440 trước Công\nnguyên) và Democritos (Đêmôcrít) (khoảng 460 - 370 trước Công nguyên). Cả hai ông\nđều cho rằng, vật chất là nguyên tử. Nguyên tử theo họ là những hạt nhỏ nhất, không thể\nphân chia, không khác nhau về chất, tồn tại vĩnh viễn và sự phong phú của chúng về hình\ndạng, tư thế, trật tự sắp xếp quy định tính muôn vẻ"
+          },
+          {
+            "rank": 4,
+            "chunk_id": 957,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 21,
+            "distance": 0.1768571839843487,
+            "content": "được chỉ là hình thức bề ngoài, hạn hẹp và cắt xén về đối tượng. Các hình ảnh, tính chất,\nđặc điểm... của đối tượng mà các giác quan của con người thu nhận được trong quá trình\nnhận thức, cho dù có tính xác thực, cũng không cho phép con người đồng nhất chúng với\nđối tượng. Đó không phải là cái tuyệt đối tin cậy.\nBất khả tri không tuyệt đối phủ nhận những thực tại siêu nhiên hay thực tại được cảm\ngiác của con người, nhưng vẫn khẳng định ý thức con người không thể đạt tới thực tại tuyệt\nđối hay thực tại như nó vốn có, vì mọi thực tại tuyệt đối đều nằm ngoài kinh nghiệm của\ncon người về thế giới. Thuyết bất khả tri cũng không đặt vấn đề về niềm tin, mà chỉ phủ\nnhận khả năng vô hạn của nhận thức.\nThuật ngữ “Thuyết bất khả tri” được đưa ra năm 1869 bởi T.H. Huxley (Hắcxli)\n(1825 - 1895), nhà triết học tự nhiên người Anh, người đã khái quát thực chất của lập\ntrường này từ các tư tưởng triết học của D. Hume (Hium) và Kant. Đại biểu điển hình\ncho những nhà triết học bất khả tri cũng chính là H",
+            "content_preview": "được chỉ là hình thức bề ngoài, hạn hẹp và cắt xén về đối tượng. Các hình ảnh, tính chất,\nđặc điểm... của đối tượng mà các giác quan của con người thu nhận được trong quá trình\nnhận thức, cho dù có tính xác thực, cũng không cho phép con người đồng nhất chúng với\nđối tượng. Đó không phải là cái tuyệt đối tin cậy.\nBất khả tri không tuyệt đối phủ nhận những thực tại siêu nhiên hay thực tại được cảm\ngiác của con người, nhưng vẫn khẳng định ý thức con người không thể đạt tới thực tại tuyệt\nđối hay th"
+          },
+          {
+            "rank": 5,
+            "chunk_id": 1036,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 40,
+            "distance": 0.17803515064925712,
+            "content": "của triết học, phát triển và hoàn thiện lý luận phản ánh, vạch ra bản\nchất của ý thức, con đường biện chứng của quá trình nhận thức chân lý và đặc biệt nhấn\nmạnh vai trò của thực tiễn là tiêu chuẩn khách quan của chân lý.\nV.I. Lênin đã chỉ ra thực chất của cuộc khủng hoảng trong vật lý học vào cuối thế kỷ\nXIX đầu thế kỷ XX - chính là sự khủng hoảng về thế giới quan và phương pháp luận. V.I.\nLênin chỉ rõ, con đường thoát khỏi cuộc khủng hoảng vật lý là phải thay thế chủ nghĩa\nduy vật siêu hình bằng chủ nghĩa duy vật biện chứng.\nV.I. Lênin đã chỉ rõ sai lầm của những người theo chủ nghĩa Makhơ, khi họ phủ nhận\nvai trò quyết định của phương thức sản xuất đối với sự phát triển xã hội, về ý thức xã hội là\nhình thức phản ánh của tồn tại xã hội. V.I. Lênin kịch liệt phê phán phái Makhơ đồng nhất\n______________\n1. V.I. Lênin: Toàn tập, Sđd, t.41, tr.11.\n40",
+            "content_preview": "của triết học, phát triển và hoàn thiện lý luận phản ánh, vạch ra bản\nchất của ý thức, con đường biện chứng của quá trình nhận thức chân lý và đặc biệt nhấn\nmạnh vai trò của thực tiễn là tiêu chuẩn khách quan của chân lý.\nV.I. Lênin đã chỉ ra thực chất của cuộc khủng hoảng trong vật lý học vào cuối thế kỷ\nXIX đầu thế kỷ XX - chính là sự khủng hoảng về thế giới quan và phương pháp luận. V.I.\nLênin chỉ rõ, con đường thoát khỏi cuộc khủng hoảng vật lý là phải thay thế chủ nghĩa\nduy vật siêu hình bằ"
+          }
+        ]
+      },
+      "generation": {
+        "found": false,
+        "answer": null,
+        "evidence": []
+      },
+      "verification": {
+        "found": false,
+        "answer": null,
+        "evidence": []
+      },
+      "passed": null,
+      "expected_page": null,
+      "expected_chunk_keywords": null
+    },
+    {
+      "id": "Q013",
+      "category": "not_answerable",
+      "question": "Ai là tác giả của thuyết tương đối hẹp và thuyết tương đối rộng?",
+      "expected_found": false,
+      "status": "fail",
+      "retrieval": {
+        "found": true,
+        "count": 5,
+        "chunks": [
+          {
+            "rank": 1,
+            "chunk_id": 957,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 21,
+            "distance": 0.148485004901886,
+            "content": "được chỉ là hình thức bề ngoài, hạn hẹp và cắt xén về đối tượng. Các hình ảnh, tính chất,\nđặc điểm... của đối tượng mà các giác quan của con người thu nhận được trong quá trình\nnhận thức, cho dù có tính xác thực, cũng không cho phép con người đồng nhất chúng với\nđối tượng. Đó không phải là cái tuyệt đối tin cậy.\nBất khả tri không tuyệt đối phủ nhận những thực tại siêu nhiên hay thực tại được cảm\ngiác của con người, nhưng vẫn khẳng định ý thức con người không thể đạt tới thực tại tuyệt\nđối hay thực tại như nó vốn có, vì mọi thực tại tuyệt đối đều nằm ngoài kinh nghiệm của\ncon người về thế giới. Thuyết bất khả tri cũng không đặt vấn đề về niềm tin, mà chỉ phủ\nnhận khả năng vô hạn của nhận thức.\nThuật ngữ “Thuyết bất khả tri” được đưa ra năm 1869 bởi T.H. Huxley (Hắcxli)\n(1825 - 1895), nhà triết học tự nhiên người Anh, người đã khái quát thực chất của lập\ntrường này từ các tư tưởng triết học của D. Hume (Hium) và Kant. Đại biểu điển hình\ncho những nhà triết học bất khả tri cũng chính là H",
+            "content_preview": "được chỉ là hình thức bề ngoài, hạn hẹp và cắt xén về đối tượng. Các hình ảnh, tính chất,\nđặc điểm... của đối tượng mà các giác quan của con người thu nhận được trong quá trình\nnhận thức, cho dù có tính xác thực, cũng không cho phép con người đồng nhất chúng với\nđối tượng. Đó không phải là cái tuyệt đối tin cậy.\nBất khả tri không tuyệt đối phủ nhận những thực tại siêu nhiên hay thực tại được cảm\ngiác của con người, nhưng vẫn khẳng định ý thức con người không thể đạt tới thực tại tuyệt\nđối hay th"
+          },
+          {
+            "rank": 2,
+            "chunk_id": 1238,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 91,
+            "distance": 0.15339702367782593,
+            "content": "ứng yên tương đối là những thuộc tính cố hữu của các đối\ntượng vật chất. Là sự thống nhất của biến đổi và bền vững, đối tượng không tồn tại vĩnh\nhằng. Những biến đổi diễn ra trong nó ở phạm vi một độ bền vững xác định có xu hướng\nphá vỡ sự bền vững đó và biến nó thành đối tượng khác, đến lượt mình, do những biến\nđổi diễn ra ở mức độ tích lũy cao hơn, nó lại biến thành đối tượng thứ ba, và cứ thế mãi\nkhiến cho vật chất, trong khi vận động, biến đổi thường xuyên, lại chuyển hóa không\nngừng từ trạng thái bền vững này sang trạng thái bền vững khác.\nMột số nhà triết học cho rằng, vận động diễn ra theo vòng tròn, luôn lặp lại những\nchu kỳ như cũ; số khác khẳng định rằng, trong tiến trình những biến đổi thường xuyên\nlại diễn ra sự vận động từ cao xuống thấp, tức là thoái bộ; một số khác lại giải thích\ntoàn bộ những thay đổi diễn ra trong thế giới bằng sự vận động từ thấp đến cao. Thực tế\nthì có cả vận động từ thấp đến cao, từ cao xuống thấp và vận động theo vòng tròn. Tuy\nnhiên, các xu hướng",
+            "content_preview": "ứng yên tương đối là những thuộc tính cố hữu của các đối\ntượng vật chất. Là sự thống nhất của biến đổi và bền vững, đối tượng không tồn tại vĩnh\nhằng. Những biến đổi diễn ra trong nó ở phạm vi một độ bền vững xác định có xu hướng\nphá vỡ sự bền vững đó và biến nó thành đối tượng khác, đến lượt mình, do những biến\nđổi diễn ra ở mức độ tích lũy cao hơn, nó lại biến thành đối tượng thứ ba, và cứ thế mãi\nkhiến cho vật chất, trong khi vận động, biến đổi thường xuyên, lại chuyển hóa không\nngừng từ trạn"
+          },
+          {
+            "rank": 3,
+            "chunk_id": 1101,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 57,
+            "distance": 0.16564576830591005,
+            "content": "h là pôlôni và rađium. Những phát hiện vĩ đại\nđó chứng tỏ rằng, nguyên tử không phải là phần tử nhỏ nhất mà nó có thể bị phân chia,\nchuyển hóa. Năm 1905, thuyết tương đối hẹp và năm 1916, thuyết tương đối tổng quát\ncủa Albert Einstein (A. Anhxtanh) ra đời đã chứng minh: Không gian, thời gian, khối\nlượng luôn biến đổi cùng với sự vận động của vật chất. Thế giới vật chất không có và\nkhông thể có những vật thể không có kết cấu, tức là không thể có đơn vị cuối cùng,\ntuyệt đối đơn giản và bất biến để đặc trưng chung cho vật chất. Thế giới ấy còn nhiều\nđiều “kỳ lạ” mà con người đã và đang tiếp tục khám phá, chẳng hạn: sự chuyển hóa\ngiữa hạt và trường, sóng và hạt, hạt và phản hạt, “hụt khối lượng”, quan hệ bất định,\nv.v.. V.I. Lênin viết: “Điện tử cũng vô cùng tận như nguyên tử; tự nhiên là vô tận”1 là\nhoàn toàn đúng đắn.\nTrước những phát hiện trên của khoa học tự nhiên, không ít nhà khoa học và triết\nhọc đứng trên lập trường duy vật tự phát, siêu hình đã hoang mang, dao động, hoài nghi\ntính",
+            "content_preview": "h là pôlôni và rađium. Những phát hiện vĩ đại\nđó chứng tỏ rằng, nguyên tử không phải là phần tử nhỏ nhất mà nó có thể bị phân chia,\nchuyển hóa. Năm 1905, thuyết tương đối hẹp và năm 1916, thuyết tương đối tổng quát\ncủa Albert Einstein (A. Anhxtanh) ra đời đã chứng minh: Không gian, thời gian, khối\nlượng luôn biến đổi cùng với sự vận động của vật chất. Thế giới vật chất không có và\nkhông thể có những vật thể không có kết cấu, tức là không thể có đơn vị cuối cùng,\ntuyệt đối đơn giản và bất biến để"
+          },
+          {
+            "rank": 4,
+            "chunk_id": 917,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 11,
+            "distance": 0.16633076467101215,
+            "content": "a và Ấn Độ cổ đại đều bắt đầu từ sự rao giảng của các\ntriết gia, không nhiều người trong số họ được xã hội thừa nhận ngay. Sự tranh cãi và phê\nphán thường khá quyết liệt ở cả phương Đông và phương Tây, không ít quan điểm, học\nthuyết phải mãi đến nhiều thế hệ sau mới được khẳng định, cũng có những nhà triết học\nphải hy sinh mạng sống của mình để bảo vệ học thuyết, quan điểm mà họ cho là chân lý.\nThực ra những bằng chứng thể hiện sự hình thành triết học hiện không còn nhiều, đa\nsố tài liệu triết học thành văn thời cổ đại Hy Lạp đã mất, hoặc không còn nguyên vẹn.\nThời tiền cổ đại (Pre - Classical period) chỉ còn lại một ít các câu trích, chú giải và bản\nghi tóm lược do các tác giả đời sau viết lại. Tất cả tác phẩm của Plato (Platôn), khoảng\nmột phần ba tác phẩm của Aristotle (Arixtốt) và một số ít tác phẩm của Theophrastus,\nngười kế thừa Aristotle, đã bị thất lạc. Một số tác phẩm chữ Latinh và Hy Lạp của trường\nphái Epicurus (Êpiquya) (341 - 270 trước Công nguyên), chủ nghĩa Khắc kỷ (Stoi",
+            "content_preview": "a và Ấn Độ cổ đại đều bắt đầu từ sự rao giảng của các\ntriết gia, không nhiều người trong số họ được xã hội thừa nhận ngay. Sự tranh cãi và phê\nphán thường khá quyết liệt ở cả phương Đông và phương Tây, không ít quan điểm, học\nthuyết phải mãi đến nhiều thế hệ sau mới được khẳng định, cũng có những nhà triết học\nphải hy sinh mạng sống của mình để bảo vệ học thuyết, quan điểm mà họ cho là chân lý.\nThực ra những bằng chứng thể hiện sự hình thành triết học hiện không còn nhiều, đa\nsố tài liệu triết h"
+          },
+          {
+            "rank": 5,
+            "chunk_id": 996,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 30,
+            "distance": 0.16653203964233398,
+            "content": "g thời gian ở Kroisnak (nơi C. Mác kết hôn và ở cùng với\nGienny từ tháng 5 đến tháng 10/1843), C. Mác đã tiến hành nghiên cứu có hệ thống triết\nhọc pháp quyền của Hegel, đồng thời với nghiên cứu lịch sử một cách cơ bản. Trên cơ\nsở đó, C. Mác viết tác phẩm Góp phần phê phán triết học pháp quyền của Hêghen (mùa\nhè năm 1843). Trong khi phê phán chủ nghĩa duy tâm của Hegel, C. Mác đã nồng nhiệt\ntiếp nhận quan niệm duy vật của triết học Feuerbach. Song, C. Mác cũng sớm nhận thấy\nnhững điểm yếu trong triết học của Feuerbach, nhất là việc Feuerbach lảng tránh những\nvấn đề chính trị nóng hổi. Sự phê phán sâu rộng triết học của Hegel, việc khái quát\nnhững kinh nghiệm lịch sử phong phú cùng với ảnh hưởng to lớn của quan điểm duy\nvật và nhân văn trong triết học Feuerbach đã tăng thêm xu hướng duy vật trong thế giới\n______________\n1, 2. C. Mác và Ph. Ăngghen: Toàn tập, Sđd, t.1, tr.182, 229.\n30",
+            "content_preview": "g thời gian ở Kroisnak (nơi C. Mác kết hôn và ở cùng với\nGienny từ tháng 5 đến tháng 10/1843), C. Mác đã tiến hành nghiên cứu có hệ thống triết\nhọc pháp quyền của Hegel, đồng thời với nghiên cứu lịch sử một cách cơ bản. Trên cơ\nsở đó, C. Mác viết tác phẩm Góp phần phê phán triết học pháp quyền của Hêghen (mùa\nhè năm 1843). Trong khi phê phán chủ nghĩa duy tâm của Hegel, C. Mác đã nồng nhiệt\ntiếp nhận quan niệm duy vật của triết học Feuerbach. Song, C. Mác cũng sớm nhận thấy\nnhững điểm yếu trong "
+          }
+        ]
+      },
+      "generation": {
+        "found": true,
+        "answer": "Tác giả của thuyết tương đối hẹp (ra đời năm 1905) và thuyết tương đối tổng quát (năm 1916) là Albert Einstein (A. Anhxtanh).",
+        "evidence": [
+          {
+            "chunk_id": "1101",
+            "document": "Giáo trình Triết học",
+            "page": 57
+          }
+        ]
+      },
+      "verification": {
+        "found": true,
+        "answer": "Tác giả của thuyết tương đối hẹp (ra đời năm 1905) và thuyết tương đối tổng quát (năm 1916) là Albert Einstein (A. Anhxtanh).",
+        "evidence": [
+          {
+            "chunk_id": "1101",
+            "document": "Giáo trình Triết học",
+            "page": 57
+          }
+        ]
+      },
+      "passed": false,
+      "expected_page": null,
+      "expected_chunk_keywords": null
+    },
+    {
+      "id": "Q014",
+      "category": "not_answerable",
+      "question": "Trường phái triết học hiện sinh (existentialism) của Jean-Paul Sartre có những luận điểm chính nào?",
+      "expected_found": false,
+      "status": "error",
+      "error_stage": "generation",
+      "error": "ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 29.437967501s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.6-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '29s'}]}}",
+      "retrieval": {
+        "found": true,
+        "count": 5,
+        "chunks": [
+          {
+            "rank": 1,
+            "chunk_id": 954,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 20,
+            "distance": 0.12190168369402232,
+            "content": "ủng hộ, sử dụng chủ nghĩa duy tâm làm nền tảng lý luận cho những quan điểm\nchính trị - xã hội của mình.\nHọc thuyết triết học nào chỉ thừa nhận một trong hai thực thể (vật chất hoặc tinh thần) là\nbản nguyên (nguồn gốc) của thế giới, quyết định sự vận động của thế giới được gọi là nhất\nnguyên luận (nhất nguyên luận duy vật hoặc nhất nguyên luận duy tâm).\nTrường phái nhị nguyên luận: Trong lịch sử triết học cũng có những nhà triết học giải\nthích thế giới bằng cả hai bản nguyên vật chất và tinh thần, xem vật chất và tinh thần là\nhai bản nguyên có thể cùng quyết định nguồn gốc và sự vận động của thế giới. Học\nthuyết triết học như vậy được gọi là nhị nguyên luận, điển hình là Descartes (Đêcáctơ).\nNhững người theo thuyết nhị nguyên luận thường là những người trong trường hợp giải\nquyết một vấn đề nào đó, ở vào một thời điểm nhất định là người duy vật, nhưng vào một\nthời điểm khác, và khi giải quyết một vấn đề khác lại là người duy tâm. Song, xét đến\ncùng nhị nguyên luận thuộc về chủ nghĩa duy",
+            "content_preview": "ủng hộ, sử dụng chủ nghĩa duy tâm làm nền tảng lý luận cho những quan điểm\nchính trị - xã hội của mình.\nHọc thuyết triết học nào chỉ thừa nhận một trong hai thực thể (vật chất hoặc tinh thần) là\nbản nguyên (nguồn gốc) của thế giới, quyết định sự vận động của thế giới được gọi là nhất\nnguyên luận (nhất nguyên luận duy vật hoặc nhất nguyên luận duy tâm).\nTrường phái nhị nguyên luận: Trong lịch sử triết học cũng có những nhà triết học giải\nthích thế giới bằng cả hai bản nguyên vật chất và tinh thần"
+          },
+          {
+            "rank": 2,
+            "chunk_id": 955,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 20,
+            "distance": 0.1256379410244246,
+            "content": "nào đó, ở vào một thời điểm nhất định là người duy vật, nhưng vào một\nthời điểm khác, và khi giải quyết một vấn đề khác lại là người duy tâm. Song, xét đến\ncùng nhị nguyên luận thuộc về chủ nghĩa duy tâm.\nNhững quan điểm, học phái triết học thực tế rất phong phú và đa dạng, nhưng dù đa\ndạng đến mấy chúng cũng chỉ thuộc về hai lập trường cơ bản. Triết học, do vậy, được chia\nthành hai trường phái chính: chủ nghĩa duy vật và chủ nghĩa duy tâm. Vì thế, lịch sử triết\nhọc cũng chủ yếu là lịch sử đấu tranh của hai trường phái duy vật và duy tâm.\nc) Thuyết có thể biết (Thuyết khả tri) và thuyết không thể biết (Thuyết bất khả tri)\nĐây là kết quả của cách giải quyết mặt thứ hai vấn đề cơ bản của triết học. Với câu\nhỏi “Con người có thể nhận thức được thế giới hay không?”, tuyệt đại đa số các nhà triết\nhọc (cả các nhà duy vật và các nhà duy tâm) trả lời một cách khẳng định: Thừa nhận khả\nnăng nhận thức được thế giới của con người.\nHọc thuyết triết học khẳng định khả năng nhận thức của con người",
+            "content_preview": "nào đó, ở vào một thời điểm nhất định là người duy vật, nhưng vào một\nthời điểm khác, và khi giải quyết một vấn đề khác lại là người duy tâm. Song, xét đến\ncùng nhị nguyên luận thuộc về chủ nghĩa duy tâm.\nNhững quan điểm, học phái triết học thực tế rất phong phú và đa dạng, nhưng dù đa\ndạng đến mấy chúng cũng chỉ thuộc về hai lập trường cơ bản. Triết học, do vậy, được chia\nthành hai trường phái chính: chủ nghĩa duy vật và chủ nghĩa duy tâm. Vì thế, lịch sử triết\nhọc cũng chủ yếu là lịch sử đấu t"
+          },
+          {
+            "rank": 3,
+            "chunk_id": 1141,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 67,
+            "distance": 0.130248888701333,
+            "content": "rù dùng để chỉ tính có thực của thế giới xung\nquanh con người. Khẳng định sự tồn tại là gạt bỏ những nghi ngờ về tính không thực, sự\như vô, tức là gạt bỏ sự “không tồn tại”.\nSự tồn tại của thế giới là hết sức phong phú về dạng, loại. Có tồn tại vật chất và tồn\ntại tinh thần. Có tồn tại khách quan và tồn tại chủ quan. Có tồn tại của tự nhiên và tồn tại\ncủa xã hội... Nhưng quy luật phát triển của lịch sử tư tưởng triết học vừa cho phép lại vừa\nđòi hỏi con người không thể dừng lại ở việc khẳng định hay phủ định tồn tại nói chung,\nmà phải đi đến quan niệm về bản chất của tồn tại. Theo đó, hình thành hai trường phái\nđối lập nhau trong việc giải quyết vấn đề này. Chủ nghĩa duy vật hiểu sự tồn tại của thế\ngiới như một chỉnh thể mà bản chất của nó là vật chất. Trái lại, các nhà triết học duy tâm\nkhẳng định chỉ có thế giới tinh thần mới tồn tại nên bản chất của tồn tại cũng là tinh thần.\nĐúng là thế giới quanh ta tồn tại, nhưng hình thức tồn tại của thế giới là hết sức đa\ndạng. Vì thế, tồn tại",
+            "content_preview": "rù dùng để chỉ tính có thực của thế giới xung\nquanh con người. Khẳng định sự tồn tại là gạt bỏ những nghi ngờ về tính không thực, sự\như vô, tức là gạt bỏ sự “không tồn tại”.\nSự tồn tại của thế giới là hết sức phong phú về dạng, loại. Có tồn tại vật chất và tồn\ntại tinh thần. Có tồn tại khách quan và tồn tại chủ quan. Có tồn tại của tự nhiên và tồn tại\ncủa xã hội... Nhưng quy luật phát triển của lịch sử tư tưởng triết học vừa cho phép lại vừa\nđòi hỏi con người không thể dừng lại ở việc khẳng định"
+          },
+          {
+            "rank": 4,
+            "chunk_id": 947,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 18,
+            "distance": 0.13267324773392108,
+            "content": "giải thích, thì nguyên nhân vật chất hay nguyên\nnhân tinh thần đóng vai trò là cái quyết định.\nMặt thứ hai: Con người có khả năng nhận thức được thế giới hay không? Nói cách\nkhác, khi khám phá sự vật và hiện tượng, con người có dám tin rằng mình sẽ nhận thức\nđược sự vật và hiện tượng hay không.\nCách trả lời hai câu hỏi trên quy định lập trường của nhà triết học và của trường phái\ntriết học, xác định việc hình thành các trường phái lớn của triết học.\nb) Chủ nghĩa duy vật và chủ nghĩa duy tâm\nViệc giải quyết mặt thứ nhất của vấn đề cơ bản của triết học đã chia các nhà triết học\nthành hai trường phái lớn. Những người cho rằng vật chất, giới tự nhiên là cái có trước và\nquyết định ý thức của con người được gọi là các nhà duy vật. Học thuyết của họ hợp thành\ncác môn phái khác nhau của chủ nghĩa duy vật, giải thích mọi hiện tượng của thế giới này\nbằng các nguyên nhân vật chất - nguyên nhân tận cùng của mọi vận động của thế giới này\nlà nguyên nhân vật chất. Ngược lại, những người cho rằng ý th",
+            "content_preview": "giải thích, thì nguyên nhân vật chất hay nguyên\nnhân tinh thần đóng vai trò là cái quyết định.\nMặt thứ hai: Con người có khả năng nhận thức được thế giới hay không? Nói cách\nkhác, khi khám phá sự vật và hiện tượng, con người có dám tin rằng mình sẽ nhận thức\nđược sự vật và hiện tượng hay không.\nCách trả lời hai câu hỏi trên quy định lập trường của nhà triết học và của trường phái\ntriết học, xác định việc hình thành các trường phái lớn của triết học.\nb) Chủ nghĩa duy vật và chủ nghĩa duy tâm\nViệc"
+          },
+          {
+            "rank": 5,
+            "chunk_id": 1391,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 129,
+            "distance": 0.13522069840307682,
+            "content": "động tinh thần và tìm biện pháp cải tạo xã hội ở lĩnh vực tinh thần. Đối với các nhà\ntriết học duy vật trước C. Mác, khuyết điểm chung của họ là phương pháp tư duy siêu\nhình trong xem xét bản chất con người và xã hội. Họ quy bản chất con người vào bản tính\ntự nhiên, tộc loại của các cá nhân riêng biệt. Phương pháp tư duy siêu hình đã dẫn đến\ntuyệt đối hóa vai trò của hoàn cảnh địa lý trong sự phát triển xã hội hoặc áp dụng quy luật\ntự nhiên, quy luật sinh học một cách máy móc vào đời sống xã hội. Đặc biệt, trong khi\nxem xét bản chất con người và xã hội, các nhà triết học duy vật trước C. Mác đã thiếu\ntính thực tiễn, không xuất phát từ thực tiễn, không hiểu vai trò hoạt động thực tiễn có tính\ncách mạng của con người.\nC. Mác và Ph. Ăngghen đã xuất phát từ tiền đề nghiên cứu về lịch sử xã hội là con\nngười hiện thực, sống và hoạt động thực tiễn. “Những tiền đề xuất phát của chúng tôi\nkhông phải là những tiền đề tùy tiện, không phải là giáo điều; đó là những tiền đề hiện\nthực mà người ta c",
+            "content_preview": "động tinh thần và tìm biện pháp cải tạo xã hội ở lĩnh vực tinh thần. Đối với các nhà\ntriết học duy vật trước C. Mác, khuyết điểm chung của họ là phương pháp tư duy siêu\nhình trong xem xét bản chất con người và xã hội. Họ quy bản chất con người vào bản tính\ntự nhiên, tộc loại của các cá nhân riêng biệt. Phương pháp tư duy siêu hình đã dẫn đến\ntuyệt đối hóa vai trò của hoàn cảnh địa lý trong sự phát triển xã hội hoặc áp dụng quy luật\ntự nhiên, quy luật sinh học một cách máy móc vào đời sống xã hội"
+          }
+        ]
+      },
+      "generation": {
+        "found": false,
+        "answer": null,
+        "evidence": []
+      },
+      "verification": {
+        "found": false,
+        "answer": null,
+        "evidence": []
+      },
+      "passed": null,
+      "expected_page": null,
+      "expected_chunk_keywords": null
+    },
+    {
+      "id": "Q015",
+      "category": "not_answerable",
+      "question": "Thủ đô của nước Pháp là gì?",
+      "expected_found": false,
+      "status": "error",
+      "error_stage": "generation",
+      "error": "ClientError: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\\nPlease retry in 28.764861488s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.6-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '28s'}]}}",
+      "retrieval": {
+        "found": true,
+        "count": 5,
+        "chunks": [
+          {
+            "rank": 1,
+            "chunk_id": 1611,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 180,
+            "distance": 0.18925478650543792,
+            "content": "cố chống\nlại chính quyền do giai cấp vô sản lãnh đạo. Kiểu nhà nước vô sản tồn tại dưới nhiều hình\nthức khác nhau với các tên gọi như: Công xã Pari ở Pháp năm 1871, Xôviết ở Nga năm\n1917, Việt Nam Dân chủ Cộng hòa, Cộng hòa xã hội chủ nghĩa Việt Nam, Cộng hòa\nnhân dân Trung Hoa, Liên bang Cộng hòa xã hội chủ nghĩa Xôviết,... Tuy khác nhau về\ntên gọi, nhưng thực chất đó là nhà nước do giai cấp vô sản lãnh đạo, liên minh với giai\ncấp nông dân, tầng lớp trí thức tiến bộ, đại diện và bảo vệ quyền lợi của giai cấp và của\ntoàn thể nhân dân lao động; trong đó, nhân dân lao động thực sự làm chủ xã hội, thực\nhiện quyền dân chủ vô sản, dân chủ kiểu mới, dân chủ của số đông, có nhiệm vụ tiếp tục\ncuộc cách mạng vô sản, thực hiện mục tiêu xây dựng thành công chủ nghĩa xã hội. Để\nthực hiện sứ mệnh của mình, giai cấp vô sản phải thực hiện chức năng tổ chức xây dựng\nvà chức năng trấn áp.\nChức năng tổ chức, xây dựng một trật tự kinh tế mới, một trật tự xã hội mới có vai trò\nquyết định tới sự tồn tại củ",
+            "content_preview": "cố chống\nlại chính quyền do giai cấp vô sản lãnh đạo. Kiểu nhà nước vô sản tồn tại dưới nhiều hình\nthức khác nhau với các tên gọi như: Công xã Pari ở Pháp năm 1871, Xôviết ở Nga năm\n1917, Việt Nam Dân chủ Cộng hòa, Cộng hòa xã hội chủ nghĩa Việt Nam, Cộng hòa\nnhân dân Trung Hoa, Liên bang Cộng hòa xã hội chủ nghĩa Xôviết,... Tuy khác nhau về\ntên gọi, nhưng thực chất đó là nhà nước do giai cấp vô sản lãnh đạo, liên minh với giai\ncấp nông dân, tầng lớp trí thức tiến bộ, đại diện và bảo vệ quyền lợ"
+          },
+          {
+            "rank": 2,
+            "chunk_id": 1614,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 181,
+            "distance": 0.1930957802419867,
+            "content": "Khi\nthực dân Pháp đặt ách đô hộ nước ta từ năm 1884 đến năm 1945, tồn tại nhà nước thuộc\nđịa nửa phong kiến. Sau Cách mạng Tháng Tám năm 1945, nước Việt Nam Dân chủ\nCộng hòa ra đời, chấm dứt sự tồn tại của nhà nước thuộc địa nửa phong kiến, mở ra một\ntrang sử mới của sự phát triển nhà nước.\nHiện nay, Đảng Cộng sản Việt Nam chủ trương xây dựng Nhà nước pháp quyền xã\nhội chủ nghĩa. Văn kiện Đại hội XII của Đảng nhấn mạnh một số đặc trưng cơ bản của\nNhà nước pháp quyền xã hội chủ nghĩa. Đó là:\nNhà nước pháp quyền xã hội chủ nghĩa đặt dưới quyền lãnh đạo của Đảng Cộng sản,\ntồn tại theo nguyên tắc: “Đảng lãnh đạo, nhà nước quản lý, nhân dân làm chủ”2. Bản chất\ncủa hình thức nhà nước pháp quyền xã hội chủ nghĩa là nhà nước pháp quyền của nhân\ndân, do nhân dân, vì nhân dân. Về bản chất, “Nước Cộng hòa xã hội chủ nghĩa Việt Nam\ndo nhân dân làm chủ; tất cả quyền lực nhà nước thuộc về nhân dân, mà nền tảng là liên\nminh giai cấp công nhân với giai cấp nông dân và đội ngũ trí thức”2.\nĐến Đại hội",
+            "content_preview": "Khi\nthực dân Pháp đặt ách đô hộ nước ta từ năm 1884 đến năm 1945, tồn tại nhà nước thuộc\nđịa nửa phong kiến. Sau Cách mạng Tháng Tám năm 1945, nước Việt Nam Dân chủ\nCộng hòa ra đời, chấm dứt sự tồn tại của nhà nước thuộc địa nửa phong kiến, mở ra một\ntrang sử mới của sự phát triển nhà nước.\nHiện nay, Đảng Cộng sản Việt Nam chủ trương xây dựng Nhà nước pháp quyền xã\nhội chủ nghĩa. Văn kiện Đại hội XII của Đảng nhấn mạnh một số đặc trưng cơ bản của\nNhà nước pháp quyền xã hội chủ nghĩa. Đó là:\nNhà "
+          },
+          {
+            "rank": 3,
+            "chunk_id": 1610,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 180,
+            "distance": 0.20064966674745788,
+            "content": "giành\nchính quyền nhà nước từ tay giai cấp địa chủ, phong kiến và chính quyền đô hộ như ở\nTrung Quốc, Việt Nam, hoặc từ tay giai cấp tư sản như ở nước Nga năm 1917, thiết lập\nnền chuyên chính của mình. Trong tác phẩm Phê phán Cương lĩnh Gôta, C. Mác cho\nrằng: “Giữa xã hội tư bản chủ nghĩa và xã hội cộng sản chủ nghĩa là một thời kỳ cải\nbiến cách mạng từ xã hội nọ sang xã hội kia. Thích ứng với thời kỳ ấy là một thời kỳ\nquá độ chính trị, và nhà nước của thời kỳ ấy không thể là cái gì khác hơn là nền chuyên\nchính cách mạng của giai cấp vô sản”2.\nNhà nước vô sản (nền chuyên chính của giai cấp vô sản) có chức năng cơ bản là xây\ndựng một trật tự xã hội mới, thủ tiêu chế độ người bóc lột người, đập tan sự phản kháng\ncủa các thế lực phản động đã bị đánh đổ nhưng chưa bị tiêu diệt hẳn, vẫn ngoan cố chống\nlại chính quyền do giai cấp vô sản lãnh đạo. Kiểu nhà nước vô sản tồn tại dưới nhiều hình\nthức khác nhau với các tên gọi như: Công xã Pari ở Pháp năm 1871, Xôviết ở Nga năm\n1917, Việt Nam Dân",
+            "content_preview": "giành\nchính quyền nhà nước từ tay giai cấp địa chủ, phong kiến và chính quyền đô hộ như ở\nTrung Quốc, Việt Nam, hoặc từ tay giai cấp tư sản như ở nước Nga năm 1917, thiết lập\nnền chuyên chính của mình. Trong tác phẩm Phê phán Cương lĩnh Gôta, C. Mác cho\nrằng: “Giữa xã hội tư bản chủ nghĩa và xã hội cộng sản chủ nghĩa là một thời kỳ cải\nbiến cách mạng từ xã hội nọ sang xã hội kia. Thích ứng với thời kỳ ấy là một thời kỳ\nquá độ chính trị, và nhà nước của thời kỳ ấy không thể là cái gì khác hơn là "
+          },
+          {
+            "rank": 4,
+            "chunk_id": 1560,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 168,
+            "distance": 0.20517983343961688,
+            "content": "C. Mác và Ph. Ăngghen chỉ rõ, ở châu Âu dân tộc hình thành theo hai phương thức\nchủ yếu gắn liền với sự hình thành và phát triển của chủ nghĩa tư bản. Phương thức thứ\nnhất, dân tộc hình thành từ nhiều bộ tộc khác nhau trong một quốc gia. Quá trình hình\nthành dân tộc ở đây vừa là một quá trình thống nhất lãnh thổ, thống nhất thị trường; đồng\nthời, cũng là một quá trình đồng hóa các bộ tộc khác nhau thành một dân tộc duy nhất,\nmột quốc gia, dân tộc độc lập, như ở các nước Đức, Italia, Pháp, v.v.. Phương thức thứ\nhai, do điều kiện chế độ phong kiến chưa bị thủ tiêu, chủ nghĩa tư bản phát triển còn yếu,\ndân tộc được hình thành từ một bộ tộc. Ở đây không có quá trình đồng hóa các bộ tộc mà\nchỉ có quá trình thống nhất các lãnh thổ phong kiến thành lập một quốc gia gồm nhiều\ndân tộc, trong đó mỗi dân tộc hình thành từ một bộ tộc riêng, như trường hợp ở các nước\nNga, Áo, Hunggari, v.v..\nQuá trình hình thành, phát triển dân tộc diễn ra hết sức lâu dài, đa dạng và phức tạp.\nỞ các nước châu Âu, s",
+            "content_preview": "C. Mác và Ph. Ăngghen chỉ rõ, ở châu Âu dân tộc hình thành theo hai phương thức\nchủ yếu gắn liền với sự hình thành và phát triển của chủ nghĩa tư bản. Phương thức thứ\nnhất, dân tộc hình thành từ nhiều bộ tộc khác nhau trong một quốc gia. Quá trình hình\nthành dân tộc ở đây vừa là một quá trình thống nhất lãnh thổ, thống nhất thị trường; đồng\nthời, cũng là một quá trình đồng hóa các bộ tộc khác nhau thành một dân tộc duy nhất,\nmột quốc gia, dân tộc độc lập, như ở các nước Đức, Italia, Pháp, v.v.. "
+          },
+          {
+            "rank": 5,
+            "chunk_id": 1605,
+            "document_id": 2,
+            "document_title": "Giáo trình Triết học",
+            "page_number": 179,
+            "distance": 0.20827575774030105,
+            "content": "giai cấp, tương quan lực lượng giữa các giai cấp trong xã hội, bởi đặc điểm lịch sử, văn\nhóa xã hội, phong tục tập quán, tín ngưỡng, tôn giáo,... của mỗi quốc gia - dân tộc.\nTrong kiểu nhà nước chủ nô quý tộc thời đại chiếm hữu nô lệ ở phương Tây từng\ntồn tại nhiều hình thức nhà nước khác nhau như: nhà nước quân chủ chủ nô, nhà nước\ncộng hòa dân chủ chủ nô. Nhà nước thành bang Xpác ở Hy Lạp thời cổ đại là điển hình\ncủa hình thức nhà nước quân chủ chủ nô. Ở đó, quyền lực nhà nước nằm trong tay hoàng\nđế. Ngôi hoàng đế theo truyền thống cha truyền, con nối. Nhà nước thành bang Aten là\nđiển hình của hình thức nhà nước cộng hòa dân chủ chủ nô. Quyền lực nhà nước thuộc về\nHội đồng trưởng lão. Hội đồng này còn được gọi là Hội đồng chấp chính quan, do cư dân\nAten bầu ra theo hình thức bỏ phiếu tín nhiệm. Các thành viên trong Hội đồng trưởng lão\ncó thể bị bãi miễn nếu không còn đủ tín nhiệm.\nDù là nhà nước dân chủ chủ nô hay quân chủ chủ nô thì về bản chất đều là công cụ\nthống trị của giai cấp",
+            "content_preview": "giai cấp, tương quan lực lượng giữa các giai cấp trong xã hội, bởi đặc điểm lịch sử, văn\nhóa xã hội, phong tục tập quán, tín ngưỡng, tôn giáo,... của mỗi quốc gia - dân tộc.\nTrong kiểu nhà nước chủ nô quý tộc thời đại chiếm hữu nô lệ ở phương Tây từng\ntồn tại nhiều hình thức nhà nước khác nhau như: nhà nước quân chủ chủ nô, nhà nước\ncộng hòa dân chủ chủ nô. Nhà nước thành bang Xpác ở Hy Lạp thời cổ đại là điển hình\ncủa hình thức nhà nước quân chủ chủ nô. Ở đó, quyền lực nhà nước nằm trong tay ho"
+          }
+        ]
+      },
+      "generation": {
+        "found": false,
+        "answer": null,
+        "evidence": []
+      },
+      "verification": {
+        "found": false,
+        "answer": null,
+        "evidence": []
+      },
+      "passed": null,
+      "expected_page": null,
+      "expected_chunk_keywords": null
+    }
+  ]
+}

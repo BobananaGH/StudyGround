@@ -4,7 +4,7 @@ from django.db import transaction
 from core.models import DocumentChunk
 from core.utils.chunker import chunk_text
 from core.utils.document_parser import extract_pages
-from core.utils.embedder import embed_text
+from core.utils.embedder import embed_passage
 
 
 @transaction.atomic
@@ -37,7 +37,7 @@ def ingest_document(document, chunk_size=1000, overlap=200):
         )
 
         for content in text_chunks:
-            embedding = embed_text(content)
+            embedding = embed_passage(content)
 
             chunks.append(
                 DocumentChunk(

@@ -1,0 +1,172 @@
+{
+  "document_title": "Giáo trình Triết học",
+  "course_id": 2,
+  "course_code": "TRIET101",
+  "questions": [
+    {
+      "id": "Q001",
+      "category": "answerable",
+      "question": "Triết học là gì?",
+      "expected_found": true,
+      "expected_answer": "Triết học là hình thức đặc biệt và cao nhất của tri thức cũng như của ý thức xã hội; triết học Mác - Lênin cung cấp tri thức về thế giới như một chỉnh thể.",
+      "expected_document": "Giáo trình Triết học",
+      "expected_page": 197,
+      "expected_chunk_keywords": "hình thức đặc biệt và cao nhất của tri thức",
+      "verified_live": true,
+      "notes": "Already tested live — correctly returned evidence from chunk_id 1677 (page 197) and 1054 (page 45)."
+    },
+    {
+      "id": "Q002",
+      "category": "answerable",
+      "question": "Phép biện chứng đã trải qua những hình thức lịch sử nào?",
+      "expected_found": true,
+      "expected_answer": "Ba hình thức: phép biện chứng tự phát (thời cổ đại), phép biện chứng duy tâm, và phép biện chứng duy vật.",
+      "expected_document": "Giáo trình Triết học",
+      "expected_page": 23,
+      "expected_chunk_keywords": "phép biện chứng tự phát, phép biện chứng duy tâm và phép biện chứng duy vật"
+    },
+    {
+      "id": "Q003",
+      "category": "answerable",
+      "question": "Lý luận nhận thức có nguồn gốc từ đâu?",
+      "expected_found": true,
+      "expected_answer": "Từ tiếng Hy Lạp cổ, ghép từ 'Gnosis' (tri thức) và 'Logos' (lời nói, học thuyết).",
+      "expected_document": "Giáo trình Triết học",
+      "expected_page": 116,
+      "expected_chunk_keywords": "Gnosis"
+    },
+    {
+      "id": "Q004",
+      "category": "answerable",
+      "question": "Chủ nghĩa duy tâm là cơ sở lý luận của gì?",
+      "expected_found": true,
+      "expected_answer": "Chủ nghĩa duy tâm là cơ sở lý luận của tôn giáo và chủ nghĩa ngu dân.",
+      "expected_document": "Giáo trình Triết học",
+      "expected_page": 80,
+      "expected_chunk_keywords": "cơ sở lý luận của tôn giáo"
+    },
+    {
+      "id": "Q005",
+      "category": "answerable",
+      "question": "Bộ óc người có khoảng bao nhiêu tế bào thần kinh?",
+      "expected_found": true,
+      "expected_answer": "Khoảng 14 - 15 tỷ tế bào thần kinh.",
+      "expected_document": "Giáo trình Triết học",
+      "expected_page": 71,
+      "expected_chunk_keywords": "14 - 15 tỷ tế bào thần kinh"
+    },
+    {
+      "id": "Q006",
+      "category": "answerable",
+      "question": "\"Chất\" trong triết học được định nghĩa như thế nào?",
+      "expected_found": true,
+      "expected_answer": "Chất là khái niệm chỉ tính quy định khách quan vốn có của sự vật, hiện tượng; là sự thống nhất hữu cơ của các thuộc tính, yếu tố tạo nên sự vật, hiện tượng.",
+      "expected_document": "Giáo trình Triết học",
+      "expected_page": 108,
+      "expected_chunk_keywords": "tính quy định khách quan vốn có"
+    },
+    {
+      "id": "Q007",
+      "category": "answerable",
+      "question": "Năm 1848, C. Mác và Ph. Ăngghen viết tác phẩm gì?",
+      "expected_found": true,
+      "expected_answer": "Tuyên ngôn của Đảng Cộng sản.",
+      "expected_document": "Giáo trình Triết học",
+      "expected_page": 33,
+      "expected_chunk_keywords": "Tuyên ngôn của Đảng Cộng sản"
+    },
+    {
+      "id": "Q008",
+      "category": "answerable",
+      "question": "Toàn cầu hóa là gì theo tài liệu?",
+      "expected_found": true,
+      "expected_answer": "Là quá trình tăng lên mạnh mẽ các mối liên hệ, sự ảnh hưởng, tác động, phụ thuộc lẫn nhau giữa các khu vực, quốc gia, dân tộc trên thế giới.",
+      "expected_document": "Giáo trình Triết học",
+      "expected_page": 52,
+      "expected_chunk_keywords": "tăng lên mạnh mẽ các mối liên hệ"
+    },
+    {
+      "id": "Q009",
+      "category": "answerable",
+      "question": "V.I. Lênin đã phân tích nguyên nhân thắng lợi của sự kiện lịch sử nào trong tác phẩm \"Những nhiệm vụ trước mắt của chính quyền Xôviết\"?",
+      "expected_found": true,
+      "expected_answer": "Cách mạng Tháng Mười năm 1917.",
+      "expected_document": "Giáo trình Triết học",
+      "expected_page": 42,
+      "expected_chunk_keywords": "Cách mạng Tháng Mười năm 1917"
+    },
+    {
+      "id": "Q010",
+      "category": "answerable",
+      "question": "Sự tha hóa lao động trong xã hội hiện đại thể hiện qua điều gì?",
+      "expected_found": true,
+      "expected_answer": "Người lao động ngày càng bị bần cùng hóa, bị máy móc thay thế, trở thành một bộ phận của máy móc và ngày càng phụ thuộc vào nó.",
+      "expected_document": "Giáo trình Triết học",
+      "expected_page": 206,
+      "expected_chunk_keywords": "người công nhân trở thành một bộ phận của máy móc"
+    },
+    {
+      "id": "Q011",
+      "category": "not_answerable",
+      "question": "Who won the FIFA World Cup in 2022?",
+      "expected_found": false,
+      "expected_answer": null,
+      "notes": "Already tested live — correctly returned 'not enough information', evidence: []. Off-topic, easy case.",
+      "verified_live": true
+    },
+    {
+      "id": "Q012",
+      "category": "not_answerable",
+      "question": "Định lý Pythagoras được phát biểu như thế nào?",
+      "expected_found": false,
+      "expected_answer": null,
+      "notes": "Off-topic (mathematics), easy case."
+    },
+    {
+      "id": "Q013",
+      "category": "not_answerable",
+      "question": "Ai là tác giả của thuyết tương đối hẹp và thuyết tương đối rộng?",
+      "expected_found": false,
+      "expected_answer": null,
+      "notes": "Off-topic (physics/Einstein), easy case."
+    },
+    {
+      "id": "Q014",
+      "category": "not_answerable",
+      "question": "Trường phái triết học hiện sinh (existentialism) của Jean-Paul Sartre có những luận điểm chính nào?",
+      "expected_found": false,
+      "expected_answer": null,
+      "notes": "HARD case — topically close (still philosophy) but this textbook is specifically Mác-Lênin focused, not a general philosophy survey. This is the more meaningful hallucination-resistance test: a topically adjacent but absent topic, not just an obviously off-topic question like Q011/Q012/Q013."
+    },
+    {
+      "id": "Q015",
+      "category": "not_answerable",
+      "question": "Thủ đô của nước Pháp là gì?",
+      "expected_found": false,
+      "expected_answer": null,
+      "notes": "Off-topic (geography trivia), easy/control case."
+    }
+  ],
+  "pending_categories": {
+    "partially_answerable": {
+      "target_count": 3,
+      "status": "needs_construction",
+      "reason": "Requires identifying a specific chunk where an enumerated list is truncated at a chunk boundary — i.e. the source document mentions N items but only some appear in the specific chunk(s) that retrieval would actually return. This can't be guessed reliably from sampled chunks alone; needs either (a) reading full chunk boundaries around a known enumerated list, or (b) running a live query and inspecting exactly which chunks come back.",
+      "candidate": {
+        "question": "Quan hệ sản xuất bao gồm những mặt nào?",
+        "why_promising": "Chunk 1417 (page 135) opens mid-sentence ('...uản lý sản xuất là quan hệ...'), meaning the prior chunk likely covers 'quan hệ sở hữu tư liệu sản xuất' (ownership) as a first component not present in chunk 1417 itself. If retrieval only surfaces chunk 1417, the model would only have 'organization/management' and 'distribution' relations available — not ownership — which is a real test of whether it correctly scopes its answer to available evidence rather than inventing or omitting silently.",
+        "next_step": "Run this question live against the real endpoint, inspect which chunk_ids come back, and confirm whether ownership relations are actually missing from the retrieved set before finalizing expected_behavior."
+      }
+    },
+    "cross_document": {
+      "target_count": 2,
+      "status": "blocked",
+      "reason": "Only one document (Giáo trình Triết học, document_id=2) is currently uploaded. Cross-document questions by definition need the answer to live in a *different* document than the most obvious/first one retrieved, which requires at least a second uploaded document in the same course (or a second course scoped correctly) to test against.",
+      "options": [
+        "Upload a second real document into the same course and write 2 questions whose answers pull from each source respectively.",
+        "Drop this category for eval v1 and redistribute its 2 slots into answerable/not_answerable (18 total becomes clean, or add 2 more answerable to reach 20 without cross-document).",
+        "If a second document exists elsewhere in the project (e.g. an earlier 'AI Lecture' test fixture), upload that alongside this one and use it for the 2 cross-document questions."
+      ]
+    }
+  }
+}
