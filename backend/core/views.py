@@ -333,6 +333,9 @@ class ConversationMessagesView(APIView):
         chunks = retrieve_chunks(
             conversation.course,
             content,
+            limit=40,
+            fusion_window=1,
+            max_chunks=15,
         )
 
         # No relevant chunks found

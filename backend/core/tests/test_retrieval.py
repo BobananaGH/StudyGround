@@ -131,11 +131,12 @@ class RetrievalTests(TestCase):
             1,
         )
 
-    def test_limit_is_respected(self):
+    def test_limit_controls_candidate_retrieval(self):
         results = retrieve_chunks(
             self.ai,
             "machine learning artificial intelligence",
             limit=1,
+            max_chunks=1,
         )
 
         self.assertEqual(len(results), 1)
