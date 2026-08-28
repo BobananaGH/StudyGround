@@ -27,7 +27,7 @@ function formatErrorMessage(payload) {
 
 export function Login() {
   const navigate = useNavigate()
-  const { theme, setTheme, resolvedTheme } = useTheme()
+  const { theme, setTheme } = useTheme()
   const { login } = useAuth()
 
   const [email, setEmail] = useState('')
@@ -35,7 +35,6 @@ export function Login() {
   const [rememberMe, setRememberMe] = useState(true)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const [showPassword, setShowPassword] = useState(false)
 
   const canSubmit = useMemo(
     () => email.trim().length > 0 && password.length > 0 && !loading,
@@ -103,16 +102,14 @@ export function Login() {
             autoComplete="email"
           />
 
-          <div className={styles.passwordRow}>
-            <Input
-              label="Password"
-              type={showPassword ? 'text' : 'password'}
-              placeholder="Enter your password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              autoComplete="current-password"
-            />
-         </div>
+          <Input
+            label="Password"
+            type="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            autoComplete="current-password"
+          />
 
           <div className={styles.metaRow}>
             <label className={styles.checkbox}>
@@ -138,7 +135,7 @@ export function Login() {
        </p>
 
         <div className={styles.loadingHint}>
-          {loading ? <><Spinner size="sm" label="Signing in" /> <span>StudyAI is thinking...</span></> : null}
+          {loading ? <><Spinner size="sm" label="Signing in" /> <span>Signing in...</span></> : null}
        </div>
      </section>
    </div>

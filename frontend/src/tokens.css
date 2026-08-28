@@ -43,7 +43,6 @@
   --text-sm: 0.875rem;  /* 14px */
   --text-base: 1rem;    /* 16px */
   --text-lg: 1.125rem;  /* 18px */
-  --text-xl: 1.25rem;  /* 20px */
   --text-2xl: 1.5rem;  /* 24px */
   --text-3xl: 2rem;    /* 32px */
 
@@ -57,7 +56,20 @@
   --sidebar-width-collapsed: 72px;
   --sidebar-width-mobile: 280px;
   --header-height: 64px;
-  --content-max-width: 1120px;
+  --content-max-width: 100%;
+  --surface: var(--bg);
+  --surface-muted: var(--code-bg);
+  --hover-bg: var(--accent-bg);
+  --active-bg: var(--accent-bg);
+  --active-color: var(--accent);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-sm: rgba(0,0,0,0.1) 0 1px 3px;
+  --shadow-md: rgba(0,0,0,0.15) 0 4px 6px;
+  --shadow-lg: rgba(0,0,0,0.2) 0 10px 15px;
+  --transition-fast: 160ms ease;
+  --transition-base: 240ms ease;
   --z-header: 20;
   --z-sidebar: 30;
   --z-drawer-backdrop: 40;
