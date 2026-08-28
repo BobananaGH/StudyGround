@@ -1,0 +1,58 @@
+/* src/styles/themes.css */
+
+:root,
+:root[data-theme="light"] {
+  --color-primary: #aa3bff;
+  --color-primary-hover: #8c2dd3;
+  --color-background: #ffffff;
+  --color-surface: #f8f9fa;
+  --color-surface-secondary: #f1f3f5;
+  --color-text-primary: #08060d;
+  --color-text-secondary: #6b6375;
+  --color-text-muted: #9ca3af;
+  --color-border: #e5e4e7;
+  --color-success: #38a169;
+  --color-warning: #ff9f1c;
+  --color-error: #ff4d6f;
+  --color-focus-ring: rgba(170, 59, 255, 0.5);
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --color-primary: #c084fc;
+  --color-primary-hover: #a855f7;
+  --color-background: #16171d;
+  --color-surface: #1f2028;
+  --color-surface-secondary: #25272f;
+  --color-text-primary: #f3f4f6;
+  --color-text-secondary: #9ca3af;
+  --color-text-muted: #6b7280;
+  --color-border: #2e303a;
+  --color-success: #48bb78;
+  --color-warning: #ff9500;
+  --color-error: #f87171;
+  --color-focus-ring: rgba(192, 132, 252, 0.5);
+  color-scheme: dark;
+}
+
+:root[data-theme="system"] {
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="system"] {
+    --color-primary: #c084fc;
+    --color-primary-hover: #a855f7;
+    --color-background: #16171d;
+    --color-surface: #1f2028;
+    --color-surface-secondary: #25272f;
+    --color-text-primary: #f3f4f6;
+    --color-text-secondary: #9ca3af;
+    --color-text-muted: #6b7280;
+    --color-border: #2e303a;
+    --color-success: #48bb78;
+    --color-warning: #ff9500;
+    --color-error: #f87171;
+    --color-focus-ring: rgba(192, 132, 252, 0.5);
+  }
+}

@@ -1,0 +1,27 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  transition: background-color var(--duration-150) ease, border-color var(--duration-150) ease;
+}
+
+.button:hover:not(:disabled) {
+  background: var(--color-surface-secondary);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--color-text-primary);
+}
+
+.sm {
+  width: 36px;
+  height: 36px;
+}
+
+.md {
+  width: 40px;
+  height: 40px;
+}
