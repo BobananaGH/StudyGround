@@ -1,0 +1,123 @@
+.userMenu {
+  position: relative;
+  min-width: 0;
+}
+
+.trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  padding: var(--space-2);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color var(--duration-150) ease, border-color var(--duration-150) ease;
+}
+
+.trigger:hover,
+.trigger[aria-expanded="true"] {
+  background: var(--color-surface-secondary);
+  border-color: var(--color-border);
+}
+
+.compact {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  justify-content: center;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--color-primary), #6c4cff);
+  color: #fff;
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.identity {
+  display: grid;
+  min-width: 0;
+}
+
+.name {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.email {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.menuTop,
+.menuBottom {
+  position: absolute;
+  right: 0;
+  z-index: var(--z-menu);
+  min-width: 180px;
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-lg);
+}
+
+.menuTop {
+  bottom: calc(100% + var(--space-2));
+}
+
+.menuBottom {
+  top: calc(100% + var(--space-2));
+}
+
+.menu button {
+  width: 100%;
+  min-height: 36px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text-primary);
+  text-align: left;
+  padding: 0 var(--space-3);
+  cursor: pointer;
+  font-size: var(--text-sm);
+}
+
+.menu button:hover,
+.menu button:focus-visible {
+  background: var(--color-surface-secondary);
+}
+
+.divider {
+  height: 1px;
+  margin: var(--space-2) 0;
+  background: var(--color-border);
+}
+
+.danger {
+  color: var(--color-error) !important;
+}
+
+@media (min-width: 1024px) {
+  .compact + .menu {
+    top: calc(100% + var(--space-2));
+    bottom: auto;
+  }
+}

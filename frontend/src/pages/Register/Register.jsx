@@ -109,7 +109,7 @@ function mapRegisterErrors(payload) {
 
 export function Register() {
   const navigate = useNavigate()
-  const { theme, setTheme, resolvedTheme } = useTheme()
+  const { theme, setTheme } = useTheme()
   const { register } = useAuth()
 
   const [formData, setFormData] = useState({
