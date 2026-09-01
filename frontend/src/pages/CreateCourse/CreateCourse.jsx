@@ -1,11 +1,16 @@
 // frontend/src/pages/CreateCourse/CreateCourse.jsx
 
 import { useState } from "react";
+
 import { useNavigate } from "react-router-dom";
 
 import Button from "../../components/ui/Button/Button.jsx";
+
 import { post } from "../../services/api/client.js";
+
 import { API_ENDPOINTS } from "../../services/api/endpoints.js";
+
+import { APP_EVENTS, emitAppEvent } from "../../services/appEvents.js";
 
 import styles from "./CreateCourse.module.css";
 
@@ -35,6 +40,9 @@ export function CreateCourse() {
         code: code.trim(),
         description: description.trim(),
       });
+
+      // Notify Sidebar and Dashboard that the course list changed.
+      emitAppEvent(APP_EVENTS.COURSES_CHANGED);
 
       navigate(`/courses/${course.id}`);
     } catch (error) {

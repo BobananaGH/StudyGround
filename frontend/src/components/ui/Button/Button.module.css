@@ -38,6 +38,26 @@
   background: var(--color-primary-hover);
 }
 
+/* =========================
+   DANGER
+   ========================= */
+
+.danger {
+  background: var(--color-error);
+  color: #fff;
+  border-color: var(--color-error);
+  box-shadow: var(--shadow-sm);
+}
+
+.danger:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--color-error) 85%, #000);
+  border-color: color-mix(in srgb, var(--color-error) 85%, #000);
+}
+
+.danger:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
 .secondary {
   background: var(--color-surface);
   color: var(--color-text-primary);

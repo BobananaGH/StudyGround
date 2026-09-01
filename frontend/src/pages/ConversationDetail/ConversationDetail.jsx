@@ -1,15 +1,20 @@
 // frontend/src/pages/ConversationDetail/ConversationDetail.jsx
+
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-import { get, post } from "../../services/api/client.js";
+import { del, get, post } from "../../services/api/client.js";
 import { API_ENDPOINTS } from "../../services/api/endpoints.js";
-import Button from "../../components/ui/Button/Button.jsx";
 
+import { APP_EVENTS, emitAppEvent } from "../../services/appEvents.js";
+
+import Button from "../../components/ui/Button/Button.jsx";
+import ConfirmDialog from "../../components/ui/ConfirmDialog/ConfirmDialog.jsx";
 import styles from "./ConversationDetail.module.css";
 
 export function ConversationDetail() {
   const { conversationId } = useParams();
+  const navigate = useNavigate();
 
   const [conversation, setConversation] = useState(null);
   const [messages, setMessages] = useState([]);
@@ -17,8 +22,14 @@ export function ConversationDetail() {
 
   const [loading, setLoading] = useState(true);
   const [sending, setSending] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   const [error, setError] = useState("");
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+
+  // =========================
+  // LOAD CONVERSATION
+  // =========================
 
   async function loadConversation() {
     try {
@@ -44,12 +55,16 @@ export function ConversationDetail() {
     loadConversation();
   }, [conversationId]);
 
+  // =========================
+  // SEND MESSAGE
+  // =========================
+
   async function handleSubmit(event) {
     event.preventDefault();
 
     const trimmedMessage = message.trim();
 
-    if (!trimmedMessage || sending) {
+    if (!trimmedMessage || sending || deleting) {
       return;
     }
 
@@ -88,9 +103,56 @@ export function ConversationDetail() {
     }
   }
 
+  // =========================
+  // DELETE CONVERSATION
+  // =========================
+
+  async function handleDelete() {
+    if (deleting) {
+      return;
+    }
+
+    try {
+      setDeleting(true);
+      setError("");
+
+      await del(`${API_ENDPOINTS.CONVERSATIONS}${conversationId}/`);
+
+      emitAppEvent(APP_EVENTS.CONVERSATIONS_CHANGED);
+
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Failed to delete conversation:", error);
+
+      setError(error.message || "Unable to delete conversation.");
+      setDeleting(false);
+      setShowDeleteConfirm(false);
+    }
+  }
+
+  // =========================
+  // NAVIGATION
+  // =========================
+
+  function handleBackToDashboard() {
+    if (deleting || sending) {
+      return;
+    }
+
+    navigate("/dashboard");
+  }
+
+  // =========================
+  // SUGGESTIONS
+  // =========================
+
   function handleSuggestion(text) {
     setMessage(text);
   }
+
+  // =========================
+  // KEYBOARD
+  // =========================
 
   function handleKeyDown(event) {
     if (event.key === "Enter" && !event.shiftKey) {
@@ -98,6 +160,10 @@ export function ConversationDetail() {
       event.currentTarget.form?.requestSubmit();
     }
   }
+
+  // =========================
+  // LOADING
+  // =========================
 
   if (loading) {
     return (
@@ -109,6 +175,10 @@ export function ConversationDetail() {
     );
   }
 
+  // =========================
+  // ERROR
+  // =========================
+
   if (error && !conversation) {
     return (
       <section className={styles.conversationDetail}>
@@ -118,10 +188,15 @@ export function ConversationDetail() {
             <span>{error}</span>
           </p>
 
-          <Link to="/dashboard" className={styles.backLink}>
+          <Button
+            type="button"
+            variant="primary"
+            size="sm"
+            onClick={handleBackToDashboard}
+          >
             <i className="fa-solid fa-arrow-left" aria-hidden="true" />
             <span>Back to Dashboard</span>
-          </Link>
+          </Button>
         </div>
       </section>
     );
@@ -146,11 +221,53 @@ export function ConversationDetail() {
           </p>
         </div>
 
-        <Link to="/dashboard" className={styles.backLink}>
-          <i className="fa-solid fa-arrow-left" aria-hidden="true" />
-          <span>Back to Dashboard</span>
-        </Link>
+        <div className={styles.headerActions}>
+          {/* =========================
+              DELETE BUTTON
+              ========================= */}
+
+          <button
+            type="button"
+            className={styles.deleteConversation}
+            onClick={() => setShowDeleteConfirm(true)}
+            disabled={deleting || sending}
+            aria-label="Delete conversation"
+            title="Delete conversation"
+          >
+            <i className="fa-solid fa-trash" aria-hidden="true" />
+          </button>
+
+          {/* =========================
+              BACK TO DASHBOARD
+              ========================= */}
+
+          <Button
+            type="button"
+            variant="primary"
+            size="sm"
+            onClick={handleBackToDashboard}
+            disabled={deleting || sending}
+          >
+            <i className="fa-solid fa-house" aria-hidden="true" />
+          </Button>
+        </div>
       </header>
+
+      {/* =========================
+          DELETE CONFIRMATION
+          ========================= */}
+
+      <ConfirmDialog
+        open={showDeleteConfirm}
+        title="Delete this study session?"
+        description="This will permanently delete the conversation and all of its messages."
+        confirmLabel="Delete session"
+        cancelLabel="Cancel"
+        onConfirm={handleDelete}
+        onCancel={() => setShowDeleteConfirm(false)}
+        loading={deleting}
+        icon="fa-trash"
+      />
 
       {/* =========================
           CHAT
@@ -175,6 +292,10 @@ export function ConversationDetail() {
                 help you find the answer.
               </p>
 
+              {/* =========================
+                  SUGGESTIONS
+                  ========================= */}
+
               <div className={styles.suggestions}>
                 <button
                   type="button"
@@ -182,10 +303,9 @@ export function ConversationDetail() {
                   onClick={() =>
                     handleSuggestion("Can you summarize the main topics?")
                   }
-                  disabled={sending}
+                  disabled={sending || deleting}
                 >
                   <i className="fa-solid fa-list" aria-hidden="true" />
-
                   <span>Summarize the main topics</span>
                 </button>
 
@@ -195,10 +315,9 @@ export function ConversationDetail() {
                   onClick={() =>
                     handleSuggestion("Explain the most important concept.")
                   }
-                  disabled={sending}
+                  disabled={sending || deleting}
                 >
                   <i className="fa-solid fa-lightbulb" aria-hidden="true" />
-
                   <span>Explain an important concept</span>
                 </button>
 
@@ -208,13 +327,12 @@ export function ConversationDetail() {
                   onClick={() =>
                     handleSuggestion("What should I focus on for an exam?")
                   }
-                  disabled={sending}
+                  disabled={sending || deleting}
                 >
                   <i
                     className="fa-solid fa-graduation-cap"
                     aria-hidden="true"
                   />
-
                   <span>Help me prepare for an exam</span>
                 </button>
               </div>
@@ -230,6 +348,10 @@ export function ConversationDetail() {
                       : styles.assistantMessage
                   }`}
                 >
+                  {/* =========================
+                      MESSAGE ICON
+                      ========================= */}
+
                   <div className={styles.messageIcon} aria-hidden="true">
                     <i
                       className={
@@ -239,6 +361,10 @@ export function ConversationDetail() {
                       }
                     />
                   </div>
+
+                  {/* =========================
+                      MESSAGE CONTENT
+                      ========================= */}
 
                   <div className={styles.messageContent}>
                     <span className={styles.messageRole}>
@@ -267,7 +393,6 @@ export function ConversationDetail() {
 
                             <span>
                               {source.document}
-
                               {source.page ? ` · Page ${source.page}` : ""}
                             </span>
                           </div>
@@ -316,7 +441,6 @@ export function ConversationDetail() {
                 className="fa-solid fa-circle-exclamation"
                 aria-hidden="true"
               />
-
               <span>{error}</span>
             </p>
           )}
@@ -328,7 +452,7 @@ export function ConversationDetail() {
               onKeyDown={handleKeyDown}
               placeholder="Ask a question about your study materials..."
               rows={1}
-              disabled={sending}
+              disabled={sending || deleting}
               aria-label="Message"
             />
 
@@ -337,13 +461,11 @@ export function ConversationDetail() {
               variant="primary"
               size="md"
               loading={sending}
-              disabled={!message.trim() || sending}
+              disabled={!message.trim() || sending || deleting}
             >
               {!sending && (
                 <i className="fa-solid fa-paper-plane" aria-hidden="true" />
               )}
-
-              <span>Send</span>
             </Button>
           </form>
 

@@ -61,6 +61,7 @@ class CourseListView(APIView):
 
 class CourseDetailView(APIView):
     permission_classes = [IsAuthenticated]
+
     def get_course(self, course_id):
         try:
             return Course.objects.get(id=course_id)
@@ -87,6 +88,21 @@ class CourseDetailView(APIView):
                     for alias in course.aliases.all()
                 ],
             }
+        )
+
+    def delete(self, request, course_id):
+        course = self.get_course(course_id)
+
+        if course is None:
+            return Response(
+                {"error": "Course not found."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+        course.delete()
+
+        return Response(
+            status=status.HTTP_204_NO_CONTENT
         )
 
 
@@ -171,6 +187,23 @@ class DocumentUploadView(APIView):
             status=status.HTTP_201_CREATED,
         )
 
+class DocumentDeleteView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request, document_id):
+        try:
+            document = Document.objects.get(id=document_id)
+        except Document.DoesNotExist:
+            return Response(
+                {"error": "Document not found."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+        document.delete()
+
+        return Response(
+            status=status.HTTP_204_NO_CONTENT
+        )
 
 class ConversationListCreateView(APIView):
     permission_classes = [IsAuthenticated]
@@ -223,13 +256,23 @@ class ConversationListCreateView(APIView):
 
 class ConversationDetailView(APIView):
     permission_classes = [IsAuthenticated]
-    def get(self, request, conversation_id):
+
+    def get_conversation(self, request, conversation_id):
         try:
-            conversation = Conversation.objects.get(
+            return Conversation.objects.get(
                 id=conversation_id,
                 user=request.user,
             )
         except Conversation.DoesNotExist:
+            return None
+
+    def get(self, request, conversation_id):
+        conversation = self.get_conversation(
+            request,
+            conversation_id,
+        )
+
+        if conversation is None:
             return Response(
                 {"error": "Conversation not found."},
                 status=status.HTTP_404_NOT_FOUND,
@@ -242,6 +285,22 @@ class ConversationDetailView(APIView):
                 "course_id": conversation.course_id,
             }
         )
+
+    def delete(self, request, conversation_id):
+        conversation = self.get_conversation(
+            request,
+            conversation_id,
+        )
+
+        if conversation is None:
+            return Response(
+                {"error": "Conversation not found."},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+        conversation.delete()
+
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class ConversationMessagesView(APIView):
@@ -380,6 +439,17 @@ class ConversationMessagesView(APIView):
             content,
             chunks,
         )
+
+        if result.get("error") == "model_unavailable":
+            return Response(
+                {
+                    "error": (
+                        "The AI service is temporarily unavailable. "
+                        "Please try again in a moment."
+                    )
+                },
+                status=status.HTTP_503_SERVICE_UNAVAILABLE,
+            )
 
         # Verify Gemini's evidence against the actual retrieved chunks
         verified_result = verify_answer(

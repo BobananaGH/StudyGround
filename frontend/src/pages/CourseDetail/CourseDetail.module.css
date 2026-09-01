@@ -1,3 +1,5 @@
+/* frontend/src/pages/CourseDetail/CourseDetail.module.css */
+
 /* =========================
    COURSE DETAIL PAGE
    ========================= */
@@ -22,7 +24,6 @@
   justify-content: space-between;
   gap: var(--space-6);
   padding: var(--space-6) var(--space-8);
-
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -36,35 +37,41 @@
 
 .eyebrow {
   margin: 0 0 var(--space-2);
-
   color: var(--color-primary);
   font-size: var(--text-xs);
   font-weight: 600;
   line-height: 1.4;
-
   text-transform: uppercase;
   letter-spacing: 0.12em;
 }
 
 .title {
   margin: 0;
-
   color: var(--color-text-primary);
   font-size: var(--text-3xl);
   line-height: 1.2;
   font-weight: 700;
   letter-spacing: -0.02em;
-
   overflow-wrap: anywhere;
 }
 
 .subtitle {
   max-width: 65ch;
   margin: var(--space-3) 0 0;
-
   color: var(--color-text-secondary);
   font-size: var(--text-base);
   line-height: 1.6;
+}
+
+/* =========================
+   HEADER ACTIONS
+   ========================= */
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
 }
 
 /* =========================
@@ -75,22 +82,16 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-
   flex-shrink: 0;
-
   padding: var(--space-2) var(--space-3);
-
   color: var(--color-text-secondary);
   font-size: var(--text-sm);
   font-weight: 600;
-
   border-radius: var(--radius-md);
-
   text-decoration: none;
-
   transition:
-    color 0.15s ease,
-    background-color 0.15s ease;
+    color var(--duration-150) ease,
+    background-color var(--duration-150) ease;
 }
 
 .backLink:hover {
@@ -111,6 +112,74 @@
 }
 
 /* =========================
+   DELETE BUTTONS
+   ========================= */
+
+/*
+ * Course delete and study-material delete
+ * intentionally use the exact same visual style.
+ */
+
+.deleteCourse,
+.deleteDocument {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: var(--radius-sm);
+
+  background: transparent;
+  color: var(--color-text-muted);
+
+  font-size: var(--text-sm);
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background-color var(--duration-150) ease,
+    color var(--duration-150) ease,
+    opacity var(--duration-150) ease;
+}
+
+.deleteCourse:hover:not(:disabled),
+.deleteDocument:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--color-error) 10%, transparent);
+
+  color: var(--color-error);
+}
+
+.deleteCourse:focus,
+.deleteCourse:focus-visible,
+.deleteDocument:focus,
+.deleteDocument:focus-visible {
+  outline: none;
+}
+
+.deleteCourse:focus-visible,
+.deleteDocument:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-focus-ring);
+}
+
+.deleteCourse:disabled,
+.deleteDocument:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.deleteCourse i,
+.deleteDocument i {
+  line-height: 1;
+}
+
+/* =========================
    SECTIONS
    ========================= */
 
@@ -123,7 +192,6 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
-
   margin-bottom: var(--space-5);
 }
 
@@ -133,7 +201,6 @@
 
 .sectionTitle {
   margin: 0;
-
   color: var(--color-text-primary);
   font-size: var(--text-xl);
   line-height: 1.3;
@@ -142,9 +209,7 @@
 
 .documentCount {
   display: block;
-
   margin-top: var(--space-1);
-
   color: var(--color-text-muted);
   font-size: var(--text-sm);
   line-height: 1.4;
@@ -184,11 +249,13 @@
   gap: var(--space-4);
 
   min-width: 0;
+
   padding: var(--space-5);
 
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
+
   box-shadow: var(--shadow-sm);
 
   transition:
@@ -201,6 +268,7 @@
   transform: translateY(-2px);
 
   border-color: rgba(170, 59, 255, 0.25);
+
   box-shadow: var(--shadow-md);
 }
 
@@ -218,10 +286,12 @@
   flex: 0 0 40px;
 
   color: var(--color-primary);
+
   font-size: 1.2rem;
   line-height: 1;
 
   border-radius: var(--radius-sm);
+
   background: rgba(170, 59, 255, 0.08);
 }
 
@@ -242,6 +312,7 @@
   margin: 0 0 var(--space-1);
 
   color: var(--color-text-primary);
+
   font-size: var(--text-base);
   line-height: 1.4;
   font-weight: 600;
@@ -255,6 +326,7 @@
   margin: 0;
 
   color: var(--color-text-muted);
+
   font-size: var(--text-sm);
   line-height: 1.4;
 }
@@ -276,6 +348,7 @@
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
+
   box-shadow: var(--shadow-sm);
 }
 
@@ -289,10 +362,12 @@
   margin-bottom: var(--space-3);
 
   color: var(--color-primary);
+
   font-size: 1.2rem;
   line-height: 1;
 
   border-radius: var(--radius-sm);
+
   background: rgba(170, 59, 255, 0.08);
 }
 
@@ -304,6 +379,7 @@
   margin: 0;
 
   color: var(--color-text-primary);
+
   font-size: var(--text-base);
   line-height: 1.4;
   font-weight: 600;
@@ -311,9 +387,11 @@
 
 .emptyHint {
   max-width: 50ch;
+
   margin: var(--space-2) 0 0;
 
   color: var(--color-text-muted);
+
   font-size: var(--text-sm);
   line-height: 1.5;
 }
@@ -328,9 +406,11 @@
 
 .uploadSubtitle {
   max-width: 65ch;
+
   margin: var(--space-2) 0 0;
 
   color: var(--color-text-secondary);
+
   font-size: var(--text-sm);
   line-height: 1.6;
 }
@@ -348,6 +428,7 @@
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
+
   box-shadow: var(--shadow-sm);
 }
 
@@ -358,6 +439,7 @@
 
 .formGroup > label:first-child {
   color: var(--color-text-primary);
+
   font-size: var(--text-sm);
   line-height: 1.4;
   font-weight: 600;
@@ -421,10 +503,10 @@
 }
 
 /*
-   Hide native browser file input.
-   The label itself is the visible
-   file-selection control.
-*/
+ * Hide native browser file input.
+ * The label itself is the visible
+ * file-selection control.
+ */
 
 .filePicker input[type="file"] {
   position: absolute;
@@ -436,6 +518,7 @@
   margin: -1px;
 
   overflow: hidden;
+
   clip: rect(0, 0, 0, 0);
 
   white-space: nowrap;
@@ -457,10 +540,12 @@
   flex: 0 0 40px;
 
   color: var(--color-primary);
+
   font-size: 1.1rem;
   line-height: 1;
 
   border-radius: var(--radius-sm);
+
   background: rgba(170, 59, 255, 0.08);
 }
 
@@ -484,6 +569,7 @@
   min-width: 0;
 
   color: var(--color-text-primary);
+
   font-size: var(--text-sm);
   line-height: 1.4;
   font-weight: 600;
@@ -495,6 +581,7 @@
 
 .filePickerHint {
   color: var(--color-text-muted);
+
   font-size: var(--text-sm);
   line-height: 1.4;
 }
@@ -505,6 +592,7 @@
 
 .inputHint {
   color: var(--color-text-muted);
+
   font-size: var(--text-xs);
   line-height: 1.4;
 }
@@ -521,6 +609,7 @@
   padding: var(--space-3);
 
   color: var(--color-text-primary);
+
   background: var(--color-background);
 
   border: 1px solid var(--color-border);
@@ -567,12 +656,15 @@
   gap: var(--space-2);
 
   margin: 0;
+
   padding: var(--space-3) var(--space-4);
 
-  color: #dc2626;
-  background: rgba(220, 38, 38, 0.06);
+  color: var(--color-error);
 
-  border: 1px solid rgba(220, 38, 38, 0.25);
+  background: color-mix(in srgb, var(--color-error) 6%, transparent);
+
+  border: 1px solid color-mix(in srgb, var(--color-error) 25%, transparent);
+
   border-radius: var(--radius-md);
 
   font-size: var(--text-sm);
@@ -600,6 +692,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   gap: var(--space-2);
 }
 
@@ -619,10 +712,12 @@
   min-height: 240px;
 
   color: var(--color-text-muted);
+
   background: var(--color-surface);
 
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
+
   box-shadow: var(--shadow-sm);
 }
 
@@ -648,6 +743,7 @@
 
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
+
   box-shadow: var(--shadow-sm);
 }
 
@@ -663,9 +759,15 @@
 
   .header {
     flex-direction: column;
+
     gap: var(--space-4);
 
     padding: var(--space-5) var(--space-4);
+  }
+
+  .headerActions {
+    width: 100%;
+    justify-content: space-between;
   }
 
   .title {
@@ -697,6 +799,7 @@
   .documentIcon {
     width: 36px;
     height: 36px;
+
     flex-basis: 36px;
 
     font-size: 1.1rem;
@@ -714,6 +817,7 @@
   .filePickerIcon {
     width: 36px;
     height: 36px;
+
     flex-basis: 36px;
   }
 

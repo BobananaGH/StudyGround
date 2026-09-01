@@ -1,29 +1,29 @@
-import styles from './Button.module.css'
-import { Spinner } from '../Spinner/Spinner.jsx'
+import styles from "./Button.module.css";
+import { Spinner } from "../Spinner/Spinner.jsx";
 
 export function Button({
   children,
-  variant = 'primary',
-  size = 'md',
+  variant = "primary",
+  size = "md",
   loading = false,
   disabled = false,
   fullWidth = false,
-  type = 'button',
-  className = '',
+  type = "button",
+  className = "",
   onClick,
   ...props
 }) {
-  const isDisabled = disabled || loading
+  const isDisabled = disabled || loading;
   const classes = [
     styles.button,
     styles[variant],
     styles[size],
-    fullWidth ? styles.fullWidth : '',
-    loading ? styles.loading : '',
+    fullWidth ? styles.fullWidth : "",
+    loading ? styles.loading : "",
     className,
   ]
     .filter(Boolean)
-    .join(' ')
+    .join(" ");
 
   return (
     <button
@@ -39,9 +39,9 @@ export function Button({
           <Spinner size="sm" />
         </span>
       )}
-      <span className={loading ? styles.labelHidden : ''}>{children}</span>
+      <span className={loading ? styles.labelHidden : ""}>{children}</span>
     </button>
-  )
+  );
 }
 
-export default Button
+export default Button;

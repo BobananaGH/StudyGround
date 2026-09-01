@@ -16,6 +16,15 @@ def _empty_result():
     }
 
 
+def _model_unavailable_result():
+    return {
+        "found": False,
+        "answer": None,
+        "evidence": [],
+        "error": "model_unavailable",
+    }
+
+
 def generate_answer(query, chunks):
     """
     Generate a grounded, evidence-cited answer using Gemini.
@@ -25,6 +34,14 @@ def generate_answer(query, chunks):
             "found": bool,
             "answer": str | None,
             "evidence": list[dict]
+        }
+
+    Gemini service failures return:
+        {
+            "found": False,
+            "answer": None,
+            "evidence": [],
+            "error": "model_unavailable"
         }
     """
 
@@ -78,6 +95,7 @@ QUESTION:
 CONTEXT:
 
 {context}
+
 """
 
     api_key = os.getenv("GEMINI_API_KEY")
@@ -106,7 +124,6 @@ CONTEXT:
                     response_mime_type="application/json",
                 ),
             )
-
             break
 
         except Exception as error:
@@ -121,19 +138,19 @@ CONTEXT:
 
             if not is_transient_error:
                 print(f"Gemini generation failed: {error}")
-                return _empty_result()
+                return _model_unavailable_result()
 
             if attempt == max_attempts - 1:
                 print(
                     "Gemini service remained unavailable "
                     f"after {max_attempts} attempts: {error}"
                 )
-                return _empty_result()
+                return _model_unavailable_result()
 
             delay = 2 ** attempt
 
             print(
-                f"Gemini temporarily unavailable. "
+                "Gemini temporarily unavailable. "
                 f"Retrying in {delay} seconds..."
             )
 

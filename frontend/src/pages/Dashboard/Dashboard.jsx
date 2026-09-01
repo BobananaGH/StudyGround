@@ -1,13 +1,12 @@
 // frontend/src/pages/Dashboard/Dashboard.jsx
 
 import { useAuth } from "../../context/AuthContext.jsx";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
 import { get } from "../../services/api/client.js";
 import { API_ENDPOINTS } from "../../services/api/endpoints.js";
+import { APP_EVENTS, subscribeAppEvent } from "../../services/appEvents.js";
 import { Button } from "../../components/ui/Button/Button.jsx";
-
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import styles from "./Dashboard.module.css";
 
@@ -23,45 +22,77 @@ export function Dashboard() {
   const [conversationsLoading, setConversationsLoading] = useState(true);
   const [conversationsError, setConversationsError] = useState(null);
 
-  useEffect(() => {
-    async function loadCourses() {
-      try {
-        setCoursesLoading(true);
-        setCoursesError(null);
+  const loadCourses = useCallback(async () => {
+    try {
+      setCoursesLoading(true);
+      setCoursesError(null);
 
-        const data = await get(API_ENDPOINTS.COURSES);
+      const data = await get(API_ENDPOINTS.COURSES);
 
-        setCourses(data);
-      } catch (error) {
-        console.error("Failed to load courses:", error);
-        setCoursesError(error.message || "Unable to load courses.");
-      } finally {
-        setCoursesLoading(false);
-      }
+      setCourses(data || []);
+    } catch (error) {
+      console.error("Failed to load courses:", error);
+      setCoursesError(error?.message || "Unable to load courses.");
+    } finally {
+      setCoursesLoading(false);
     }
+  }, []);
 
+  const loadConversations = useCallback(async () => {
+    try {
+      setConversationsLoading(true);
+      setConversationsError(null);
+
+      const data = await get(API_ENDPOINTS.CONVERSATIONS);
+
+      setConversations(data || []);
+    } catch (error) {
+      console.error("Failed to load conversations:", error);
+      setConversationsError(error?.message || "Unable to load conversations.");
+    } finally {
+      setConversationsLoading(false);
+    }
+  }, []);
+
+  // Initial dashboard load
+  useEffect(() => {
     loadCourses();
-  }, []);
+    loadConversations();
+  }, [loadCourses, loadConversations]);
 
+  // Refresh dashboard whenever the browser window becomes active again.
+  // This keeps the dashboard in sync with changes made elsewhere,
+  // such as deleting a course or conversation from the Sidebar.
   useEffect(() => {
-    async function loadConversations() {
-      try {
-        setConversationsLoading(true);
-        setConversationsError(null);
-
-        const data = await get(API_ENDPOINTS.CONVERSATIONS);
-
-        setConversations(data);
-      } catch (error) {
-        console.error("Failed to load conversations:", error);
-        setConversationsError(error.message || "Unable to load conversations.");
-      } finally {
-        setConversationsLoading(false);
-      }
+    function handleWindowFocus() {
+      loadCourses();
+      loadConversations();
     }
 
-    loadConversations();
-  }, []);
+    window.addEventListener("focus", handleWindowFocus);
+
+    return () => {
+      window.removeEventListener("focus", handleWindowFocus);
+    };
+  }, [loadCourses, loadConversations]);
+  // Refresh dashboard when application data changes elsewhere.
+
+  useEffect(() => {
+    const unsubscribeCourses = subscribeAppEvent(
+      APP_EVENTS.COURSES_CHANGED,
+      loadCourses,
+    );
+
+    const unsubscribeConversations = subscribeAppEvent(
+      APP_EVENTS.CONVERSATIONS_CHANGED,
+      loadConversations,
+    );
+
+    return () => {
+      unsubscribeCourses();
+      unsubscribeConversations();
+    };
+  }, [loadCourses, loadConversations]);
 
   const displayName =
     [user?.first_name, user?.last_name].filter(Boolean).join(" ") ||
@@ -70,6 +101,7 @@ export function Dashboard() {
     "there";
 
   const hour = new Date().getHours();
+
   const greeting = hour < 12 ? "morning" : hour < 17 ? "afternoon" : "evening";
 
   const recentConversations = conversations.slice(0, 5);

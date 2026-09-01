@@ -1,10 +1,14 @@
 // frontend/src/pages/CourseDetail/CourseDetail.jsx
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-import { get, post } from "../../services/api/client.js";
+import { del, get, post } from "../../services/api/client.js";
 import { API_ENDPOINTS } from "../../services/api/endpoints.js";
+
+import { APP_EVENTS, emitAppEvent } from "../../services/appEvents.js";
+
 import Button from "../../components/ui/Button/Button.jsx";
+import ConfirmDialog from "../../components/ui/ConfirmDialog/ConfirmDialog.jsx";
 
 import styles from "./CourseDetail.module.css";
 
@@ -14,15 +18,30 @@ export function CourseDetail() {
 
   const [course, setCourse] = useState(null);
   const [documents, setDocuments] = useState([]);
+
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
   const [creatingConversation, setCreatingConversation] = useState(false);
+
+  const [deletingCourse, setDeletingCourse] = useState(false);
+  const [deletingDocument, setDeletingDocument] = useState(false);
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [documentTitle, setDocumentTitle] = useState("");
 
   const [error, setError] = useState("");
   const [uploadError, setUploadError] = useState("");
+
+  const [showDeleteCourseConfirm, setShowDeleteCourseConfirm] = useState(false);
+
+  const [showDeleteDocumentConfirm, setShowDeleteDocumentConfirm] =
+    useState(false);
+
+  const [documentToDelete, setDocumentToDelete] = useState(null);
+
+  // =========================
+  // LOAD COURSE
+  // =========================
 
   async function loadCourse() {
     try {
@@ -61,6 +80,10 @@ export function CourseDetail() {
     loadCourse();
   }, [courseId]);
 
+  // =========================
+  // FILE SELECTION
+  // =========================
+
   function handleFileChange(event) {
     const file = event.target.files?.[0] || null;
 
@@ -77,6 +100,7 @@ export function CourseDetail() {
     if (!fileName.endsWith(".pdf") && !fileName.endsWith(".docx")) {
       setSelectedFile(null);
       setDocumentTitle("");
+
       setUploadError("Unsupported file type. Please select a PDF or DOCX.");
 
       event.target.value = "";
@@ -85,11 +109,14 @@ export function CourseDetail() {
 
     setSelectedFile(file);
 
-    // Always update the document title
-    // to match the newly selected file.
     const filename = file.name.replace(/\.(pdf|docx)$/i, "");
+
     setDocumentTitle(filename);
   }
+
+  // =========================
+  // UPLOAD DOCUMENT
+  // =========================
 
   async function handleUpload(event) {
     event.preventDefault();
@@ -123,11 +150,93 @@ export function CourseDetail() {
       await refreshDocuments();
     } catch (error) {
       console.error("Failed to upload document:", error);
+
       setUploadError(error.message || "Unable to upload document.");
     } finally {
       setUploading(false);
     }
   }
+
+  // =========================
+  // DELETE COURSE
+  // =========================
+
+  async function handleDeleteCourse() {
+    if (deletingCourse) {
+      return;
+    }
+
+    try {
+      setDeletingCourse(true);
+      setError("");
+
+      await del(`${API_ENDPOINTS.COURSES}${courseId}/`);
+
+      // Notify the rest of the application that the course and
+      // its related conversations changed.
+      emitAppEvent(APP_EVENTS.COURSES_CHANGED);
+      emitAppEvent(APP_EVENTS.CONVERSATIONS_CHANGED);
+
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Failed to delete course:", error);
+
+      setError(error.message || "Unable to delete course.");
+
+      setDeletingCourse(false);
+      setShowDeleteCourseConfirm(false);
+    }
+  }
+
+  function handleDeleteDocumentClick(document) {
+    setDocumentToDelete(document);
+    setShowDeleteDocumentConfirm(true);
+  }
+
+  function handleCancelDeleteDocument() {
+    if (deletingDocument) {
+      return;
+    }
+
+    setShowDeleteDocumentConfirm(false);
+    setDocumentToDelete(null);
+  }
+
+  async function handleDeleteDocument() {
+    if (deletingDocument || !documentToDelete) {
+      return;
+    }
+
+    try {
+      setDeletingDocument(true);
+      setUploadError("");
+
+      await del(`${API_ENDPOINTS.DOCUMENTS}${documentToDelete.id}/`);
+
+      setShowDeleteDocumentConfirm(false);
+      setDocumentToDelete(null);
+
+      await refreshDocuments();
+    } catch (error) {
+      console.error("Failed to delete document:", error);
+
+      setUploadError(error.message || "Unable to delete document.");
+    } finally {
+      setDeletingDocument(false);
+    }
+  }
+
+  function handleCancelDeleteCourse() {
+    if (deletingCourse) {
+      return;
+    }
+
+    setShowDeleteCourseConfirm(false);
+  }
+
+  // =========================
+  // START CONVERSATION
+  // =========================
 
   async function handleStartConversation() {
     try {
@@ -142,6 +251,7 @@ export function CourseDetail() {
         )
         .sort((a, b) => {
           const dateA = new Date(a.updated_at || a.updatedAt || 0).getTime();
+
           const dateB = new Date(b.updated_at || b.updatedAt || 0).getTime();
 
           return dateB - dateA;
@@ -150,6 +260,7 @@ export function CourseDetail() {
       // Reuse the most recently updated conversation for this course.
       if (courseConversations.length > 0) {
         navigate(`/conversations/${courseConversations[0].id}`);
+
         return;
       }
 
@@ -159,14 +270,22 @@ export function CourseDetail() {
         course_id: Number(courseId),
       });
 
+      // Notify the rest of the application that a new conversation was created.
+      emitAppEvent(APP_EVENTS.CONVERSATIONS_CHANGED);
+
       navigate(`/conversations/${conversation.id}`);
     } catch (error) {
       console.error("Failed to start conversation:", error);
+
       setUploadError(error.message || "Unable to start conversation.");
     } finally {
       setCreatingConversation(false);
     }
   }
+
+  // =========================
+  // LOADING
+  // =========================
 
   if (loading) {
     return (
@@ -178,19 +297,28 @@ export function CourseDetail() {
     );
   }
 
+  // =========================
+  // ERROR
+  // =========================
+
   if (error) {
     return (
       <section className={styles.courseDetail}>
         <div className={styles.errorState}>
           <p className={styles.error}>
             <i className="fa-solid fa-circle-exclamation" aria-hidden="true" />
+
             <span>{error}</span>
           </p>
 
-          <Link to="/dashboard" className={styles.backLink}>
-            <i className="fa-solid fa-arrow-left" aria-hidden="true" />
-            <span>Back to Dashboard</span>
-          </Link>
+          <Button
+            type="button"
+            variant="primary"
+            size="sm"
+            onClick={() => navigate("/dashboard")}
+          >
+            <i className="fa-solid fa-house" aria-hidden="true" />
+          </Button>
         </div>
       </section>
     );
@@ -217,11 +345,79 @@ export function CourseDetail() {
           )}
         </div>
 
-        <Link to="/dashboard" className={styles.backLink}>
-          <i className="fa-solid fa-arrow-left" aria-hidden="true" />
-          <span>Back to Dashboard</span>
-        </Link>
+        <div className={styles.headerActions}>
+          {/* DELETE COURSE */}
+
+          <button
+            type="button"
+            className={styles.deleteCourse}
+            onClick={() => setShowDeleteCourseConfirm(true)}
+            disabled={
+              deletingCourse ||
+              deletingDocument ||
+              uploading ||
+              creatingConversation
+            }
+            aria-label="Delete course"
+            title="Delete course"
+          >
+            <i className="fa-solid fa-trash" aria-hidden="true" />
+          </button>
+
+          {/* BACK TO DASHBOARD */}
+
+          <Button
+            type="button"
+            variant="primary"
+            size="sm"
+            onClick={() => navigate("/dashboard")}
+            disabled={
+              deletingCourse ||
+              deletingDocument ||
+              uploading ||
+              creatingConversation
+            }
+          >
+            <i className="fa-solid fa-house" aria-hidden="true" />
+          </Button>
+        </div>
       </header>
+
+      {/* =========================
+          DELETE COURSE CONFIRMATION
+          ========================= */}
+
+      <ConfirmDialog
+        open={showDeleteCourseConfirm}
+        title="Delete this course?"
+        description="This will permanently delete the course, all of its study materials, document chunks, and course conversations."
+        confirmLabel="Delete course"
+        cancelLabel="Cancel"
+        onConfirm={handleDeleteCourse}
+        onCancel={handleCancelDeleteCourse}
+        loading={deletingCourse}
+        icon="fa-trash"
+      />
+
+      {/* =========================
+          DELETE DOCUMENT CONFIRMATION
+          ========================= */}
+
+      <ConfirmDialog
+        open={showDeleteDocumentConfirm}
+        title="Delete this study material?"
+        description={
+          documentToDelete
+            ? `"${documentToDelete.title}" and all of its processed study data will be permanently deleted.`
+            : "This study material and all of its processed study data will be permanently deleted."
+        }
+        confirmLabel="Delete material"
+        cancelLabel="Cancel"
+        onConfirm={handleDeleteDocument}
+        onCancel={handleCancelDeleteDocument}
+        loading={deletingDocument}
+        icon="fa-trash"
+      />
 
       {/* =========================
           STUDY MATERIALS
@@ -246,8 +442,10 @@ export function CourseDetail() {
                 size="md"
                 loading={creatingConversation}
                 onClick={handleStartConversation}
+                disabled={deletingCourse || deletingDocument || uploading}
               >
                 <i className="fa-solid fa-book-open" aria-hidden="true" />
+
                 <span>Start Studying</span>
               </Button>
             </div>
@@ -269,6 +467,24 @@ export function CourseDetail() {
                     {document.file_type || "Document"}
                   </p>
                 </div>
+
+                {/* DELETE DOCUMENT */}
+
+                <button
+                  type="button"
+                  className={styles.deleteDocument}
+                  onClick={() => handleDeleteDocumentClick(document)}
+                  disabled={
+                    deletingCourse ||
+                    deletingDocument ||
+                    uploading ||
+                    creatingConversation
+                  }
+                  aria-label={`Delete ${document.title}`}
+                  title="Delete document"
+                >
+                  <i className="fa-solid fa-trash" aria-hidden="true" />
+                </button>
               </article>
             ))}
           </div>
@@ -342,7 +558,7 @@ export function CourseDetail() {
                 type="file"
                 accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                 onChange={handleFileChange}
-                disabled={uploading}
+                disabled={uploading || deletingCourse || deletingDocument}
               />
             </label>
 
@@ -364,7 +580,7 @@ export function CourseDetail() {
               value={documentTitle}
               onChange={(event) => setDocumentTitle(event.target.value)}
               placeholder="e.g. Chapter 1 - Introduction"
-              disabled={uploading}
+              disabled={uploading || deletingCourse || deletingDocument}
             />
           </div>
 
@@ -393,9 +609,12 @@ export function CourseDetail() {
               variant="primary"
               size="md"
               loading={uploading}
-              disabled={!selectedFile}
+              disabled={
+                !selectedFile || uploading || deletingCourse || deletingDocument
+              }
             >
               <i className="fa-solid fa-cloud-arrow-up" aria-hidden="true" />
+
               <span>Upload Material</span>
             </Button>
           </div>

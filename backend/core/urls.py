@@ -1,5 +1,4 @@
 # backend/core/urls.py
-
 from django.urls import path
 
 from .views import (
@@ -9,15 +8,21 @@ from .views import (
     CourseDetailView,
     CourseDocumentsView,
     CourseListView,
+    DocumentDeleteView,
     DocumentUploadView,
 )
-
 
 urlpatterns = [
     path(
         "documents/",
         DocumentUploadView.as_view(),
         name="document-upload",
+    ),
+
+    path(
+        "documents/<int:document_id>/",
+        DocumentDeleteView.as_view(),
+        name="document-delete",
     ),
 
     path(
@@ -37,10 +42,11 @@ urlpatterns = [
         ConversationMessagesView.as_view(),
         name="conversation-messages",
     ),
+
     path(
-    "courses/",
-    CourseListView.as_view(),
-    name="course-list",
+        "courses/",
+        CourseListView.as_view(),
+        name="course-list",
     ),
 
     path(

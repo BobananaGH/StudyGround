@@ -1,6 +1,7 @@
+/* frontend/src/components/layout/Sidebar/Sidebar.module.css */
 /* =========================
-   SIDEBAR
-   ========================= */
+SIDEBAR
+========================= */
 
 .sidebar {
   position: relative;
@@ -22,8 +23,8 @@
 }
 
 /* =========================
-   BRAND
-   ========================= */
+BRAND
+========================= */
 
 .brand {
   width: 100%;
@@ -48,7 +49,6 @@
 }
 
 /* No hover effect */
-
 .brand:hover {
   background: transparent;
   color: var(--color-text-primary);
@@ -56,7 +56,6 @@
 }
 
 /* No focus outline */
-
 .brand:focus,
 .brand:focus-visible {
   outline: none;
@@ -64,7 +63,6 @@
 }
 
 /* No active/click styling */
-
 .brand:active {
   background: transparent;
   color: var(--color-text-primary);
@@ -94,8 +92,8 @@
 }
 
 /* =========================
-   NAVIGATION
-   ========================= */
+NAVIGATION
+========================= */
 
 .nav {
   width: 100%;
@@ -116,8 +114,8 @@
 }
 
 /* =========================
-   NAVIGATION ITEM
-   ========================= */
+NAVIGATION ITEM
+========================= */
 
 .navItem {
   box-sizing: border-box;
@@ -166,8 +164,8 @@
 }
 
 /* =========================
-   ACTIVE DASHBOARD
-   ========================= */
+ACTIVE DASHBOARD
+========================= */
 
 .active {
   background: color-mix(in srgb, var(--color-primary) 10%, transparent);
@@ -196,8 +194,8 @@
 }
 
 /* =========================
-   SECTIONS
-   ========================= */
+SECTIONS
+========================= */
 
 .courses,
 .recent {
@@ -221,8 +219,8 @@
 }
 
 /* =========================
-   SECTION LABEL
-   ========================= */
+SECTION LABEL
+========================= */
 
 .sectionLabel {
   margin: 0 0 var(--space-2) var(--space-3);
@@ -237,8 +235,8 @@
 }
 
 /* =========================
-   LISTS
-   ========================= */
+LISTS
+========================= */
 
 .courseList,
 .conversationList {
@@ -257,8 +255,8 @@
 }
 
 /* =========================
-   CREATE COURSE
-   ========================= */
+CREATE COURSE
+========================= */
 
 .createCourse {
   box-sizing: border-box;
@@ -294,8 +292,21 @@
 }
 
 /* =========================
-   COURSE / CONVERSATION
-   ========================= */
+COURSE / CONVERSATION ROW
+========================= */
+
+.courseRow,
+.conversationRow {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+/* =========================
+COURSE / CONVERSATION ITEM
+========================= */
 
 .courseItem,
 .conversationItem {
@@ -338,9 +349,107 @@
   flex: 0 0 auto;
 }
 
+/* Allow the main item to shrink so the delete button
+always stays inside the sidebar. */
+.courseRow .courseItem,
+.conversationRow .conversationItem {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 /* =========================
-   LABEL
-   ========================= */
+DELETE COURSE
+========================= */
+
+.deleteCourse {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity var(--duration-150) ease,
+    background-color var(--duration-150) ease,
+    color var(--duration-150) ease;
+}
+
+/* Show delete button when hovering the course */
+.courseRow:hover .deleteCourse,
+.deleteCourse:focus-visible {
+  opacity: 1;
+}
+
+.deleteCourse:hover {
+  background: color-mix(in srgb, var(--color-error) 10%, transparent);
+  color: var(--color-error);
+}
+
+.deleteCourse:focus,
+.deleteCourse:focus-visible {
+  outline: none;
+}
+
+.deleteCourse:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-focus-ring);
+}
+
+/* =========================
+DELETE CONVERSATION
+========================= */
+
+.deleteConversation {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity var(--duration-150) ease,
+    background-color var(--duration-150) ease,
+    color var(--duration-150) ease;
+}
+
+/* Show delete button when hovering the conversation */
+.conversationRow:hover .deleteConversation,
+.deleteConversation:focus-visible {
+  opacity: 1;
+}
+
+.deleteConversation:hover {
+  background: color-mix(in srgb, var(--color-error) 10%, transparent);
+  color: var(--color-error);
+}
+
+.deleteConversation:focus,
+.deleteConversation:focus-visible {
+  outline: none;
+}
+
+.deleteConversation:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-focus-ring);
+}
+
+/* =========================
+LABEL
+========================= */
 
 .itemLabel {
   min-width: 0;
@@ -351,8 +460,8 @@
 }
 
 /* =========================
-   ICON
-   ========================= */
+ICON
+========================= */
 
 .navIcon {
   width: 20px;
@@ -363,8 +472,8 @@
 }
 
 /* =========================
-   FOOTER
-   ========================= */
+FOOTER
+========================= */
 
 .footer {
   box-sizing: border-box;
@@ -382,8 +491,8 @@
 }
 
 /* =========================
-   USER MENU
-   ========================= */
+USER MENU
+========================= */
 
 .footer > * {
   flex: 1 1 auto;
@@ -398,8 +507,8 @@
 }
 
 /* =========================
-   USER MENU BUTTON
-   ========================= */
+USER MENU BUTTON
+========================= */
 
 .footer button {
   box-sizing: border-box;
@@ -407,8 +516,8 @@
 }
 
 /* =========================
-   MOBILE
-   ========================= */
+MOBILE
+========================= */
 
 @media (max-width: 1023px) {
   .sidebar {

@@ -8,7 +8,6 @@
   width: 100%;
   max-width: var(--content-max-width);
   min-height: calc(100vh - 80px);
-
   margin: 0 auto;
   padding: var(--space-10) var(--space-6);
 
@@ -27,8 +26,8 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-
   gap: var(--space-6);
+
   padding: var(--space-6) var(--space-8);
 
   background: var(--color-surface);
@@ -62,8 +61,8 @@
   font-size: var(--text-3xl);
   line-height: 1.2;
   font-weight: 700;
-
   letter-spacing: -0.02em;
+
   overflow-wrap: anywhere;
 }
 
@@ -77,47 +76,25 @@
 }
 
 /* =========================
-   BACK LINK
+   HEADER ACTIONS
    ========================= */
 
-.backLink {
-  display: inline-flex;
+/*
+ * Both Delete and Back to Dashboard
+ * use the shared Button component.
+ *
+ * Their visual styles come from:
+ * components/ui/Button/Button.module.css
+ *
+ * This page only controls their layout.
+ */
+
+.headerActions {
+  display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-4);
 
   flex-shrink: 0;
-
-  padding: var(--space-2) var(--space-3);
-
-  color: var(--color-text-secondary);
-
-  font-size: var(--text-sm);
-  font-weight: 600;
-
-  border-radius: var(--radius-md);
-
-  text-decoration: none;
-
-  transition:
-    color 0.15s ease,
-    background-color 0.15s ease;
-}
-
-.backLink:hover {
-  color: var(--color-primary);
-  background: var(--color-background);
-  text-decoration: none;
-}
-
-.backLink:focus,
-.backLink:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-.backLink i {
-  font-size: 0.8rem;
-  line-height: 1;
 }
 
 /* =========================
@@ -131,7 +108,6 @@
   grid-template-rows: minmax(0, 1fr) auto;
 
   background: var(--color-surface);
-
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
 
@@ -198,7 +174,8 @@
   color: var(--color-primary);
   font-size: 1.25rem;
 
-  background: rgba(170, 59, 255, 0.08);
+  background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+
   border-radius: var(--radius-md);
 }
 
@@ -210,7 +187,6 @@
   margin: 0;
 
   color: var(--color-text-primary);
-
   font-size: var(--text-xl);
   line-height: 1.3;
   font-weight: 700;
@@ -218,11 +194,9 @@
 
 .emptyState > p {
   max-width: 52ch;
-
   margin: var(--space-2) 0 0;
 
   color: var(--color-text-secondary);
-
   font-size: var(--text-sm);
   line-height: 1.6;
 }
@@ -236,10 +210,9 @@
   max-width: 680px;
 
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 
   gap: var(--space-3);
-
   margin-top: var(--space-8);
 }
 
@@ -266,25 +239,34 @@
   cursor: pointer;
 
   transition:
-    border-color 0.15s ease,
-    background-color 0.15s ease,
-    transform 0.15s ease;
+    color var(--duration-150) ease,
+    background-color var(--duration-150) ease,
+    border-color var(--duration-150) ease,
+    transform var(--duration-150) ease;
 }
 
-.suggestion:hover {
+.suggestion:hover:not(:disabled) {
   color: var(--color-text-primary);
-
   background: var(--color-surface);
 
-  border-color: rgba(170, 59, 255, 0.35);
+  border-color: color-mix(in srgb, var(--color-primary) 35%, transparent);
 
   transform: translateY(-1px);
+}
+
+.suggestion:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .suggestion:focus,
 .suggestion:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
+}
+
+.suggestion:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .suggestion i {
@@ -352,7 +334,8 @@
 
 .assistantMessage .messageIcon {
   color: var(--color-primary);
-  background: rgba(170, 59, 255, 0.08);
+
+  background: color-mix(in srgb, var(--color-primary) 8%, transparent);
 }
 
 .messageIcon i {
@@ -404,7 +387,6 @@
   padding: var(--space-3) var(--space-4);
 
   background: var(--color-background);
-
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
 }
@@ -421,7 +403,6 @@
   padding: var(--space-3) var(--space-4);
 
   background: var(--color-surface);
-
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
 }
@@ -475,7 +456,6 @@
   flex: 0 0 auto;
 
   color: var(--color-primary);
-
   font-size: 0.75rem;
 }
 
@@ -565,14 +545,15 @@
   border-radius: var(--radius-md);
 
   transition:
-    border-color 0.15s ease,
-    box-shadow 0.15s ease;
+    border-color var(--duration-150) ease,
+    box-shadow var(--duration-150) ease;
 }
 
 .composer:focus-within {
   border-color: var(--color-primary);
 
-  box-shadow: 0 0 0 3px rgba(170, 59, 255, 0.1);
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--color-primary) 10%, transparent);
 }
 
 .composer textarea {
@@ -605,6 +586,22 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+/* =========================
+   SHARED BUTTON COMPONENT
+   ========================= */
+
+/*
+ * Send button uses the shared Button component.
+ *
+ * Delete and Back to Dashboard also use
+ * the shared Button component.
+ *
+ * Their actual visual styles come from:
+ * components/ui/Button/Button.module.css
+ *
+ * This page only controls placement.
+ */
 
 .composer :global(button) {
   flex-shrink: 0;
@@ -650,13 +647,15 @@
   max-width: 900px;
 
   margin: 0 auto var(--space-3);
+
   padding: var(--space-3) var(--space-4);
 
-  color: #dc2626;
+  color: var(--color-error);
 
-  background: rgba(220, 38, 38, 0.06);
+  background: color-mix(in srgb, var(--color-error) 6%, transparent);
 
-  border: 1px solid rgba(220, 38, 38, 0.25);
+  border: 1px solid color-mix(in srgb, var(--color-error) 25%, transparent);
+
   border-radius: var(--radius-md);
 
   font-size: var(--text-sm);
@@ -665,7 +664,6 @@
 
 .error i {
   flex: 0 0 auto;
-
   margin-top: 2px;
 }
 
@@ -681,7 +679,6 @@
   justify-content: center;
 
   color: var(--color-text-muted);
-
   background: var(--color-surface);
 
   border: 1px solid var(--color-border);
@@ -742,8 +739,12 @@
     font-size: var(--text-2xl);
   }
 
-  .backLink {
-    align-self: flex-start;
+  .headerActions {
+    width: 100%;
+
+    flex-wrap: wrap;
+
+    gap: var(--space-3);
   }
 
   .messageArea {
@@ -805,6 +806,12 @@
     padding: var(--space-4);
   }
 
+  .headerActions {
+    align-items: stretch;
+
+    gap: var(--space-3);
+  }
+
   .messageArea {
     padding: var(--space-4) var(--space-3);
   }
@@ -835,4 +842,52 @@
   .composer :global(button) span {
     display: none;
   }
+}
+/* =========================
+   DELETE CONVERSATION
+   ========================= */
+
+.deleteConversation {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+
+  background: transparent;
+  color: var(--color-text-muted);
+
+  font-size: var(--text-sm);
+  cursor: pointer;
+
+  transition:
+    background-color var(--duration-150) ease,
+    color var(--duration-150) ease,
+    opacity var(--duration-150) ease;
+}
+
+.deleteConversation:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--color-error) 10%, transparent);
+
+  color: var(--color-error);
+}
+
+.deleteConversation:focus,
+.deleteConversation:focus-visible {
+  outline: none;
+}
+
+.deleteConversation:focus-visible {
+  box-shadow: 0 0 0 2px var(--color-focus-ring);
+}
+
+.deleteConversation:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
