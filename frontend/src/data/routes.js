@@ -29,7 +29,8 @@ export function getTitleForPath(pathname) {
     }
   }
 
-  return 'StudyAI'
+  return 'StudyGround'
 }
 
 export default appRoutes
+

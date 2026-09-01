@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 
-const THEME_KEY = 'studyai-theme'
+const THEME_KEY = 'StudyGround-theme'
 const THEMES = ['light', 'dark', 'system']
 
 function getStoredTheme() {
@@ -67,3 +67,4 @@ export function useTheme() {
 
   return { theme, setTheme, resolvedTheme, themes: THEMES }
 }
+

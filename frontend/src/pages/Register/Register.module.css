@@ -1,3 +1,5 @@
+/* frontend/src/pages/Register/Register.module.css */
+
 .page {
   min-height: 100vh;
   display: grid;
@@ -7,6 +9,10 @@
     radial-gradient(circle at top, rgba(170, 59, 255, 0.08), transparent 40%),
     var(--color-background);
 }
+
+/* =========================
+   CARD
+   ========================= */
 
 .card {
   width: min(100%, 480px);
@@ -18,6 +24,10 @@
   display: grid;
   gap: var(--space-6);
 }
+
+/* =========================
+   BRAND
+   ========================= */
 
 .brandRow {
   display: flex;
@@ -47,6 +57,10 @@
   color: var(--color-text-muted);
 }
 
+/* =========================
+   HEADER
+   ========================= */
+
 .headerBlock {
   display: grid;
   gap: var(--space-2);
@@ -62,53 +76,18 @@
   font-size: var(--text-base);
 }
 
-.themeBar {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  flex-wrap: wrap;
-}
-
-.themeOption,
-.themeActive {
-  border-radius: 999px;
-  padding: 8px 12px;
-  font-size: var(--text-sm);
-  border: 1px solid var(--color-border);
-  background: var(--color-background);
-  color: var(--color-text-secondary);
-}
-
-.themeActive {
-  color: var(--color-text-primary);
-  border-color: var(--color-primary);
-  background: rgba(170, 59, 255, 0.08);
-}
-
-.themeLabel {
-  margin-left: auto;
-  font-size: var(--text-xs);
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
+/* =========================
+   FORM
+   ========================= */
 
 .form {
   display: grid;
   gap: var(--space-4);
 }
 
-.passwordRow {
-  display: grid;
-  gap: var(--space-2);
-}
-
-.passwordToggle {
-  justify-self: end;
-  font-size: var(--text-sm);
-  color: var(--color-primary);
-  padding: 0;
-}
+/* =========================
+   ERRORS
+   ========================= */
 
 .errorBox {
   padding: var(--space-3) var(--space-4);
@@ -117,6 +96,10 @@
   border: 1px solid rgba(255, 77, 111, 0.25);
   color: var(--color-error);
 }
+
+/* =========================
+   FOOTER
+   ========================= */
 
 .footerText {
   text-align: center;
@@ -128,6 +111,10 @@
   font-weight: 600;
 }
 
+/* =========================
+   LOADING
+   ========================= */
+
 .loadingHint {
   display: flex;
   justify-content: center;
@@ -138,6 +125,10 @@
   font-size: var(--text-sm);
 }
 
+/* =========================
+   MOBILE
+   ========================= */
+
 @media (max-width: 520px) {
   .page {
     padding: var(--space-4);
@@ -145,10 +136,5 @@
 
   .card {
     padding: var(--space-6);
-  }
-
-  .themeLabel {
-    margin-left: 0;
-    width: 100%;
   }
 }

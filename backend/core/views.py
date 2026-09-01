@@ -11,8 +11,6 @@ from .services.answer_generation import generate_answer
 from .services.answer_verification import verify_answer
 from .services.document_ingestion import ingest_document
 
-# backend/core/views.py
-
 class CourseListView(APIView):
     permission_classes = [IsAuthenticated]
     def get(self, request):
@@ -269,16 +267,32 @@ class ConversationMessagesView(APIView):
                 status=status.HTTP_404_NOT_FOUND,
             )
 
-        messages = conversation.messages.order_by("created_at")
+        messages = (
+            conversation.messages
+            .prefetch_related("evidence__chunk__document")
+            .order_by("created_at")
+        )
 
-        data = [
-            {
-                "id": message.id,
-                "role": message.role,
-                "content": message.content,
-            }
-            for message in messages
-        ]
+        data = []
+
+        for message in messages:
+            evidence = [
+                {
+                    "chunk_id": str(item.chunk.id),
+                    "document": item.chunk.document.title,
+                    "page": item.chunk.page_number,
+                }
+                for item in message.evidence.all()
+            ]
+
+            data.append(
+                {
+                    "id": message.id,
+                    "role": message.role,
+                    "content": message.content,
+                    "evidence": evidence,
+                }
+            )
 
         return Response(data)
 
@@ -302,7 +316,7 @@ class ConversationMessagesView(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        Message.objects.create(
+        user_message = Message.objects.create(
             conversation=conversation,
             role="user",
             content=content,
@@ -322,6 +336,7 @@ class ConversationMessagesView(APIView):
             return Response(
                 {
                     "id": assistant_message.id,
+                    "user_message_id": user_message.id,
                     "role": assistant_message.role,
                     "content": assistant_message.content,
                     "evidence": [],
@@ -352,6 +367,7 @@ class ConversationMessagesView(APIView):
             return Response(
                 {
                     "id": assistant_message.id,
+                    "user_message_id": user_message.id,
                     "role": assistant_message.role,
                     "content": assistant_message.content,
                     "evidence": [],
@@ -384,6 +400,7 @@ class ConversationMessagesView(APIView):
             return Response(
                 {
                     "id": assistant_message.id,
+                    "user_message_id": user_message.id,
                     "role": assistant_message.role,
                     "content": assistant_message.content,
                     "evidence": [],
@@ -421,6 +438,7 @@ class ConversationMessagesView(APIView):
         return Response(
             {
                 "id": assistant_message.id,
+                "user_message_id": user_message.id,
                 "role": assistant_message.role,
                 "content": assistant_message.content,
                 "evidence": [

@@ -1,35 +1,78 @@
-import { NavLink, useNavigate } from 'react-router-dom'
-import { mockCourses } from '../../../data/mockCourses.js'
-import { mockConversations } from '../../../data/mockConversations.js'
-import { UserMenu } from '../UserMenu/UserMenu.jsx'
-import styles from './Sidebar.module.css'
+// frontend/src/components/layout/Sidebar/Sidebar.jsx
 
-export function Sidebar({ collapsed = false, mobileOpen = false, onClose, onToggleCollapsed }) {
-  const navigate = useNavigate()
+import { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+
+import { get } from "../../../services/api/client.js";
+import { API_ENDPOINTS } from "../../../services/api/endpoints.js";
+import { UserMenu } from "../UserMenu/UserMenu.jsx";
+
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import styles from "./Sidebar.module.css";
+
+export function Sidebar({ mobileOpen = false, onClose }) {
+  const navigate = useNavigate();
+
+  const [courses, setCourses] = useState([]);
+  const [conversations, setConversations] = useState([]);
+
+  useEffect(() => {
+    async function loadSidebarData() {
+      try {
+        const [coursesData, conversationsData] = await Promise.all([
+          get(API_ENDPOINTS.COURSES),
+          get(API_ENDPOINTS.CONVERSATIONS),
+        ]);
+
+        setCourses(coursesData);
+        setConversations(conversationsData.slice(0, 5));
+      } catch (error) {
+        console.error("Failed to load sidebar data:", error);
+      }
+    }
+
+    loadSidebarData();
+  }, []);
 
   function handleNavigate(path) {
     if (onClose) {
-      onClose()
+      onClose();
     }
-    navigate(path)
+
+    navigate(path);
   }
 
   return (
     <aside
-      className={[
-        styles.sidebar,
-        collapsed ? styles.collapsed : '',
-        mobileOpen ? styles.mobileOpen : '',
-      ].filter(Boolean).join(' ')}
+      className={[styles.sidebar, mobileOpen ? styles.mobileOpen : ""]
+        .filter(Boolean)
+        .join(" ")}
       aria-label="Main navigation"
     >
-      <div className={styles.brand}>
-        <div className={styles.brandMark} aria-hidden="true">✦</div>
-        <span className={styles.brandName}>StudyAI</span>
-      </div>
+      {/* =========================
+          BRAND
+          ========================= */}
+
+      <button
+        type="button"
+        className={styles.brand}
+        onClick={() => handleNavigate("/dashboard")}
+        aria-label="Go to Dashboard"
+      >
+        <div className={styles.brandMark} aria-hidden="true">
+          ✦
+        </div>
+
+        <span className={styles.brandName}>StudyGround</span>
+      </button>
+
+      {/* =========================
+          NAVIGATION
+          ========================= */}
 
       <nav className={styles.nav} aria-label="Primary">
         <p className={styles.sectionLabel}>Main</p>
+
         <ul className={styles.navList}>
           <li>
             <NavLink
@@ -39,28 +82,40 @@ export function Sidebar({ collapsed = false, mobileOpen = false, onClose, onTogg
               }
               onClick={onClose}
             >
-              <span aria-hidden="true">◉</span>
+              <span className={styles.navIcon} aria-hidden="true">
+                <i className="fa-solid fa-house" />
+              </span>
+
               <span className={styles.itemLabel}>Dashboard</span>
             </NavLink>
           </li>
         </ul>
       </nav>
 
+      {/* =========================
+          COURSES
+          ========================= */}
+
       <div className={styles.courses}>
         <p className={styles.sectionLabel}>Courses</p>
+
         <ul className={styles.courseList}>
           <li>
             <button
               type="button"
               className={styles.createCourse}
-              onClick={() => handleNavigate('/courses/new')}
+              onClick={() => handleNavigate("/courses/new")}
               title="Create Course"
             >
-              <span aria-hidden="true">+</span>
+              <span className={styles.navIcon} aria-hidden="true">
+                <i className="fa-solid fa-plus" />
+              </span>
+
               <span className={styles.itemLabel}>Create Course</span>
             </button>
           </li>
-          {mockCourses.map((course) => (
+
+          {courses.map((course) => (
             <li key={course.id}>
               <button
                 type="button"
@@ -68,7 +123,10 @@ export function Sidebar({ collapsed = false, mobileOpen = false, onClose, onTogg
                 onClick={() => handleNavigate(`/courses/${course.id}`)}
                 title={course.name}
               >
-                <span aria-hidden="true">▣</span>
+                <span className={styles.navIcon} aria-hidden="true">
+                  <i className="fa-solid fa-book" />
+                </span>
+
                 <span className={styles.itemLabel}>{course.name}</span>
               </button>
             </li>
@@ -76,39 +134,46 @@ export function Sidebar({ collapsed = false, mobileOpen = false, onClose, onTogg
         </ul>
       </div>
 
-      <div className={styles.recent}>
-        <p className={styles.sectionLabel}>Recent</p>
-        <ul className={styles.conversationList}>
-          {mockConversations.map((conv) => (
-            <li key={conv.id}>
-              <button
-                type="button"
-                className={styles.conversationItem}
-                onClick={() => handleNavigate(`/conversations/${conv.id}`)}
-                title={conv.title}
-              >
-                <span aria-hidden="true">◇</span>
-                <span className={styles.itemLabel}>{conv.title}</span>
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {/* =========================
+          RECENT CONVERSATIONS
+          ========================= */}
+
+      {conversations.length > 0 && (
+        <div className={styles.recent}>
+          <p className={styles.sectionLabel}>Recent</p>
+
+          <ul className={styles.conversationList}>
+            {conversations.map((conversation) => (
+              <li key={conversation.id}>
+                <button
+                  type="button"
+                  className={styles.conversationItem}
+                  onClick={() =>
+                    handleNavigate(`/conversations/${conversation.id}`)
+                  }
+                  title={conversation.title}
+                >
+                  <span className={styles.navIcon} aria-hidden="true">
+                    <i className="fa-regular fa-message" />
+                  </span>
+
+                  <span className={styles.itemLabel}>{conversation.title}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* =========================
+          FOOTER / PROFILE
+          ========================= */}
 
       <div className={styles.footer}>
-        <UserMenu compact={collapsed} placement="top" />
-        <button
-          type="button"
-          className={styles.collapseButton}
-          onClick={onToggleCollapsed}
-          aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-          aria-expanded={!collapsed}
-        >
-          <span aria-hidden="true">{collapsed ? '▶' : '◀'}</span>
-        </button>
+        <UserMenu placement="top" />
       </div>
     </aside>
-  )
+  );
 }
 
-export default Sidebar
+export default Sidebar;

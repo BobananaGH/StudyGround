@@ -1,7 +1,7 @@
-const ACCESS_TOKEN_KEY = 'studyai-access-token'
-const REFRESH_TOKEN_KEY = 'studyai-refresh-token'
-const USER_KEY = 'studyai-user'
-const AUTH_STORAGE_MODE_KEY = 'studyai-auth-storage-mode'
+const ACCESS_TOKEN_KEY = 'StudyGround-access-token'
+const REFRESH_TOKEN_KEY = 'StudyGround-refresh-token'
+const USER_KEY = 'StudyGround-user'
+const AUTH_STORAGE_MODE_KEY = 'StudyGround-auth-storage-mode'
 const LOCAL_MODE = 'local'
 const SESSION_MODE = 'session'
 
@@ -125,3 +125,4 @@ export function getStoredAuthSnapshot() {
     user: getUser(),
   }
 }
+

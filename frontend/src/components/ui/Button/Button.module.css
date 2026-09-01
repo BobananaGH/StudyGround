@@ -1,13 +1,26 @@
+/* frontend/src/components/ui/Button/Button.module.css */
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
+
+  width: auto;
+
   border-radius: var(--radius-md);
-  font-weight: 600;
-  transition: background-color var(--duration-150) ease, border-color var(--duration-150) ease, color var(--duration-150) ease, transform var(--duration-150) ease;
   border: 1px solid transparent;
+
+  font-family: inherit;
+  font-weight: 600;
   line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background-color var(--duration-150) ease,
+    border-color var(--duration-150) ease,
+    color var(--duration-150) ease,
+    transform var(--duration-150) ease;
 }
 
 .button:disabled {

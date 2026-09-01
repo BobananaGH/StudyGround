@@ -1,39 +1,41 @@
-import { useEffect, useState } from 'react'
-import { Outlet } from 'react-router-dom'
-import { Sidebar } from '../../components/layout/Sidebar/Sidebar.jsx'
-import { Header } from '../../components/layout/Header/Header.jsx'
-import styles from './AppLayout.module.css'
+// frontend/src/layout/AppLayout/AppLayout.jsx
+import { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
+import { Sidebar } from "../../components/layout/Sidebar/Sidebar.jsx";
+import { Header } from "../../components/layout/Header/Header.jsx";
+import styles from "./AppLayout.module.css";
 
 export function AppLayout() {
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
-  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false)
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
   useEffect(() => {
-    if (!mobileSidebarOpen) return undefined
+    if (!mobileSidebarOpen) return undefined;
 
     function handleKeyDown(event) {
-      if (event.key === 'Escape') {
-        setMobileSidebarOpen(false)
+      if (event.key === "Escape") {
+        setMobileSidebarOpen(false);
       }
     }
 
-    document.addEventListener('keydown', handleKeyDown)
+    document.addEventListener("keydown", handleKeyDown);
+
     return () => {
-      document.removeEventListener('keydown', handleKeyDown)
-    }
-  }, [mobileSidebarOpen])
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [mobileSidebarOpen]);
 
   return (
     <div
-      className={[
-        styles.shell,
-        sidebarCollapsed ? styles.collapsed : '',
-      ].filter(Boolean).join(' ')}
+      className={[styles.shell, sidebarCollapsed ? styles.collapsed : ""]
+        .filter(Boolean)
+        .join(" ")}
     >
       <Sidebar
+        collapsed={sidebarCollapsed}
         mobileOpen={mobileSidebarOpen}
         onClose={() => setMobileSidebarOpen(false)}
-        onToggleCollapsed={setSidebarCollapsed}
+        onToggleCollapsed={() => setSidebarCollapsed((prev) => !prev)}
       />
 
       {mobileSidebarOpen ? (
@@ -47,12 +49,13 @@ export function AppLayout() {
 
       <div className={styles.mainWrapper}>
         <Header onMenuClick={() => setMobileSidebarOpen(true)} />
+
         <main className={styles.main}>
           <Outlet />
         </main>
       </div>
     </div>
-  )
+  );
 }
 
-export default AppLayout
+export default AppLayout;
