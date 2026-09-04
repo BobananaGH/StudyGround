@@ -1,0 +1,140 @@
+/* frontend/src/pages/Register/Register.module.css */
+
+.page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: var(--space-6);
+  background:
+    radial-gradient(circle at top, rgba(170, 59, 255, 0.08), transparent 40%),
+    var(--color-background);
+}
+
+/* =========================
+   CARD
+   ========================= */
+
+.card {
+  width: min(100%, 480px);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-8);
+  display: grid;
+  gap: var(--space-6);
+}
+
+/* =========================
+   BRAND
+   ========================= */
+
+.brandRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--color-primary), #6c4cff);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.brandMeta {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* =========================
+   HEADER
+   ========================= */
+
+.headerBlock {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.title {
+  font-size: var(--text-3xl);
+  line-height: 1.1;
+}
+
+.subtitle {
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+}
+
+/* =========================
+   FORM
+   ========================= */
+
+.form {
+  display: grid;
+  gap: var(--space-4);
+}
+
+/* =========================
+   ERRORS
+   ========================= */
+
+.errorBox {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: rgba(255, 77, 111, 0.12);
+  border: 1px solid rgba(255, 77, 111, 0.25);
+  color: var(--color-error);
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+
+.footerText {
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.footerText a {
+  font-weight: 600;
+}
+
+/* =========================
+   LOADING
+   ========================= */
+
+.loadingHint {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 24px;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 520px) {
+  .page {
+    padding: var(--space-4);
+  }
+
+  .card {
+    padding: var(--space-6);
+  }
+}

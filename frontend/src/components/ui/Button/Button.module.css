@@ -1,0 +1,107 @@
+/* frontend/src/components/ui/Button/Button.module.css */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+
+  width: auto;
+
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+
+  font-family: inherit;
+  font-weight: 600;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background-color var(--duration-150) ease,
+    border-color var(--duration-150) ease,
+    color var(--duration-150) ease,
+    transform var(--duration-150) ease;
+}
+
+.button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.primary {
+  background: var(--color-primary);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+}
+
+/* =========================
+   DANGER
+   ========================= */
+
+.danger {
+  background: var(--color-error);
+  color: #fff;
+  border-color: var(--color-error);
+  box-shadow: var(--shadow-sm);
+}
+
+.danger:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--color-error) 85%, #000);
+  border-color: color-mix(in srgb, var(--color-error) 85%, #000);
+}
+
+.danger:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.secondary {
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+}
+
+.secondary:hover:not(:disabled) {
+  background: var(--color-surface-secondary);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--color-text-primary);
+}
+
+.ghost:hover:not(:disabled) {
+  background: var(--color-surface-secondary);
+}
+
+.sm {
+  height: 36px;
+  padding: 0 var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.md {
+  height: 44px;
+  padding: 0 var(--space-4);
+  font-size: var(--text-base);
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.loading {
+  position: relative;
+}
+
+.spinnerWrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+.labelHidden {
+  opacity: 0.85;
+}

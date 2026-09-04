@@ -1,0 +1,141 @@
+/* frontend/src/components/ui/Input/Input.module.css */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* =========================
+   INPUT ROW
+   ========================= */
+
+.controlRow {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* =========================
+   INPUT
+   ========================= */
+
+.input {
+  width: 100%;
+  min-height: 44px;
+
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+
+  background: var(--color-background);
+  color: var(--color-text-primary);
+
+  padding: 0 var(--space-4);
+  padding-right: 48px;
+
+  transition:
+    border-color var(--duration-150) ease,
+    box-shadow var(--duration-150) ease,
+    background-color var(--duration-150) ease;
+}
+
+.input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px var(--color-focus-ring);
+  outline: none;
+}
+
+.error {
+  border-color: var(--color-error);
+}
+
+/* =========================
+   PASSWORD EYE
+   ========================= */
+
+.toggleButton {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+
+  width: 32px;
+  height: 32px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: translateY(-50%);
+
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+
+  background: transparent;
+  color: var(--color-text-muted);
+
+  cursor: pointer;
+
+  transition:
+    background-color var(--duration-150) ease,
+    color var(--duration-150) ease;
+}
+
+.toggleButton:hover:not(:disabled) {
+  background: var(--color-surface-secondary);
+  color: var(--color-text-primary);
+}
+
+.toggleButton:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.toggleButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =========================
+   HINT / ERROR
+   ========================= */
+
+.hint {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.errorText {
+  font-size: var(--text-xs);
+  color: var(--color-error);
+}
+
+/* =========================
+   RIGHT ACTION
+   ========================= */
+
+.rightAction {
+  display: flex;
+  align-items: center;
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 520px) {
+  .input {
+    min-height: 44px;
+  }
+}

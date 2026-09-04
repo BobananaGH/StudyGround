@@ -1,0 +1,262 @@
+/* frontend/src/components/ui/ConfirmDialog/ConfirmDialog.module.css */
+
+/* =========================
+   OVERLAY
+   ========================= */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-drawer);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: var(--space-4);
+
+  background: rgba(8, 6, 13, 0.45);
+  backdrop-filter: blur(3px);
+
+  animation: fadeIn var(--duration-150) ease-out;
+}
+
+/* =========================
+   DIALOG
+   ========================= */
+
+.dialog {
+  position: relative;
+
+  box-sizing: border-box;
+  width: min(100%, 440px);
+  max-width: 440px;
+  min-width: 0;
+  flex: 0 1 440px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: var(--space-8);
+
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-lg);
+
+  animation: dialogIn var(--duration-300) ease-out;
+}
+
+/* =========================
+   CLOSE BUTTON
+   ========================= */
+
+.closeButton {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+
+  width: 32px;
+  height: 32px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: var(--radius-sm);
+
+  background: transparent;
+  color: var(--color-text-muted);
+
+  font-family: inherit;
+  font-size: var(--text-base);
+
+  cursor: pointer;
+
+  transition:
+    color var(--duration-150) ease,
+    background-color var(--duration-150) ease;
+}
+
+.closeButton:hover:not(:disabled) {
+  color: var(--color-text-primary);
+  background: var(--color-surface-secondary);
+}
+
+.closeButton:focus,
+.closeButton:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.closeButton:active:not(:disabled) {
+  background: var(--color-surface-secondary);
+}
+
+.closeButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.closeButton i {
+  line-height: 1;
+}
+
+/* =========================
+   ICON
+   ========================= */
+
+.icon {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: var(--space-4);
+
+  border-radius: 50%;
+
+  background: color-mix(in srgb, var(--color-error) 10%, transparent);
+
+  color: var(--color-error);
+
+  font-size: var(--text-lg);
+}
+
+.icon i {
+  line-height: 1;
+}
+
+/* =========================
+   CONTENT
+   ========================= */
+
+.content {
+  width: 100%;
+  text-align: center;
+}
+
+.content h2 {
+  margin: 0;
+
+  color: var(--color-text-primary);
+
+  font-size: var(--text-xl);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.content p {
+  margin: var(--space-2) 0 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+/* =========================
+   ACTIONS
+   ========================= */
+
+.actions {
+  width: 100%;
+
+  display: flex;
+  align-items: stretch;
+
+  gap: var(--space-3);
+
+  margin-top: var(--space-6);
+}
+
+.actions > * {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.actions button {
+  width: 100%;
+}
+
+/* =========================
+   ANIMATIONS
+   ========================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes dialogIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 480px) {
+  .overlay {
+    align-items: flex-end;
+    padding: var(--space-3);
+  }
+
+  .dialog {
+    width: 100%;
+    max-width: none;
+    flex: 0 1 auto;
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+  }
+
+  .closeButton {
+    top: var(--space-3);
+    right: var(--space-3);
+  }
+
+  .actions {
+    flex-direction: row;
+    gap: var(--space-2);
+  }
+
+  .actions > * {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .actions button {
+    width: 100%;
+  }
+}
+
+/* =========================
+   REDUCED MOTION
+   ========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay,
+  .dialog {
+    animation: none;
+  }
+}

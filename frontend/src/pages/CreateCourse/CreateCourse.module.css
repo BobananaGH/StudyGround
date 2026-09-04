@@ -1,0 +1,279 @@
+/* =========================
+   CREATE COURSE PAGE
+   ========================= */
+
+.createCourse {
+  width: 100%;
+  max-width: 760px;
+  min-height: calc(100vh - 80px);
+  margin: 0 auto;
+  padding: var(--space-10) var(--space-6);
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* =========================
+   HEADER
+   ========================= */
+
+.header {
+  margin-bottom: var(--space-8);
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-2);
+
+  color: var(--color-primary);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  line-height: 1.4;
+
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.title {
+  margin: 0;
+
+  color: var(--color-text-primary);
+  font-size: var(--text-3xl);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  max-width: 60ch;
+  margin: var(--space-3) 0 0;
+
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+  line-height: 1.6;
+}
+
+/* =========================
+   FORM
+   ========================= */
+
+.form {
+  display: grid;
+  gap: var(--space-6);
+
+  padding: var(--space-8);
+
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-sm);
+}
+
+/* =========================
+   FORM GROUP
+   ========================= */
+
+.formGroup {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.formGroup label {
+  color: var(--color-text-primary);
+  font-size: var(--text-sm);
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+/* =========================
+   INPUTS
+   ========================= */
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: var(--space-3);
+
+  color: var(--color-text-primary);
+  background: var(--color-background);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  font-family: inherit;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+
+  transition:
+    border-color var(--duration-150) ease,
+    box-shadow var(--duration-150) ease,
+    background-color var(--duration-150) ease;
+}
+
+/* =========================
+   TEXT INPUT
+   ========================= */
+
+.formGroup input {
+  min-height: 44px;
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+.formGroup input:hover:not(:disabled),
+.formGroup textarea:hover:not(:disabled) {
+  border-color: color-mix(
+    in srgb,
+    var(--color-primary) 45%,
+    var(--color-border)
+  );
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  outline: none;
+
+  border-color: var(--color-primary);
+
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--color-primary) 12%, transparent);
+}
+
+.formGroup input:disabled,
+.formGroup textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =========================
+   TEXTAREA
+   ========================= */
+
+.formGroup textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+/* =========================
+   ERROR
+   ========================= */
+
+.error {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+
+  margin: 0;
+
+  padding: var(--space-3) var(--space-4);
+
+  color: var(--color-error);
+
+  background: color-mix(in srgb, var(--color-error) 6%, transparent);
+
+  border: 1px solid color-mix(in srgb, var(--color-error) 25%, transparent);
+
+  border-radius: var(--radius-md);
+
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.error i {
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+/* =========================
+   ACTIONS
+   ========================= */
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: var(--space-3);
+
+  padding-top: var(--space-2);
+}
+
+/*
+   Button appearance is handled
+   completely by the shared Button
+   component.
+*/
+
+.actions button {
+  min-width: 120px;
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 640px) {
+  .createCourse {
+    min-height: calc(100vh - 60px);
+    padding: var(--space-8) var(--space-4);
+    justify-content: flex-start;
+  }
+
+  .header {
+    margin-bottom: var(--space-6);
+  }
+
+  .title {
+    font-size: var(--text-2xl);
+  }
+
+  .subtitle {
+    font-size: var(--text-sm);
+  }
+
+  .form {
+    gap: var(--space-5);
+    padding: var(--space-5);
+  }
+
+  .actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .actions button {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+   ========================= */
+
+@media (max-width: 420px) {
+  .createCourse {
+    padding: var(--space-6) var(--space-3);
+  }
+
+  .form {
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+  }
+
+  .title {
+    font-size: var(--text-xl);
+  }
+
+  .formGroup input,
+  .formGroup textarea {
+    font-size: 16px;
+  }
+}
