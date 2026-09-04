@@ -1,7 +1,7 @@
 # backend/core/tests/test_answer_verification.py
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
-
+from users.models import User
 from core.models import Course, Document, DocumentChunk
 from core.services.answer_verification import verify_answer
 
@@ -9,9 +9,15 @@ from core.services.answer_verification import verify_answer
 class AnswerVerificationTests(TestCase):
 
     def setUp(self):
+        self.user = User.objects.create_user(
+            username="testuser",
+            password="testpassword",
+        )
+
         self.course = Course.objects.create(
             name="Artificial Intelligence",
             code="AI",
+            created_by=self.user,
         )
 
         self.document = Document.objects.create(

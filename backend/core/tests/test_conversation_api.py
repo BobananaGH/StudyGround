@@ -25,6 +25,7 @@ class ConversationAPITests(APITestCase):
         self.course = Course.objects.create(
             name="Artificial Intelligence",
             code="AI101",
+            created_by=self.user,
         )
 
     def test_create_conversation(self):

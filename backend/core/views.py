@@ -14,7 +14,9 @@ from .services.document_ingestion import ingest_document
 class CourseListView(APIView):
     permission_classes = [IsAuthenticated]
     def get(self, request):
-        courses = Course.objects.all().order_by("name")
+        courses = Course.objects.filter(
+            created_by=request.user,
+        ).order_by("name")
 
         data = [
             {
@@ -45,8 +47,8 @@ class CourseListView(APIView):
             name=name,
             code=request.data.get("code", ""),
             description=request.data.get("description", ""),
+            created_by=request.user,
         )
-
         return Response(
             {
                 "id": course.id,
@@ -62,14 +64,14 @@ class CourseListView(APIView):
 class CourseDetailView(APIView):
     permission_classes = [IsAuthenticated]
 
-    def get_course(self, course_id):
-        try:
-            return Course.objects.get(id=course_id)
-        except Course.DoesNotExist:
-            return None
+    def get_course(self, request, course_id):
+        return Course.objects.filter(
+            id=course_id,
+            created_by=request.user,
+        ).first()
 
     def get(self, request, course_id):
-        course = self.get_course(course_id)
+        course = self.get_course(request, course_id)
 
         if course is None:
             return Response(
@@ -91,13 +93,16 @@ class CourseDetailView(APIView):
         )
 
     def delete(self, request, course_id):
-        course = self.get_course(course_id)
+        course = self.get_course(request, course_id)
 
         if course is None:
             return Response(
                 {"error": "Course not found."},
                 status=status.HTTP_404_NOT_FOUND,
             )
+
+        # Conversation.course uses SET_NULL, so delete them explicitly.
+        Conversation.objects.filter(course=course).delete()
 
         course.delete()
 
@@ -109,13 +114,16 @@ class CourseDetailView(APIView):
 class CourseDocumentsView(APIView):
     permission_classes = [IsAuthenticated]
     def get(self, request, course_id):
-        try:
-            course = Course.objects.get(id=course_id)
-        except Course.DoesNotExist:
+        course = Course.objects.filter(
+            id=course_id,
+            created_by=request.user,
+        ).first()
+
+        if course is None:
             return Response(
                 {"error": "Course not found."},
                 status=status.HTTP_404_NOT_FOUND,
-    )
+            )
 
         documents = course.documents.all().order_by("-created_at")
 
@@ -159,9 +167,12 @@ class DocumentUploadView(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        try:
-            course = Course.objects.get(id=course_id)
-        except Course.DoesNotExist:
+        course = Course.objects.filter(
+            id=course_id,
+            created_by=request.user,
+        ).first()
+
+        if course is None:
             return Response(
                 {"error": "Course not found."},
                 status=status.HTTP_400_BAD_REQUEST,
@@ -191,9 +202,12 @@ class DocumentDeleteView(APIView):
     permission_classes = [IsAuthenticated]
 
     def delete(self, request, document_id):
-        try:
-            document = Document.objects.get(id=document_id)
-        except Document.DoesNotExist:
+        document = Document.objects.filter(
+            id=document_id,
+            course__created_by=request.user,
+        ).first()
+
+        if document is None:
             return Response(
                 {"error": "Document not found."},
                 status=status.HTTP_404_NOT_FOUND,
@@ -217,6 +231,7 @@ class ConversationListCreateView(APIView):
                 "id": conversation.id,
                 "title": conversation.title,
                 "course_id": conversation.course_id,
+                "created_at": conversation.created_at,
             }
             for conversation in conversations
         ]
@@ -230,9 +245,12 @@ class ConversationListCreateView(APIView):
         course = None
 
         if course_id:
-            try:
-                course = Course.objects.get(id=course_id)
-            except Course.DoesNotExist:
+            course = Course.objects.filter(
+                id=course_id,
+                created_by=request.user,
+            ).first()
+
+            if course is None:
                 return Response(
                     {"error": "Course not found."},
                     status=status.HTTP_404_NOT_FOUND,
@@ -249,6 +267,7 @@ class ConversationListCreateView(APIView):
                 "id": conversation.id,
                 "title": conversation.title,
                 "course_id": conversation.course_id,
+                "created_at": conversation.created_at,
             },
             status=status.HTTP_201_CREATED,
         )

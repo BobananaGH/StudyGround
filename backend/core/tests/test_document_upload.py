@@ -26,6 +26,7 @@ class DocumentUploadTests(TestCase):
         self.course = Course.objects.create(
             name="Artificial Intelligence",
             code="AI",
+            created_by=self.user,
         )
 
     @patch("core.views.ingest_document")

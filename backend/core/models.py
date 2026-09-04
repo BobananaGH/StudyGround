@@ -7,12 +7,14 @@ class Course(models.Model):
     name = models.CharField(max_length=255)
     code = models.CharField(max_length=50, blank=True)
     description = models.TextField(blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        if self.code:
-            return f"{self.name} ({self.code})"
-        return self.name
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="courses",
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 class CourseAlias(models.Model):

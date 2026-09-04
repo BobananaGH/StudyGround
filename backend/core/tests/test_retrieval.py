@@ -4,7 +4,7 @@ import unittest
 from django.db import connection
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
-
+from users.models import User
 from core.models import Course, Document, DocumentChunk
 from core.services.retrieval import retrieve_chunks
 from core.utils.embedder import embed_passage
@@ -17,14 +17,21 @@ from core.utils.embedder import embed_passage
 class RetrievalTests(TestCase):
 
     def setUp(self):
+        self.user = User.objects.create_user(
+            username="testuser",
+            password="testpassword",
+        )
+
         self.ai = Course.objects.create(
             name="Artificial Intelligence",
             code="AI",
+            created_by=self.user,
         )
 
         self.database = Course.objects.create(
             name="Database",
             code="DB",
+            created_by=self.user,
         )
 
         self.ai_document = Document.objects.create(

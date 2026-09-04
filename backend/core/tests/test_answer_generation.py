@@ -1,6 +1,8 @@
 # backend/core/tests/test_answer_generation.py
 from unittest.mock import MagicMock, patch
 
+from users.models import User
+
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
 
@@ -11,9 +13,15 @@ from core.services.answer_generation import generate_answer
 class AnswerGenerationTests(TestCase):
 
     def setUp(self):
+        self.user = User.objects.create_user(
+            username="testuser",
+            password="testpassword",
+        )
+
         self.course = Course.objects.create(
             name="Artificial Intelligence",
             code="AI",
+            created_by=self.user,
         )
 
         self.document = Document.objects.create(

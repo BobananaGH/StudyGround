@@ -3,7 +3,7 @@ from unittest.mock import patch
 
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
-
+from users.models import User
 from core.models import Course, Document
 from core.services.document_ingestion import ingest_document
 
@@ -11,8 +11,14 @@ from core.services.document_ingestion import ingest_document
 class DocumentIngestionTests(TestCase):
 
     def setUp(self):
+        self.user = User.objects.create_user(
+            username="testuser",
+            password="testpassword",
+        )
+
         self.course = Course.objects.create(
-            name="Data Structures"
+            name="Data Structures",
+            created_by=self.user,
         )
 
         self.document = Document.objects.create(

@@ -21,11 +21,13 @@ class CourseAPITests(APITestCase):
             name="Artificial Intelligence",
             code="AI101",
             description="AI fundamentals",
+            created_by=self.user,
         )
 
         self.other_course = Course.objects.create(
             name="Computer Networks",
             code="CN101",
+            created_by=self.user,
         )
 
         self.document = Document.objects.create(

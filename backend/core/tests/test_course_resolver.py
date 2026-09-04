@@ -1,6 +1,7 @@
 # backend/core/tests/test_course_resolver.py
 
 from django.test import TestCase
+from users.models import User
 
 from core.models import Course, CourseAlias
 from core.services.course_resolver import resolve_course
@@ -9,9 +10,15 @@ from core.services.course_resolver import resolve_course
 class CourseResolverTests(TestCase):
 
     def setUp(self):
+        self.user = User.objects.create_user(
+            username="testuser",
+            password="testpassword",
+        )
+
         self.course = Course.objects.create(
             name="Artificial Intelligence",
             code="AI",
+            created_by=self.user,
         )
 
         CourseAlias.objects.create(

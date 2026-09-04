@@ -22,6 +22,7 @@ class ConversationAnswerTests(TestCase):
         self.course = Course.objects.create(
             name="Artificial Intelligence",
             code="AI",
+            created_by=self.user,
         )
 
         self.document = Document.objects.create(
