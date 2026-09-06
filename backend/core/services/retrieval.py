@@ -113,3 +113,87 @@ def retrieve_chunks(
             chunk.distance = None
 
     return fused_chunks
+
+def sample_document_chunks(document, count=8):
+    """
+    Sample chunks spread across a document.
+
+    Unlike semantic retrieval, this function does not use the
+    user's query. It selects chunks from different positions
+    in the document to provide broad document coverage.
+
+    Args:
+        document: Document instance to sample from.
+        count: Maximum number of chunks to return.
+
+    Returns:
+        List of DocumentChunk objects ordered by chunk_index.
+    """
+
+    if document is None:
+        return []
+
+    if count <= 0:
+        return []
+
+    chunks = list(
+        DocumentChunk.objects
+        .filter(
+            document=document,
+            embedding__isnull=False,
+        )
+        .order_by("chunk_index")
+    )
+
+    if not chunks:
+        return []
+
+    if len(chunks) <= count:
+        return chunks
+
+    if count == 1:
+        return [chunks[0]]
+
+    last_index = len(chunks) - 1
+
+    selected_indexes = [
+        round(i * last_index / (count - 1))
+        for i in range(count)
+    ]
+
+    return [
+        chunks[index]
+        for index in selected_indexes
+    ]
+    
+def sample_course_chunks(course, count_per_document=4):
+    """
+    Sample chunks across all documents in a course.
+
+    Each document contributes up to count_per_document chunks,
+    providing broad coverage for document-level questions.
+    """
+
+    if course is None:
+        return []
+
+    if count_per_document <= 0:
+        return []
+
+    documents = (
+        course.documents
+        .all()
+        .order_by("id")
+    )
+
+    sampled_chunks = []
+
+    for document in documents:
+        sampled_chunks.extend(
+            sample_document_chunks(
+                document,
+                count=count_per_document,
+            )
+        )
+
+    return sampled_chunks

@@ -1,4 +1,38 @@
 # backend/core/services/answer_verification.py
+import re
+
+
+def normalize_chunk_id(raw_chunk_id):
+    """
+    Normalize an LLM-provided chunk ID into the canonical
+    integer database ID.
+
+    Examples:
+        "2881"              -> 2881
+        "Chunk 2881"        -> 2881
+        "CHUNK 2881"        -> 2881
+        "chunk_2881"        -> 2881
+        "chunk-2881"        -> 2881
+        "[Chunk 2881]"      -> 2881
+        "[CHUNK_2881]"      -> 2881
+    """
+    if raw_chunk_id is None:
+        return None
+
+    value = str(raw_chunk_id).strip()
+
+    match = re.fullmatch(
+        r"\[?\s*(?:chunk[\s_-]*)?(\d+)\s*\]?",
+        value,
+        re.IGNORECASE,
+    )
+
+    if not match:
+        return None
+
+    return int(match.group(1))
+
+
 def verify_answer(result, chunks):
     """
     Verify that the evidence cited by the LLM belongs to
@@ -22,8 +56,9 @@ def verify_answer(result, chunks):
             "evidence": [],
         }
 
+    # Database chunk IDs are integers, so keep them as integers.
     retrieved_chunks_by_id = {
-        str(chunk.id): chunk
+        chunk.id: chunk
         for chunk in chunks
     }
 
@@ -39,26 +74,20 @@ def verify_answer(result, chunks):
         if raw_chunk_id is None:
             continue
 
-        chunk_id = str(raw_chunk_id).strip()
+        # Normalize the LLM-provided representation.
+        chunk_id = normalize_chunk_id(raw_chunk_id)
 
-        # Defensive normalization:
-        # "Chunk 1008" -> "1008"
-        # "[Chunk 1008]" -> "1008"
-        # "chunk 1008" -> "1008"
-        if chunk_id.lower().startswith("chunk "):
-            chunk_id = chunk_id[6:].strip()
+        if chunk_id is None:
+            continue
 
-        if chunk_id.startswith("[") and chunk_id.endswith("]"):
-            chunk_id = chunk_id[1:-1].strip()
-
-        if chunk_id.lower().startswith("chunk "):
-            chunk_id = chunk_id[6:].strip()
-
+        # Only accept evidence that refers to a chunk
+        # actually present in the retrieved context.
         chunk = retrieved_chunks_by_id.get(chunk_id)
 
         if chunk is None:
             continue
 
+        # Rebuild evidence metadata from the real database chunk.
         verified_evidence.append(
             {
                 "chunk_id": chunk_id,

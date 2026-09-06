@@ -3,9 +3,17 @@ from unittest.mock import patch
 
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
+
 from rest_framework.test import APIClient
 
-from core.models import Course, Conversation, Document, DocumentChunk, Evidence
+from core.models import (
+    Course,
+    Conversation,
+    Document,
+    DocumentChunk,
+    Evidence,
+)
+
 from users.models import User
 
 
@@ -53,7 +61,9 @@ class ConversationAnswerTests(TestCase):
             title="AI Study",
         )
 
-        self.client.force_authenticate(user=self.user)
+        self.client.force_authenticate(
+            user=self.user,
+        )
 
     @patch("core.views.retrieve_chunks")
     @patch("core.views.generate_answer")
@@ -68,7 +78,10 @@ class ConversationAnswerTests(TestCase):
 
         mock_generate.return_value = {
             "found": True,
-            "answer": "Machine learning allows systems to learn from data.",
+            "answer": (
+                "Machine learning allows systems "
+                "to learn from data."
+            ),
             "evidence": [
                 {
                     "chunk_id": str(self.chunk.id),
@@ -80,7 +93,10 @@ class ConversationAnswerTests(TestCase):
 
         mock_verify.return_value = {
             "found": True,
-            "answer": "Machine learning allows systems to learn from data.",
+            "answer": (
+                "Machine learning allows systems "
+                "to learn from data."
+            ),
             "evidence": [
                 {
                     "chunk_id": str(self.chunk.id),
@@ -99,7 +115,10 @@ class ConversationAnswerTests(TestCase):
             format="json",
         )
 
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(
+            response.status_code,
+            201,
+        )
 
         self.assertEqual(
             response.data["role"],
@@ -108,7 +127,10 @@ class ConversationAnswerTests(TestCase):
 
         self.assertEqual(
             response.data["content"],
-            "Machine learning allows systems to learn from data.",
+            (
+                "Machine learning allows systems "
+                "to learn from data."
+            ),
         )
 
         mock_retrieve.assert_called_once()
@@ -128,7 +150,10 @@ class ConversationAnswerTests(TestCase):
 
         result = {
             "found": True,
-            "answer": "Machine learning allows systems to learn from data.",
+            "answer": (
+                "Machine learning allows systems "
+                "to learn from data."
+            ),
             "evidence": [
                 {
                     "chunk_id": str(self.chunk.id),
@@ -150,13 +175,19 @@ class ConversationAnswerTests(TestCase):
             format="json",
         )
 
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(
+            response.status_code,
+            201,
+        )
 
         evidence = Evidence.objects.filter(
             message__conversation=self.conversation,
         )
 
-        self.assertEqual(evidence.count(), 1)
+        self.assertEqual(
+            evidence.count(),
+            1,
+        )
 
         self.assertEqual(
             evidence.first().chunk,
@@ -195,7 +226,10 @@ class ConversationAnswerTests(TestCase):
             format="json",
         )
 
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(
+            response.status_code,
+            201,
+        )
 
         self.assertEqual(
             response.data["role"],
@@ -204,7 +238,10 @@ class ConversationAnswerTests(TestCase):
 
         self.assertEqual(
             response.data["content"],
-            "I couldn't find enough information in the course materials.",
+            (
+                "I couldn't find enough information "
+                "in the course materials."
+            ),
         )
 
         self.assertEqual(
@@ -230,7 +267,10 @@ class ConversationAnswerTests(TestCase):
             format="json",
         )
 
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(
+            response.status_code,
+            201,
+        )
 
         self.assertEqual(
             response.data["role"],
@@ -239,7 +279,10 @@ class ConversationAnswerTests(TestCase):
 
         self.assertEqual(
             response.data["content"],
-            "I couldn't find enough information in the course materials.",
+            (
+                "I couldn't find enough information "
+                "in the course materials."
+            ),
         )
 
         self.assertEqual(
@@ -247,4 +290,127 @@ class ConversationAnswerTests(TestCase):
                 message__conversation=self.conversation,
             ).count(),
             0,
+        )
+
+    @patch("core.views.sample_course_chunks")
+    @patch("core.views.generate_broad_answer")
+    @patch("core.views.generate_answer")
+    @patch("core.views.verify_answer")
+    @patch("core.views.retrieve_chunks")
+    def test_broad_question_uses_document_overview(
+        self,
+        mock_retrieve,
+        mock_verify,
+        mock_generate,
+        mock_generate_broad,
+        mock_sample_course,
+    ):
+        mock_retrieve.return_value = [self.chunk]
+
+        mock_generate.return_value = {
+            "found": True,
+            "answer": "The document covers machine learning.",
+            "needs_document_overview": True,
+            "evidence": [
+                {
+                    "chunk_id": str(self.chunk.id),
+                    "document": self.document.title,
+                    "page": self.chunk.page_number,
+                }
+            ],
+        }
+
+        mock_sample_course.return_value = [
+            self.chunk,
+        ]
+
+        mock_generate_broad.return_value = {
+            "found": True,
+            "answer": (
+                "The document covers machine learning "
+                "as a branch of artificial intelligence."
+            ),
+            "needs_document_overview": False,
+            "evidence": [
+                {
+                    "chunk_id": str(self.chunk.id),
+                    "document": self.document.title,
+                    "page": self.chunk.page_number,
+                }
+            ],
+        }
+
+        mock_verify.return_value = {
+            "found": True,
+            "answer": (
+                "The document covers machine learning "
+                "as a branch of artificial intelligence."
+            ),
+            "evidence": [
+                {
+                    "chunk_id": str(self.chunk.id),
+                    "document": self.document.title,
+                    "page": self.chunk.page_number,
+                }
+            ],
+        }
+
+        response = self.client.post(
+            f"/api/conversations/{self.conversation.id}/messages/",
+            {
+                "role": "user",
+                "content": (
+                    "What are the main topics covered "
+                    "in this document?"
+                ),
+            },
+            format="json",
+        )
+
+        self.assertEqual(
+            response.status_code,
+            201,
+        )
+
+        self.assertEqual(
+            response.data["role"],
+            "assistant",
+        )
+
+        self.assertEqual(
+            response.data["content"],
+            (
+                "The document covers machine learning "
+                "as a branch of artificial intelligence."
+            ),
+        )
+
+        mock_retrieve.assert_called_once()
+
+        mock_generate.assert_called_once()
+
+        mock_sample_course.assert_called_once_with(
+            self.course,
+            count_per_document=4,
+        )
+
+        mock_generate_broad.assert_called_once_with(
+            "What are the main topics covered in this document?",
+            [self.chunk],
+        )
+
+        mock_verify.assert_called_once()
+
+        evidence = Evidence.objects.filter(
+            message__conversation=self.conversation,
+        )
+
+        self.assertEqual(
+            evidence.count(),
+            1,
+        )
+
+        self.assertEqual(
+            evidence.first().chunk,
+            self.chunk,
         )

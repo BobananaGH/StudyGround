@@ -6,8 +6,8 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 
 from .models import Course, Conversation, Document, Message, Evidence
-from .services.retrieval import retrieve_chunks
-from .services.answer_generation import generate_answer
+from .services.retrieval import retrieve_chunks, sample_course_chunks
+from .services.answer_generation import generate_answer, generate_broad_answer
 from .services.answer_verification import verify_answer
 from .services.document_ingestion import ingest_document
 
@@ -470,10 +470,44 @@ class ConversationMessagesView(APIView):
                 status=status.HTTP_503_SERVICE_UNAVAILABLE,
             )
 
-        # Verify Gemini's evidence against the actual retrieved chunks
+        # The chunks used for evidence verification.
+        # This changes to the broad sampled chunks if the model
+        # determines that a document-level overview is needed.
+        verification_chunks = chunks
+
+        # If the normal retrieval context is insufficient for a broad
+        # document-level question, sample chunks across the whole course.
+        if result.get("needs_document_overview"):
+            broad_chunks = sample_course_chunks(
+                conversation.course,
+                count_per_document=4,
+            )
+
+            if broad_chunks:
+                broad_result = generate_broad_answer(
+                    content,
+                    broad_chunks,
+                )
+
+                if broad_result.get("error") == "model_unavailable":
+                    return Response(
+                        {
+                            "error": (
+                                "The AI service is temporarily unavailable. "
+                                "Please try again in a moment."
+                            )
+                        },
+                        status=status.HTTP_503_SERVICE_UNAVAILABLE,
+                    )
+
+                result = broad_result
+                verification_chunks = broad_chunks
+
+        # Verify the final answer against the exact chunks
+        # that were used to generate it.
         verified_result = verify_answer(
             result,
-            chunks,
+            verification_chunks,
         )
 
         if not verified_result["found"]:
@@ -513,7 +547,7 @@ class ConversationMessagesView(APIView):
             try:
                 chunk = next(
                     chunk
-                    for chunk in chunks
+                    for chunk in verification_chunks
                     if str(chunk.id) == str(chunk_id)
                 )
             except StopIteration:

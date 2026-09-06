@@ -1,6 +1,6 @@
 {
   "document_title": "Giáo trình Triết học",
-  "course_id": 2,
+  "course_id": 7,
   "course_code": "TRIET101",
   "questions": [
     {
@@ -124,11 +124,10 @@
     },
     {
       "id": "Q013",
-      "category": "not_answerable",
+      "category": "answerable",
       "question": "Ai là tác giả của thuyết tương đối hẹp và thuyết tương đối rộng?",
-      "expected_found": false,
-      "expected_answer": null,
-      "notes": "Off-topic (physics/Einstein), easy case."
+      "expected_found": true,
+      "expected_answer": "Albert Einstein"
     },
     {
       "id": "Q014",
