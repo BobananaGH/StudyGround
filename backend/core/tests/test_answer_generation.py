@@ -60,6 +60,7 @@ class AnswerGenerationTests(TestCase):
 
     @patch("core.services.answer_generation.genai.Client")
     def test_generates_grounded_answer(self, mock_client_class):
+
         mock_response = MagicMock()
 
         mock_response.text = (
@@ -73,7 +74,9 @@ class AnswerGenerationTests(TestCase):
         )
 
         mock_client = MagicMock()
+
         mock_client.models.generate_content.return_value = mock_response
+
         mock_client_class.return_value = mock_client
 
         result = generate_answer(
@@ -82,8 +85,16 @@ class AnswerGenerationTests(TestCase):
         )
 
         self.assertTrue(result["found"])
-        self.assertIsInstance(result["answer"], str)
-        self.assertFalse(result["needs_document_overview"])
+
+        self.assertIsInstance(
+            result["answer"],
+            str,
+        )
+
+        self.assertFalse(
+            result["needs_document_overview"]
+        )
+
         self.assertGreaterEqual(
             len(result["evidence"]),
             1,
@@ -94,6 +105,7 @@ class AnswerGenerationTests(TestCase):
         self,
         mock_client_class,
     ):
+
         mock_response = MagicMock()
 
         mock_response.text = (
@@ -113,7 +125,9 @@ class AnswerGenerationTests(TestCase):
         )
 
         mock_client = MagicMock()
+
         mock_client.models.generate_content.return_value = mock_response
+
         mock_client_class.return_value = mock_client
 
         result = generate_answer(
@@ -122,6 +136,7 @@ class AnswerGenerationTests(TestCase):
         )
 
         self.assertTrue(result["found"])
+
         self.assertTrue(
             result["needs_document_overview"]
         )
@@ -131,6 +146,7 @@ class AnswerGenerationTests(TestCase):
         self,
         mock_client_class,
     ):
+
         mock_response = MagicMock()
 
         mock_response.text = (
@@ -149,7 +165,9 @@ class AnswerGenerationTests(TestCase):
         )
 
         mock_client = MagicMock()
+
         mock_client.models.generate_content.return_value = mock_response
+
         mock_client_class.return_value = mock_client
 
         result = generate_broad_answer(
@@ -161,6 +179,7 @@ class AnswerGenerationTests(TestCase):
         )
 
         self.assertTrue(result["found"])
+
         self.assertIsInstance(
             result["answer"],
             str,
@@ -176,6 +195,7 @@ class AnswerGenerationTests(TestCase):
         )
 
     def test_empty_query_returns_empty_result(self):
+
         result = generate_answer(
             "",
             [self.chunk],
@@ -187,10 +207,12 @@ class AnswerGenerationTests(TestCase):
                 "found": False,
                 "answer": None,
                 "evidence": [],
+                "needs_document_overview": False,
             },
         )
 
     def test_no_chunks_returns_empty_result(self):
+
         result = generate_answer(
             "What is machine learning?",
             [],
@@ -202,10 +224,12 @@ class AnswerGenerationTests(TestCase):
                 "found": False,
                 "answer": None,
                 "evidence": [],
+                "needs_document_overview": False,
             },
         )
 
     def test_broad_answer_empty_query_returns_empty_result(self):
+
         result = generate_broad_answer(
             "",
             [self.chunk],
@@ -217,10 +241,12 @@ class AnswerGenerationTests(TestCase):
                 "found": False,
                 "answer": None,
                 "evidence": [],
+                "needs_document_overview": False,
             },
         )
 
     def test_broad_answer_no_chunks_returns_empty_result(self):
+
         result = generate_broad_answer(
             "What are the main topics?",
             [],
@@ -232,6 +258,7 @@ class AnswerGenerationTests(TestCase):
                 "found": False,
                 "answer": None,
                 "evidence": [],
+                "needs_document_overview": False,
             },
         )
 
@@ -240,6 +267,7 @@ class AnswerGenerationTests(TestCase):
         self,
         mock_client_class,
     ):
+
         mock_client = MagicMock()
 
         mock_client.models.generate_content.side_effect = Exception(
@@ -252,14 +280,23 @@ class AnswerGenerationTests(TestCase):
             "core.services.answer_generation._call_openai_compatible",
             return_value=None,
         ):
+
             result = generate_answer(
                 "What is machine learning?",
                 [self.chunk],
             )
 
         self.assertFalse(result["found"])
-        self.assertIsNone(result["answer"])
-        self.assertEqual(result["evidence"], [])
+
+        self.assertIsNone(
+            result["answer"]
+        )
+
+        self.assertEqual(
+            result["evidence"],
+            [],
+        )
+
         self.assertEqual(
             result["error"],
             "model_unavailable",

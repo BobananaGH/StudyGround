@@ -68,6 +68,17 @@ export function ConversationDetail() {
       return;
     }
 
+    setMessages((currentMessages) => [
+      ...currentMessages,
+      {
+        id: `user-${Date.now()}`,
+        role: "user",
+        content: trimmedMessage,
+      },
+    ]);
+
+    setMessage("");
+
     try {
       setSending(true);
       setError("");
@@ -82,19 +93,12 @@ export function ConversationDetail() {
       setMessages((currentMessages) => [
         ...currentMessages,
         {
-          id: response.user_message_id || `user-${Date.now()}`,
-          role: "user",
-          content: trimmedMessage,
-        },
-        {
           id: response.id,
           role: response.role,
           content: response.content,
           evidence: response.evidence || [],
         },
       ]);
-
-      setMessage("");
     } catch (error) {
       console.error("Failed to send message:", error);
       setError(error.message || "Unable to send message.");
@@ -391,10 +395,20 @@ export function ConversationDetail() {
                               aria-hidden="true"
                             />
 
-                            <span>
-                              {source.document}
-                              {source.page ? ` · Page ${source.page}` : ""}
-                            </span>
+                            <div className={styles.evidenceContent}>
+                              <span className={styles.evidenceSource}>
+                                {source.document}
+                                {source.page ? ` · Page ${source.page}` : ""}
+                              </span>
+
+                              {source.supporting_excerpt && (
+                                <blockquote
+                                  className={styles.supportingExcerpt}
+                                >
+                                  “{source.supporting_excerpt}”
+                                </blockquote>
+                              )}
+                            </div>
                           </div>
                         ))}
                       </div>

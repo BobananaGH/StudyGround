@@ -391,7 +391,7 @@ class ConversationAnswerTests(TestCase):
 
         mock_sample_course.assert_called_once_with(
             self.course,
-            count_per_document=4,
+            count_per_document=15,
         )
 
         mock_generate_broad.assert_called_once_with(

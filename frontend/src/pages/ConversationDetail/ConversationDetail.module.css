@@ -891,3 +891,23 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.evidenceContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.evidenceSource {
+  line-height: 1.4;
+}
+
+.supportingExcerpt {
+  margin: 0;
+  padding-left: 0.75rem;
+  border-left: 2px solid currentColor;
+  opacity: 0.8;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}

@@ -1,5 +1,3 @@
-# backend/core/views.py
-
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -11,8 +9,10 @@ from .services.answer_generation import generate_answer, generate_broad_answer
 from .services.answer_verification import verify_answer
 from .services.document_ingestion import ingest_document
 
+
 class CourseListView(APIView):
     permission_classes = [IsAuthenticated]
+
     def get(self, request):
         courses = Course.objects.filter(
             created_by=request.user,
@@ -49,6 +49,7 @@ class CourseListView(APIView):
             description=request.data.get("description", ""),
             created_by=request.user,
         )
+
         return Response(
             {
                 "id": course.id,
@@ -113,6 +114,7 @@ class CourseDetailView(APIView):
 
 class CourseDocumentsView(APIView):
     permission_classes = [IsAuthenticated]
+
     def get(self, request, course_id):
         course = Course.objects.filter(
             id=course_id,
@@ -137,9 +139,11 @@ class CourseDocumentsView(APIView):
                 for document in documents
             ]
         )
-        
+
+
 class DocumentUploadView(APIView):
     permission_classes = [IsAuthenticated]
+
     def post(self, request):
         file = request.FILES.get("file")
         course_id = request.data.get("course_id")
@@ -183,7 +187,7 @@ class DocumentUploadView(APIView):
             title=title or file.name,
             file=file,
             file_type=file.content_type or "",
-            uploaded_by=request.user
+            uploaded_by=request.user,
         )
 
         chunks = ingest_document(document)
@@ -197,6 +201,7 @@ class DocumentUploadView(APIView):
             },
             status=status.HTTP_201_CREATED,
         )
+
 
 class DocumentDeleteView(APIView):
     permission_classes = [IsAuthenticated]
@@ -219,8 +224,10 @@ class DocumentDeleteView(APIView):
             status=status.HTTP_204_NO_CONTENT
         )
 
+
 class ConversationListCreateView(APIView):
     permission_classes = [IsAuthenticated]
+
     def get(self, request):
         conversations = Conversation.objects.filter(
             user=request.user
@@ -319,11 +326,14 @@ class ConversationDetailView(APIView):
 
         conversation.delete()
 
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(
+            status=status.HTTP_204_NO_CONTENT
+        )
 
 
 class ConversationMessagesView(APIView):
     permission_classes = [IsAuthenticated]
+
     def get_conversation(self, request, conversation_id):
         try:
             return Conversation.objects.get(
@@ -359,6 +369,7 @@ class ConversationMessagesView(APIView):
                     "chunk_id": str(item.chunk.id),
                     "document": item.chunk.document.title,
                     "page": item.chunk.page_number,
+                    "supporting_excerpt": item.supporting_excerpt,
                 }
                 for item in message.evidence.all()
             ]
@@ -422,7 +433,7 @@ class ConversationMessagesView(APIView):
                 status=status.HTTP_201_CREATED,
             )
 
-        # Retrieve relevant chunks from the conversation's course
+        # Retrieve relevant chunks from the conversation's course.
         chunks = retrieve_chunks(
             conversation.course,
             content,
@@ -431,7 +442,7 @@ class ConversationMessagesView(APIView):
             max_chunks=15,
         )
 
-        # No relevant chunks found
+        # No relevant chunks found.
         if not chunks:
             assistant_message = Message.objects.create(
                 conversation=conversation,
@@ -453,7 +464,7 @@ class ConversationMessagesView(APIView):
                 status=status.HTTP_201_CREATED,
             )
 
-        # Generate an answer using the retrieved chunks
+        # Generate an answer using the retrieved chunks.
         result = generate_answer(
             content,
             chunks,
@@ -480,7 +491,7 @@ class ConversationMessagesView(APIView):
         if result.get("needs_document_overview"):
             broad_chunks = sample_course_chunks(
                 conversation.course,
-                count_per_document=4,
+                count_per_document=15,
             )
 
             if broad_chunks:
@@ -531,14 +542,14 @@ class ConversationMessagesView(APIView):
                 status=status.HTTP_201_CREATED,
             )
 
-        # Save the verified assistant answer
+        # Save the verified assistant answer.
         assistant_message = Message.objects.create(
             conversation=conversation,
             role="assistant",
             content=verified_result["answer"],
         )
 
-        # Save verified evidence
+        # Save verified evidence.
         evidence_data = verified_result.get("evidence", [])
 
         for item in evidence_data:
@@ -556,6 +567,7 @@ class ConversationMessagesView(APIView):
             Evidence.objects.create(
                 message=assistant_message,
                 chunk=chunk,
+                supporting_excerpt=item.get("supporting_excerpt"),
             )
 
         return Response(
@@ -569,6 +581,9 @@ class ConversationMessagesView(APIView):
                         "chunk_id": str(item["chunk_id"]),
                         "document": item["document"],
                         "page": item["page"],
+                        "supporting_excerpt": item.get(
+                            "supporting_excerpt"
+                        ),
                     }
                     for item in evidence_data
                 ],
