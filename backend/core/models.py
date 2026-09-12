@@ -126,17 +126,25 @@ class Message(models.Model):
 
 
 class Evidence(models.Model):
+
     message = models.ForeignKey(
         Message,
         on_delete=models.CASCADE,
         related_name="evidence",
     )
+
     chunk = models.ForeignKey(
         DocumentChunk,
         on_delete=models.CASCADE,
         related_name="evidence",
     )
+
     similarity_score = models.FloatField(null=True, blank=True)
+
+    supporting_excerpt = models.TextField(
+        null=True,
+        blank=True,
+    )
 
     def __str__(self):
         return f"Evidence for Message {self.message.id}"

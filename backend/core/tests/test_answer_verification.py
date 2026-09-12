@@ -117,7 +117,7 @@ class AnswerVerificationTests(TestCase):
 
         self.assertEqual(
             verified["evidence"][0]["chunk_id"],
-            str(self.chunk.id),
+            self.chunk.id,
         )
 
         self.assertEqual(

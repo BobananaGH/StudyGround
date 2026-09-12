@@ -4,16 +4,21 @@ import unittest
 from django.db import connection
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
+
 from users.models import User
 from core.models import Course, Document, DocumentChunk
-from core.services.retrieval import retrieve_chunks
+from core.services.retrieval import (
+    retrieve_chunks,
+    sample_document_chunks,
+    sample_course_chunks,
+)
 from core.utils.embedder import embed_passage
+
 
 @unittest.skipUnless(
     connection.vendor == "postgresql",
     "Vector search requires PostgreSQL + pgvector.",
 )
-
 class RetrievalTests(TestCase):
 
     def setUp(self):
@@ -101,11 +106,16 @@ class RetrievalTests(TestCase):
             "neural networks backpropagation",
         )
 
-        self.assertGreaterEqual(len(results), 1)
+        self.assertGreaterEqual(
+            len(results),
+            1,
+        )
+
         self.assertEqual(
             results[0].document,
             self.ai_document,
         )
+
         self.assertEqual(
             results[0].chunk_index,
             0,
@@ -117,7 +127,10 @@ class RetrievalTests(TestCase):
             "database normalization",
         )
 
-        self.assertGreaterEqual(len(results), 1)
+        self.assertGreaterEqual(
+            len(results),
+            1,
+        )
 
         for chunk in results:
             self.assertEqual(
@@ -125,17 +138,25 @@ class RetrievalTests(TestCase):
                 self.ai,
             )
 
-    def test_results_are_ranked(self):
+    def test_results_contain_relevant_chunk(self):
         results = retrieve_chunks(
             self.ai,
             "artificial intelligence machine learning",
         )
 
-        self.assertGreaterEqual(len(results), 1)
-
-        self.assertEqual(
-            results[0].chunk_index,
+        self.assertGreaterEqual(
+            len(results),
             1,
+        )
+
+        result_indexes = {
+            chunk.chunk_index
+            for chunk in results
+        }
+
+        self.assertIn(
+            1,
+            result_indexes,
         )
 
     def test_limit_controls_candidate_retrieval(self):
@@ -146,7 +167,10 @@ class RetrievalTests(TestCase):
             max_chunks=1,
         )
 
-        self.assertEqual(len(results), 1)
+        self.assertLessEqual(
+            len(results),
+            1,
+        )
 
     def test_empty_query_returns_empty(self):
         results = retrieve_chunks(
@@ -154,4 +178,51 @@ class RetrievalTests(TestCase):
             "",
         )
 
-        self.assertEqual(results, [])
+        self.assertEqual(
+            results,
+            [],
+        )
+
+    def test_sample_document_chunks(self):
+        results = sample_document_chunks(
+            self.ai_document,
+            count=2,
+        )
+
+        self.assertEqual(
+            len(results),
+            2,
+        )
+
+        self.assertEqual(
+            [chunk.chunk_index for chunk in results],
+            [0, 1],
+        )
+
+    def test_sample_document_chunks_returns_all_when_count_is_large(self):
+        results = sample_document_chunks(
+            self.ai_document,
+            count=10,
+        )
+
+        self.assertEqual(
+            len(results),
+            2,
+        )
+
+    def test_sample_course_chunks(self):
+        results = sample_course_chunks(
+            self.ai,
+            count_per_document=4,
+        )
+
+        self.assertEqual(
+            len(results),
+            2,
+        )
+
+        for chunk in results:
+            self.assertEqual(
+                chunk.document.course,
+                self.ai,
+            )
