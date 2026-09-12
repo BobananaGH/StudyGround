@@ -1,16 +1,76 @@
-# React + Vite
+# StudyGround Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend cho ứng dụng StudyGround - RAG-powered study companion.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Framework**: React 18 + TypeScript
+- **Build Tool**: Vite 5
+- **Styling**: TailwindCSS 3
+- **HTTP Client**: Axios
+- **Routing**: React Router DOM v6
+- **Forms**: React Hook Form + Zod
+- **Icons**: Heroicons
 
-## React Compiler
+## Cài đặt
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+# Cài đặt dependencies
+npm install
 
-## Expanding the ESLint configuration
+# Copy file môi trường
+cp .env.example .env
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Chạy development server
+npm run dev
+
+# Build cho production
+npm run build
+```
+
+## Biến môi trường
+
+Tạo file `.env` từ `.env.example`:
+
+```env
+VITE_API_URL=http://localhost:8000/api/
+```
+
+- `VITE_API_URL`: URL của Backend API (phải kết thúc bằng dấu `/`)
+
+## Cấu trúc thư mục
+
+```
+src/
+├── api/              # Axios client & API endpoints
+├── components/       # Shared components
+│   ├── ui/           # Basic UI components (Button, Input, Modal, etc.)
+│   └── layout/       # Layout components (Header, Sidebar, MainLayout)
+├── contexts/         # React Context providers (AuthContext)
+├── hooks/            # Custom hooks
+├── pages/            # Page components
+├── types/            # TypeScript type definitions
+├── utils/            # Utility functions
+├── App.tsx           # Main App component
+├── main.tsx          # Entry point
+└── index.css         # Global styles with Tailwind imports
+```
+
+## Development
+
+```bash
+# Type checking
+npm run type-check
+
+# Linting
+npm run lint
+```
+
+## API Endpoints (Backend)
+
+Backend API được định nghĩa trong `src/api/` và khớp với contract từ `summary.md`:
+
+- **Auth**: `/auth/login/`, `/auth/register/`, `/auth/me/`, `/auth/token/refresh/`
+- **Courses**: `/courses/`, `/courses/:id/`, `/courses/:id/documents/`
+- **Documents**: `/documents/`, `/documents/:id/`
+- **Conversations**: `/conversations/`, `/conversations/:id/`, `/conversations/:id/messages/`

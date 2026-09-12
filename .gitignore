@@ -67,3 +67,6 @@ desktop.ini
 # Django uploaded media / test files
 backend/media/
 backend/documents/
+
+.claude/
+CLAUDE.md
